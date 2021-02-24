@@ -31,7 +31,8 @@ let package = Package(
                 .product(name: "MapCore", package: "MapCore"),
                 "SwisstopoMapSDKSharedModule",
             ],
-            path: "ios"
+            path: "ios",
+            exclude: ["README.md"]
         ),
         .target(
             name: "SwisstopoMapSDKSharedModule",
