@@ -1,0 +1,36 @@
+@extern "../../../../maps-core/djinni/yaml/tiled_2d_map_layer_config.yaml"
+
+swisstopo_layer_type = enum
+{
+    PIXELKARTE_FARBE;
+    PIXELKARTE_FARK_PK1000;
+    PIXELKARTE_GRAUSTUFEN;
+    PIXELKARTE_FARBE_WINTER;
+    SWISSIMAGE;
+    LUFTFAHRTKARTEN_ICAO;
+    SEGELFLUGKARTE;
+    MIL_AIRSPACE_CHART;
+    SPERR_GEFAHRENZONENKARTE;
+    SWISSMILPILOTSCHART;
+    HIKS_DUFOR;
+    HIKS_SIEGFRIED;
+    SWISSTLM3D_EISENBAHNNETZ;
+    SWISSTLM3D_STRASSEN;
+    SWISSTLM3D_UEBRIGVERKEHR;
+    SWISSTLM3D_WANDERWEGE;
+    SCHWEIZMOBIL_WANDERLAND;
+    SCHWEIZMOBIL_VELOLAND;
+    SCHWEIZMOBIL_MOUNTAINBIKELAND;
+    HANGNEIGUNG_30;
+    HANGNEIGUNGSKLASSEN_30;
+    WILDSCHUTZ_GEBIETE;
+    WILDRUHEZONEN;
+    SCHNEESCHUH_ROUTEN;
+    SKI_TOUR_ROUTEN;
+    DROHNEN;
+    SCHUTZGEBIETE_LUFTFAHRT;
+}
+
+swisstopo_tiled_layer_config_factory = interface +c {
+	static create_raster_tile_layer_config(layer_type: swisstopo_layer_type) : tiled_2d_map_layer_config;
+}

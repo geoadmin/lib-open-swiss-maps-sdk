@@ -1,0 +1,25 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "DjinniSupport",
+        "repositoryURL": "https://github.com/UbiqueInnovation/djinni.git",
+        "state": {
+          "branch": null,
+          "revision": "ff7ec9c42552b023b761c2e1a3a6c9ebbff20e29",
+          "version": "1.0.0"
+        }
+      },
+      {
+        "package": "MapCore",
+        "repositoryURL": "https://github.com/openmobilemaps/maps-core.git",
+        "state": {
+          "branch": "develop",
+          "revision": "16b67155cdedcb64d5041e4a6a8658d58d7ba61e",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}
