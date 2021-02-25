@@ -12,6 +12,11 @@ abstract class SwisstopoTiledLayerConfigFactory {
         fun createRasterTileLayerConfig(layerType: SwisstopoLayerType): io.openmobilemaps.mapscore.shared.map.layers.tiled.Tiled2dMapLayerConfig {
             return CppProxy.createRasterTileLayerConfig(layerType)
         }
+
+        @JvmStatic
+        fun createRasterTiledLayerConfigFromMetadata(identifier: String, configuration: io.openmobilemaps.mapscore.shared.map.layers.tiled.WmtsLayerConfiguration, maxZoom: Int, zoomInfo: io.openmobilemaps.mapscore.shared.map.layers.tiled.Tiled2dMapZoomInfo): io.openmobilemaps.mapscore.shared.map.layers.tiled.Tiled2dMapLayerConfig {
+            return CppProxy.createRasterTiledLayerConfigFromMetadata(identifier, configuration, maxZoom, zoomInfo)
+        }
     }
 
     private class CppProxy : SwisstopoTiledLayerConfigFactory {
@@ -35,6 +40,9 @@ abstract class SwisstopoTiledLayerConfigFactory {
         companion object {
             @JvmStatic
             external fun createRasterTileLayerConfig(layerType: SwisstopoLayerType): io.openmobilemaps.mapscore.shared.map.layers.tiled.Tiled2dMapLayerConfig
+
+            @JvmStatic
+            external fun createRasterTiledLayerConfigFromMetadata(identifier: String, configuration: io.openmobilemaps.mapscore.shared.map.layers.tiled.WmtsLayerConfiguration, maxZoom: Int, zoomInfo: io.openmobilemaps.mapscore.shared.map.layers.tiled.Tiled2dMapZoomInfo): io.openmobilemaps.mapscore.shared.map.layers.tiled.Tiled2dMapLayerConfig
         }
     }
 }

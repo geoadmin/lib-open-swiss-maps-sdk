@@ -21,7 +21,7 @@ SwisstopoTiledLayerConfigFactory::createRasterTileLayerConfig(SwisstopoLayerType
     std::string identifier;
     std::string time = "current";
     std::string extension = "png";
-    size_t maxZoom = 27;
+    int maxZoom = 27;
     int numDrawPreviousLayers = 0;
 
     switch (layerType) {
@@ -150,14 +150,23 @@ SwisstopoTiledLayerConfigFactory::createRasterTileLayerConfig(SwisstopoLayerType
         break;
     }
 
-    auto zoomLevels = SwisstopoTiledLayerConfigHelper::getZoomLevelInfos();
-    std::vector<Tiled2dMapZoomLevelInfo> subvector = {zoomLevels.begin(),
-                                                      zoomLevels.begin() + (std::min(zoomLevels.size(), maxZoom))};
-    zoomLevels = subvector;
-
     auto configuration = WmtsLayerConfiguration(identifier,
                                                 "https://wmts.geo.admin.ch/1.0.0/" + identifier +
                                                     "/default/{Time}/21781/{TileMatrix}/{TileRow}/{TileCol}." + extension,
                                                 SwisstopoTiledLayerConfigHelper::getBounds(), {{"Time", time}});
-    return WmtsTiled2dMapLayerConfigFactory::create(configuration, zoomLevels, Tiled2dMapZoomInfo(1.25, numDrawPreviousLayers));
+    auto zoomInfo = Tiled2dMapZoomInfo(1.25, numDrawPreviousLayers);
+
+
+    return createRasterTiledLayerConfigFromMetadata(identifier, configuration, maxZoom, zoomInfo);
+}
+
+
+std::shared_ptr<::Tiled2dMapLayerConfig> SwisstopoTiledLayerConfigFactory::createRasterTiledLayerConfigFromMetadata(const std::string & identifier, const ::WmtsLayerConfiguration & configuration, int32_t maxZoom, const ::Tiled2dMapZoomInfo & zoomInfo) {
+
+    auto zoomLevels = SwisstopoTiledLayerConfigHelper::getZoomLevelInfos();
+    std::vector<Tiled2dMapZoomLevelInfo> subvector = {zoomLevels.begin(),
+                                                      zoomLevels.begin() + (std::min(zoomLevels.size(), (size_t)maxZoom))};
+    zoomLevels = subvector;
+
+    return WmtsTiled2dMapLayerConfigFactory::create(configuration, zoomLevels, zoomInfo);
 }
