@@ -1,14 +1,24 @@
+/*
+ * Copyright (c) 2021 Ubique Innovation AG <https://www.ubique.ch>
+ *
+ *  This Source Code Form is subject to the terms of the Mozilla Public
+ *  License, v. 2.0. If a copy of the MPL was not distributed with this
+ *  file, You can obtain one at https://mozilla.org/MPL/2.0/.
+ *
+ *  SPDX-License-Identifier: MPL-2.0
+ */
+
 import MapCore
 import SwisstopoMapSDKSharedModule
 import UIKit
 
-public class SwissTopoMapView: MCMapView {
+public class SwisstopoMapView: MCMapView {
     private let loader: MCTextureLoaderInterface
 
     open private(set) var baseLayer: MCTiled2dMapRasterLayerInterface
 
     public init(baseLayerType: STSDKSwisstopoLayerType = .PIXELKARTE_FARBE,
-                loader: MCTextureLoaderInterface = MCTextureLoader()) {
+                loader: MCTextureLoaderInterface = SwisstopoTextureLoader()) {
         self.loader = loader
 
         guard let baseLayer = STSDKSwisstopoLayerFactory.createSwisstopoTiledRasterLayer(baseLayerType, textureLoader: loader) else {
