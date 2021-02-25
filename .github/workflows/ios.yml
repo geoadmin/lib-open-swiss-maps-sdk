@@ -3,6 +3,8 @@ name: ios
 on:
   pull_request:
     branches: [ main, develop ]
+  push:
+    branches: [ feature/github-action ]
 
 jobs:
   build:
