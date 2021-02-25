@@ -22,7 +22,7 @@ SwisstopoTiledLayerConfigFactory::createRasterTileLayerConfig(SwisstopoLayerType
     std::string time = "current";
     std::string extension = "png";
     size_t maxZoom = 27;
-    int numDrawPreviousLayers = 1;
+    int numDrawPreviousLayers = 0;
 
     switch (layerType) {
     case SwisstopoLayerType::PIXELKARTE_FARBE:
