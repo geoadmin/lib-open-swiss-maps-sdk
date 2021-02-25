@@ -24,7 +24,7 @@ import io.openmobilemaps.mapscore.shared.map.layers.tiled.raster.Tiled2dMapRaste
 class SwisstopoMapView @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) :
 	MapView(context, attrs, defStyleAttr) {
 
-	private val swisstopoMapConfig: MapConfig = MapConfig(CoordinateSystemFactory.getEpsg2056System(), 4000000.0, 500.0)
+	private val swisstopoMapConfig: MapConfig = MapConfig(CoordinateSystemFactory.getEpsg2056System())
 
 	lateinit var baseLayer: Tiled2dMapRasterLayerInterface
 		private set
@@ -37,6 +37,8 @@ class SwisstopoMapView @JvmOverloads constructor(context: Context, attrs: Attrib
 
 		setupMap(swisstopoMapConfig)
 		createBaseLayer()
+		mapInterface.getCamera().setMinZoom(5000000.0)
+		mapInterface.getCamera().setMaxZoom(500.0)
 	}
 
 	private fun createBaseLayer() {
