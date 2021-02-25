@@ -13,16 +13,16 @@ import MapCore
 import SwisstopoMapSDKSharedModule
 
 public class SwisstopoTextureLoader: MCTextureLoader {
-    var referer: String
-    public override init(urlSession: URLSession? = nil) {
+    private var referer: String
 
+    public override init(urlSession: URLSession? = nil) {
         let bundleIdentifier = Bundle.main.bundleIdentifier ?? "N/A"
         let appVersion = (Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String) ?? "N/A"
         let mapsCoreVersion = STSDKOpenSwissMapsSharedModule.version()
         referer = "\(bundleIdentifier);\(appVersion);openswissmaps;\(mapsCoreVersion)"
-
         super.init(urlSession: urlSession)
     }
+    
     public override func modifyUrlRequest(request: inout URLRequest) {
         request.setValue(referer, forHTTPHeaderField: "referer")
     }
