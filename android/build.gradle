@@ -25,7 +25,7 @@ android {
 		minSdkVersion 23
 		targetSdkVersion 30
 		versionCode 1
-		versionName "1.0"
+		versionName "1.0.0"
 
 		testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 		consumerProguardFiles 'consumer-rules.pro'
@@ -33,6 +33,15 @@ android {
 			cmake {
 				cppFlags "-std=c++17 -frtti -fexceptions"
 			}
+		}
+	}
+
+	buildTypes {
+		debug {
+			buildConfigField("String", "VERSION_NAME", "\"${defaultConfig.versionName}\"")
+		}
+		release {
+			buildConfigField("String", "VERSION_NAME", "\"${defaultConfig.versionName}\"")
 		}
 	}
 

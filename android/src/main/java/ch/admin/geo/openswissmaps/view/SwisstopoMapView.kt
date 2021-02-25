@@ -8,11 +8,11 @@
  *  SPDX-License-Identifier: MPL-2.0
  */
 
-
 package ch.admin.geo.openswissmaps.view
 
 import android.content.Context
 import android.util.AttributeSet
+import ch.admin.geo.openswissmaps.networking.RequestUtils
 import ch.admin.geo.openswissmaps.shared.layers.SwisstopoLayerFactory
 import ch.admin.geo.openswissmaps.shared.layers.config.SwisstopoLayerType
 import io.openmobilemaps.mapscore.map.loader.TextureLoader
@@ -29,7 +29,7 @@ class SwisstopoMapView @JvmOverloads constructor(context: Context, attrs: Attrib
 	lateinit var baseLayer: Tiled2dMapRasterLayerInterface
 		private set
 
-	var textureLoader = TextureLoader(context, context.cacheDir, 50L * 1024L * 1024L)
+	var textureLoader = TextureLoader(context, context.cacheDir, 50L * 1024L * 1024L, RequestUtils.getDefaultReferer(context))
 		private set
 
 	init {
@@ -47,9 +47,9 @@ class SwisstopoMapView @JvmOverloads constructor(context: Context, attrs: Attrib
 
 	fun setBaseLayerType(layerType: SwisstopoLayerType) {
 		val newLayer = SwisstopoLayerFactory.createSwisstopoTiledRasterLayer(layerType, textureLoader)
-		baseLayer.getCallbackHandler()?.let { newLayer.setCallbackHandler(it) }
 		mapInterface.removeLayer(baseLayer.asLayerInterface())
 		mapInterface.addLayer(newLayer.asLayerInterface())
+		baseLayer.getCallbackHandler()?.let { newLayer.setCallbackHandler(it) }
 		baseLayer = newLayer
 	}
 }
