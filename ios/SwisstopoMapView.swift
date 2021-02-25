@@ -5,17 +5,24 @@ import UIKit
 public class SwissTopoMapView: MCMapView {
     private let loader: MCTextureLoaderInterface
 
-    private var baseLayer: MCTiled2dMapRasterLayerInterface?
+    open private(set) var baseLayer: MCTiled2dMapRasterLayerInterface
 
     public init(baseLayerType: STSDKSwisstopoLayerType = .PIXELKARTE_FARBE,
                 loader: MCTextureLoaderInterface = MCTextureLoader()) {
         self.loader = loader
 
+        guard let baseLayer = STSDKSwisstopoLayerFactory.createSwisstopoTiledRasterLayer(baseLayerType, textureLoader: loader) else {
+            fatalError("unable to create SwisstopoLayer")
+        }
+
+        self.baseLayer = baseLayer
+
         let coordinateSystem = MCCoordinateSystemFactory.getEpsg2056System()
         super.init(mapConfig: .init(mapCoordinateSystem: coordinateSystem,
                                     zoomMin: 4_000_000,
                                     zoomMax: 500))
-        baseLayer = addSwisstopoLayer(type: baseLayerType)
+
+        add(layer: baseLayer.asLayerInterface())
     }
 
     public func setBaseLayerType(type: STSDKSwisstopoLayerType) {
@@ -23,12 +30,10 @@ public class SwissTopoMapView: MCMapView {
             fatalError("unable to create SwisstopoLayer")
         }
 
-        if let layer = baseLayer {
-            if let oldCallbackHandler = layer.getCallbackHandler() {
-                newLayer.setCallbackHandler(oldCallbackHandler)
-            }
-            remove(layer: layer.asLayerInterface())
+        if let oldCallbackHandler = baseLayer.getCallbackHandler() {
+            newLayer.setCallbackHandler(oldCallbackHandler)
         }
+        remove(layer: baseLayer.asLayerInterface())
 
         baseLayer = newLayer
 
