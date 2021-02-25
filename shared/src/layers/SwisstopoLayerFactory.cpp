@@ -20,11 +20,10 @@ SwisstopoLayerFactory::createSwisstopoTiledRasterLayer(::SwisstopoLayerType laye
 }
 
 
-std::shared_ptr<::Tiled2dMapRasterLayerInterface> SwisstopoLayerFactory::createSwisstopoTiledRasterLayerFromMetadata(const std::string & identifier,
-                                                                                                                            const ::WmtsLayerConfiguration & configuration,
+std::shared_ptr<::Tiled2dMapRasterLayerInterface> SwisstopoLayerFactory::createSwisstopoTiledRasterLayerFromMetadata(const ::WmtsLayerConfiguration & configuration,
                                                                                                                             int32_t maxZoom,
                                                                                                                             const ::Tiled2dMapZoomInfo & zoomInfo,
                                                                                                                             const std::shared_ptr<::TextureLoaderInterface> & textureLoader) {
-    return Tiled2dMapRasterLayerInterface::create(SwisstopoTiledLayerConfigFactory::createRasterTiledLayerConfigFromMetadata(identifier, configuration, maxZoom, zoomInfo),
+    return Tiled2dMapRasterLayerInterface::create(SwisstopoTiledLayerConfigFactory::createRasterTiledLayerConfigFromMetadata(configuration, maxZoom, zoomInfo),
                                                   textureLoader);
 }

@@ -7,5 +7,5 @@
 swisstopo_layer_factory = interface +c {
 	static create_swisstopo_tiled_raster_layer(layer_type: swisstopo_layer_type, texture_loader: texture_loader_interface) : tiled_2d_map_raster_layer_interface;
 
-    static create_swisstopo_tiled_raster_layer_from_metadata(identifier: string, configuration: wmts_layer_configuration, maxZoom: i32, zoomInfo: tiled_2d_map_zoom_info  ,texture_loader: texture_loader_interface) : tiled_2d_map_raster_layer_interface;
+    static create_swisstopo_tiled_raster_layer_from_metadata(configuration: wmts_layer_configuration, maxZoom: i32, zoomInfo: tiled_2d_map_zoom_info  ,texture_loader: texture_loader_interface) : tiled_2d_map_raster_layer_interface;
 }

@@ -8,7 +8,6 @@
 #include "WmtsLayerConfiguration.h"
 #include <cstdint>
 #include <memory>
-#include <string>
 
 enum class SwisstopoLayerType;
 
@@ -18,5 +17,5 @@ public:
 
     static std::shared_ptr<::Tiled2dMapLayerConfig> createRasterTileLayerConfig(SwisstopoLayerType layerType);
 
-    static std::shared_ptr<::Tiled2dMapLayerConfig> createRasterTiledLayerConfigFromMetadata(const std::string & identifier, const ::WmtsLayerConfiguration & configuration, int32_t maxZoom, const ::Tiled2dMapZoomInfo & zoomInfo);
+    static std::shared_ptr<::Tiled2dMapLayerConfig> createRasterTiledLayerConfigFromMetadata(const ::WmtsLayerConfiguration & configuration, int32_t maxZoom, const ::Tiled2dMapZoomInfo & zoomInfo);
 };

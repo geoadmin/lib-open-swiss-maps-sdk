@@ -34,12 +34,11 @@ CJNIEXPORT ::djinni_generated::NativeTiled2dMapRasterLayerInterface::JniType JNI
     } JNI_TRANSLATE_EXCEPTIONS_RETURN(jniEnv, 0 /* value doesn't matter */)
 }
 
-CJNIEXPORT ::djinni_generated::NativeTiled2dMapRasterLayerInterface::JniType JNICALL Java_ch_admin_geo_openswissmaps_shared_layers_SwisstopoLayerFactory_00024CppProxy_createSwisstopoTiledRasterLayerFromMetadata(JNIEnv* jniEnv, jobject /*this*/, jstring j_identifier, ::djinni_generated::NativeWmtsLayerConfiguration::JniType j_configuration, jint j_maxZoom, ::djinni_generated::NativeTiled2dMapZoomInfo::JniType j_zoomInfo, ::djinni_generated::NativeTextureLoaderInterface::JniType j_textureLoader)
+CJNIEXPORT ::djinni_generated::NativeTiled2dMapRasterLayerInterface::JniType JNICALL Java_ch_admin_geo_openswissmaps_shared_layers_SwisstopoLayerFactory_00024CppProxy_createSwisstopoTiledRasterLayerFromMetadata(JNIEnv* jniEnv, jobject /*this*/, ::djinni_generated::NativeWmtsLayerConfiguration::JniType j_configuration, jint j_maxZoom, ::djinni_generated::NativeTiled2dMapZoomInfo::JniType j_zoomInfo, ::djinni_generated::NativeTextureLoaderInterface::JniType j_textureLoader)
 {
     try {
         DJINNI_FUNCTION_PROLOGUE0(jniEnv);
-        auto r = ::SwisstopoLayerFactory::createSwisstopoTiledRasterLayerFromMetadata(::djinni::String::toCpp(jniEnv, j_identifier),
-                                                                                      ::djinni_generated::NativeWmtsLayerConfiguration::toCpp(jniEnv, j_configuration),
+        auto r = ::SwisstopoLayerFactory::createSwisstopoTiledRasterLayerFromMetadata(::djinni_generated::NativeWmtsLayerConfiguration::toCpp(jniEnv, j_configuration),
                                                                                       ::djinni::I32::toCpp(jniEnv, j_maxZoom),
                                                                                       ::djinni_generated::NativeTiled2dMapZoomInfo::toCpp(jniEnv, j_zoomInfo),
                                                                                       ::djinni_generated::NativeTextureLoaderInterface::toCpp(jniEnv, j_textureLoader));

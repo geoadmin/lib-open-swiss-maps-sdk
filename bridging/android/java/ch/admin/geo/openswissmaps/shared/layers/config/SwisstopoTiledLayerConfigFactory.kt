@@ -14,8 +14,8 @@ abstract class SwisstopoTiledLayerConfigFactory {
         }
 
         @JvmStatic
-        fun createRasterTiledLayerConfigFromMetadata(identifier: String, configuration: io.openmobilemaps.mapscore.shared.map.layers.tiled.WmtsLayerConfiguration, maxZoom: Int, zoomInfo: io.openmobilemaps.mapscore.shared.map.layers.tiled.Tiled2dMapZoomInfo): io.openmobilemaps.mapscore.shared.map.layers.tiled.Tiled2dMapLayerConfig {
-            return CppProxy.createRasterTiledLayerConfigFromMetadata(identifier, configuration, maxZoom, zoomInfo)
+        fun createRasterTiledLayerConfigFromMetadata(configuration: io.openmobilemaps.mapscore.shared.map.layers.tiled.WmtsLayerConfiguration, maxZoom: Int, zoomInfo: io.openmobilemaps.mapscore.shared.map.layers.tiled.Tiled2dMapZoomInfo): io.openmobilemaps.mapscore.shared.map.layers.tiled.Tiled2dMapLayerConfig {
+            return CppProxy.createRasterTiledLayerConfigFromMetadata(configuration, maxZoom, zoomInfo)
         }
     }
 
@@ -42,7 +42,7 @@ abstract class SwisstopoTiledLayerConfigFactory {
             external fun createRasterTileLayerConfig(layerType: SwisstopoLayerType): io.openmobilemaps.mapscore.shared.map.layers.tiled.Tiled2dMapLayerConfig
 
             @JvmStatic
-            external fun createRasterTiledLayerConfigFromMetadata(identifier: String, configuration: io.openmobilemaps.mapscore.shared.map.layers.tiled.WmtsLayerConfiguration, maxZoom: Int, zoomInfo: io.openmobilemaps.mapscore.shared.map.layers.tiled.Tiled2dMapZoomInfo): io.openmobilemaps.mapscore.shared.map.layers.tiled.Tiled2dMapLayerConfig
+            external fun createRasterTiledLayerConfigFromMetadata(configuration: io.openmobilemaps.mapscore.shared.map.layers.tiled.WmtsLayerConfiguration, maxZoom: Int, zoomInfo: io.openmobilemaps.mapscore.shared.map.layers.tiled.Tiled2dMapZoomInfo): io.openmobilemaps.mapscore.shared.map.layers.tiled.Tiled2dMapLayerConfig
         }
     }
 }

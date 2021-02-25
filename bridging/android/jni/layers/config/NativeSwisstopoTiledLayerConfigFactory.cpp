@@ -32,12 +32,11 @@ CJNIEXPORT ::djinni_generated::NativeTiled2dMapLayerConfig::JniType JNICALL Java
     } JNI_TRANSLATE_EXCEPTIONS_RETURN(jniEnv, 0 /* value doesn't matter */)
 }
 
-CJNIEXPORT ::djinni_generated::NativeTiled2dMapLayerConfig::JniType JNICALL Java_ch_admin_geo_openswissmaps_shared_layers_config_SwisstopoTiledLayerConfigFactory_00024CppProxy_createRasterTiledLayerConfigFromMetadata(JNIEnv* jniEnv, jobject /*this*/, jstring j_identifier, ::djinni_generated::NativeWmtsLayerConfiguration::JniType j_configuration, jint j_maxZoom, ::djinni_generated::NativeTiled2dMapZoomInfo::JniType j_zoomInfo)
+CJNIEXPORT ::djinni_generated::NativeTiled2dMapLayerConfig::JniType JNICALL Java_ch_admin_geo_openswissmaps_shared_layers_config_SwisstopoTiledLayerConfigFactory_00024CppProxy_createRasterTiledLayerConfigFromMetadata(JNIEnv* jniEnv, jobject /*this*/, ::djinni_generated::NativeWmtsLayerConfiguration::JniType j_configuration, jint j_maxZoom, ::djinni_generated::NativeTiled2dMapZoomInfo::JniType j_zoomInfo)
 {
     try {
         DJINNI_FUNCTION_PROLOGUE0(jniEnv);
-        auto r = ::SwisstopoTiledLayerConfigFactory::createRasterTiledLayerConfigFromMetadata(::djinni::String::toCpp(jniEnv, j_identifier),
-                                                                                              ::djinni_generated::NativeWmtsLayerConfiguration::toCpp(jniEnv, j_configuration),
+        auto r = ::SwisstopoTiledLayerConfigFactory::createRasterTiledLayerConfigFromMetadata(::djinni_generated::NativeWmtsLayerConfiguration::toCpp(jniEnv, j_configuration),
                                                                                               ::djinni::I32::toCpp(jniEnv, j_maxZoom),
                                                                                               ::djinni_generated::NativeTiled2dMapZoomInfo::toCpp(jniEnv, j_zoomInfo));
         return ::djinni::release(::djinni_generated::NativeTiled2dMapLayerConfig::fromCpp(jniEnv, r));

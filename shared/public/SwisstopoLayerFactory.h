@@ -10,7 +10,6 @@
 #include "WmtsLayerConfiguration.h"
 #include <cstdint>
 #include <memory>
-#include <string>
 
 class SwisstopoLayerFactory {
 public:
@@ -18,5 +17,5 @@ public:
 
     static std::shared_ptr<::Tiled2dMapRasterLayerInterface> createSwisstopoTiledRasterLayer(::SwisstopoLayerType layerType, const std::shared_ptr<::TextureLoaderInterface> & textureLoader);
 
-    static std::shared_ptr<::Tiled2dMapRasterLayerInterface> createSwisstopoTiledRasterLayerFromMetadata(const std::string & identifier, const ::WmtsLayerConfiguration & configuration, int32_t maxZoom, const ::Tiled2dMapZoomInfo & zoomInfo, const std::shared_ptr<::TextureLoaderInterface> & textureLoader);
+    static std::shared_ptr<::Tiled2dMapRasterLayerInterface> createSwisstopoTiledRasterLayerFromMetadata(const ::WmtsLayerConfiguration & configuration, int32_t maxZoom, const ::Tiled2dMapZoomInfo & zoomInfo, const std::shared_ptr<::TextureLoaderInterface> & textureLoader);
 };

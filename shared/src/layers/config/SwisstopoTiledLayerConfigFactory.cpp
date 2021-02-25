@@ -152,17 +152,16 @@ SwisstopoTiledLayerConfigFactory::createRasterTileLayerConfig(SwisstopoLayerType
 
     auto configuration = WmtsLayerConfiguration(identifier,
                                                 "https://wmts.geo.admin.ch/1.0.0/" + identifier +
-                                                    "/default/{Time}/21781/{TileMatrix}/{TileRow}/{TileCol}." + extension,
+                                                    "/default/{Time}/2056/{TileMatrix}/{TileCol}/{TileRow}." + extension,
                                                 SwisstopoTiledLayerConfigHelper::getBounds(), {{"Time", time}});
     auto zoomInfo = Tiled2dMapZoomInfo(1.25, numDrawPreviousLayers);
 
 
-    return createRasterTiledLayerConfigFromMetadata(identifier, configuration, maxZoom, zoomInfo);
+    return createRasterTiledLayerConfigFromMetadata(configuration, maxZoom, zoomInfo);
 }
 
 
-std::shared_ptr<::Tiled2dMapLayerConfig> SwisstopoTiledLayerConfigFactory::createRasterTiledLayerConfigFromMetadata(const std::string & identifier, const ::WmtsLayerConfiguration & configuration, int32_t maxZoom, const ::Tiled2dMapZoomInfo & zoomInfo) {
-
+std::shared_ptr<::Tiled2dMapLayerConfig> SwisstopoTiledLayerConfigFactory::createRasterTiledLayerConfigFromMetadata(const ::WmtsLayerConfiguration & configuration, int32_t maxZoom, const ::Tiled2dMapZoomInfo & zoomInfo) {
     auto zoomLevels = SwisstopoTiledLayerConfigHelper::getZoomLevelInfos();
     std::vector<Tiled2dMapZoomLevelInfo> subvector = {zoomLevels.begin(),
                                                       zoomLevels.begin() + (std::min(zoomLevels.size(), (size_t)maxZoom))};

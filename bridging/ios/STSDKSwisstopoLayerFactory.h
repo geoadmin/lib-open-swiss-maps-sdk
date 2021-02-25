@@ -14,8 +14,7 @@
 + (nullable MCTiled2dMapRasterLayerInterface *)createSwisstopoTiledRasterLayer:(STSDKSwisstopoLayerType)layerType
                                                                  textureLoader:(nullable id<MCTextureLoaderInterface>)textureLoader;
 
-+ (nullable MCTiled2dMapRasterLayerInterface *)createSwisstopoTiledRasterLayerFromMetadata:(nonnull NSString *)identifier
-                                                                             configuration:(nonnull MCWmtsLayerConfiguration *)configuration
++ (nullable MCTiled2dMapRasterLayerInterface *)createSwisstopoTiledRasterLayerFromMetadata:(nonnull MCWmtsLayerConfiguration *)configuration
                                                                                    maxZoom:(int32_t)maxZoom
                                                                                   zoomInfo:(nonnull MCTiled2dMapZoomInfo *)zoomInfo
                                                                              textureLoader:(nullable id<MCTextureLoaderInterface>)textureLoader;

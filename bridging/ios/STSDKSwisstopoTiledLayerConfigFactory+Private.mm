@@ -41,13 +41,11 @@ static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for th
     } DJINNI_TRANSLATE_EXCEPTIONS()
 }
 
-+ (nullable id<MCTiled2dMapLayerConfig>)createRasterTiledLayerConfigFromMetadata:(nonnull NSString *)identifier
-                                                                   configuration:(nonnull MCWmtsLayerConfiguration *)configuration
++ (nullable id<MCTiled2dMapLayerConfig>)createRasterTiledLayerConfigFromMetadata:(nonnull MCWmtsLayerConfiguration *)configuration
                                                                          maxZoom:(int32_t)maxZoom
                                                                         zoomInfo:(nonnull MCTiled2dMapZoomInfo *)zoomInfo {
     try {
-        auto objcpp_result_ = ::SwisstopoTiledLayerConfigFactory::createRasterTiledLayerConfigFromMetadata(::djinni::String::toCpp(identifier),
-                                                                                                           ::djinni_generated::WmtsLayerConfiguration::toCpp(configuration),
+        auto objcpp_result_ = ::SwisstopoTiledLayerConfigFactory::createRasterTiledLayerConfigFromMetadata(::djinni_generated::WmtsLayerConfiguration::toCpp(configuration),
                                                                                                            ::djinni::I32::toCpp(maxZoom),
                                                                                                            ::djinni_generated::Tiled2dMapZoomInfo::toCpp(zoomInfo));
         return ::djinni_generated::Tiled2dMapLayerConfig::fromCpp(objcpp_result_);
