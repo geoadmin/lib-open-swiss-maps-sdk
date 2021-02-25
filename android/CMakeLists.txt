@@ -107,6 +107,6 @@ target_link_libraries(open_swiss_maps_shared
         ${opengl-lib})
 
 add_library(mapscore_shared SHARED IMPORTED)
-string(REPLACE "lib-open-swiss-maps-sdk" "lib-open-swiss-maps-sdk/external/maps-core" SDK_SO_PATH "${CMAKE_LIBRARY_OUTPUT_DIRECTORY}")
+string(REPLACE "build" "../external/maps-core/android/build" SDK_SO_PATH "${CMAKE_LIBRARY_OUTPUT_DIRECTORY}")
 set_property(TARGET mapscore_shared PROPERTY IMPORTED_LOCATION "${SDK_SO_PATH}/libmapscore_shared.so")
 target_link_libraries(open_swiss_maps_shared mapscore_shared)
