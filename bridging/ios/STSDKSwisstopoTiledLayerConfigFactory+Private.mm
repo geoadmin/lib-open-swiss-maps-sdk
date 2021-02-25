@@ -5,7 +5,10 @@
 #import "STSDKSwisstopoTiledLayerConfigFactory.h"
 #import "DJICppWrapperCache+Private.h"
 #import "DJIError.h"
+#import "DJIMarshal+Private.h"
 #import "MCTiled2dMapLayerConfig+Private.h"
+#import "MCTiled2dMapZoomInfo+Private.h"
+#import "MCWmtsLayerConfiguration+Private.h"
 #import "STSDKSwisstopoLayerType+Private.h"
 #include <exception>
 #include <stdexcept>
@@ -34,6 +37,17 @@ static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for th
 + (nullable id<MCTiled2dMapLayerConfig>)createRasterTileLayerConfig:(STSDKSwisstopoLayerType)layerType {
     try {
         auto objcpp_result_ = ::SwisstopoTiledLayerConfigFactory::createRasterTileLayerConfig(::djinni::Enum<::SwisstopoLayerType, STSDKSwisstopoLayerType>::toCpp(layerType));
+        return ::djinni_generated::Tiled2dMapLayerConfig::fromCpp(objcpp_result_);
+    } DJINNI_TRANSLATE_EXCEPTIONS()
+}
+
++ (nullable id<MCTiled2dMapLayerConfig>)createRasterTiledLayerConfigFromMetadata:(nonnull MCWmtsLayerConfiguration *)configuration
+                                                                         maxZoom:(int32_t)maxZoom
+                                                                        zoomInfo:(nonnull MCTiled2dMapZoomInfo *)zoomInfo {
+    try {
+        auto objcpp_result_ = ::SwisstopoTiledLayerConfigFactory::createRasterTiledLayerConfigFromMetadata(::djinni_generated::WmtsLayerConfiguration::toCpp(configuration),
+                                                                                                           ::djinni::I32::toCpp(maxZoom),
+                                                                                                           ::djinni_generated::Tiled2dMapZoomInfo::toCpp(zoomInfo));
         return ::djinni_generated::Tiled2dMapLayerConfig::fromCpp(objcpp_result_);
     } DJINNI_TRANSLATE_EXCEPTIONS()
 }

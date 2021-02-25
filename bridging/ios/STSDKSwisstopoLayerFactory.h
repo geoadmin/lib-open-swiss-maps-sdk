@@ -3,6 +3,8 @@
 
 #import "MCTextureLoaderInterface.h"
 #import "MCTiled2dMapRasterLayerInterface.h"
+#import "MCTiled2dMapZoomInfo.h"
+#import "MCWmtsLayerConfiguration.h"
 #import "STSDKSwisstopoLayerType.h"
 #import <Foundation/Foundation.h>
 
@@ -11,5 +13,10 @@
 
 + (nullable MCTiled2dMapRasterLayerInterface *)createSwisstopoTiledRasterLayer:(STSDKSwisstopoLayerType)layerType
                                                                  textureLoader:(nullable id<MCTextureLoaderInterface>)textureLoader;
+
++ (nullable MCTiled2dMapRasterLayerInterface *)createSwisstopoTiledRasterLayerFromMetadata:(nonnull MCWmtsLayerConfiguration *)configuration
+                                                                                   maxZoom:(int32_t)maxZoom
+                                                                                  zoomInfo:(nonnull MCTiled2dMapZoomInfo *)zoomInfo
+                                                                             textureLoader:(nullable id<MCTextureLoaderInterface>)textureLoader;
 
 @end

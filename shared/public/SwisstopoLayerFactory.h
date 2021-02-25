@@ -6,6 +6,9 @@
 #include "SwisstopoLayerType.h"
 #include "TextureLoaderInterface.h"
 #include "Tiled2dMapRasterLayerInterface.h"
+#include "Tiled2dMapZoomInfo.h"
+#include "WmtsLayerConfiguration.h"
+#include <cstdint>
 #include <memory>
 
 class SwisstopoLayerFactory {
@@ -13,4 +16,6 @@ public:
     virtual ~SwisstopoLayerFactory() {}
 
     static std::shared_ptr<::Tiled2dMapRasterLayerInterface> createSwisstopoTiledRasterLayer(::SwisstopoLayerType layerType, const std::shared_ptr<::TextureLoaderInterface> & textureLoader);
+
+    static std::shared_ptr<::Tiled2dMapRasterLayerInterface> createSwisstopoTiledRasterLayerFromMetadata(const ::WmtsLayerConfiguration & configuration, int32_t maxZoom, const ::Tiled2dMapZoomInfo & zoomInfo, const std::shared_ptr<::TextureLoaderInterface> & textureLoader);
 };
