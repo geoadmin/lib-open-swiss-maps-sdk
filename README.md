@@ -1,5 +1,16 @@
-<h1 align="center">SwisstopoMapSDK</h1>
+<h1 align="center">Open Swiss Maps SDK</h1> 
+
 <br />
+
+<div align="center">
+  <img width="200" height="45" src="logo.svg" />
+  <br />
+  <br />
+  Module that provides convenience methods to use <a href="https://github.com/geoadmin/lib-open-swiss-maps-sdk">Open Mobile Maps</a> with Swisstopo layers.
+  <br />
+  <br />
+  <a href="https://openmobilemaps.io/">openmobilemaps.io</a>
+</div>
 
 <div align="center">
     <!-- SPM -->
@@ -22,3 +33,15 @@
       src="https://github.com/geoadmin/lib-open-swiss-maps-sdk/actions/workflows/android.yml/badge.svg">
     </a>
 </div>
+
+## Getting started
+
+[Readme Android](./android/)
+
+[Readme iOS](./ios/)
+
+## Features
+
+- Swisstopo raster tile configuration
+- Predefined Swisstopo layer definitions
+
