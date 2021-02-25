@@ -1,6 +1,6 @@
 [submodule "external/maps-core"]
 	path = external/maps-core
-	url = git@github.com:openmobilemaps/maps-core.git
+	url = https://github.com/openmobilemaps/maps-core.git
 [submodule "external/djinni"]
 	path = external/djinni
-	url = git@github.com:UbiqueInnovation/djinni.git
+	url = https://github.com/UbiqueInnovation/djinni.git
