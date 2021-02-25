@@ -18,9 +18,7 @@ public class SwisstopoMapView: MCMapView {
     open private(set) var baseLayer: MCTiled2dMapRasterLayerInterface
 
     public init(baseLayerType: STSDKSwisstopoLayerType = .PIXELKARTE_FARBE,
-                loader: MCTextureLoaderInterface = SwisstopoTextureLoader(),
-                zoomMin: Double = 5_500_000,
-                zoomMax: Double = 500) {
+                loader: MCTextureLoaderInterface = SwisstopoTextureLoader()) {
         self.loader = loader
 
         guard let baseLayer = STSDKSwisstopoLayerFactory.createSwisstopoTiledRasterLayer(baseLayerType, textureLoader: loader) else {
@@ -30,9 +28,10 @@ public class SwisstopoMapView: MCMapView {
         self.baseLayer = baseLayer
 
         let coordinateSystem = MCCoordinateSystemFactory.getEpsg2056System()
-        super.init(mapConfig: .init(mapCoordinateSystem: coordinateSystem,
-                                    zoomMin: zoomMin,
-                                    zoomMax: zoomMax))
+        super.init(mapConfig: .init(mapCoordinateSystem: coordinateSystem))
+
+        camera.setMinZoom(5_000_000)
+        camera.setMaxZoom(300)
 
         add(layer: baseLayer.asLayerInterface())
     }
