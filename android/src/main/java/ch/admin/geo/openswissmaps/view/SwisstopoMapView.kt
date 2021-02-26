@@ -17,16 +17,26 @@ import ch.admin.geo.openswissmaps.shared.layers.SwisstopoLayerFactory
 import ch.admin.geo.openswissmaps.shared.layers.config.SwisstopoLayerType
 import io.openmobilemaps.mapscore.map.loader.TextureLoader
 import io.openmobilemaps.mapscore.map.view.MapView
+import io.openmobilemaps.mapscore.shared.map.LayerInterface
 import io.openmobilemaps.mapscore.shared.map.MapConfig
+import io.openmobilemaps.mapscore.shared.map.coordinates.Coord
 import io.openmobilemaps.mapscore.shared.map.coordinates.CoordinateSystemFactory
+import io.openmobilemaps.mapscore.shared.map.coordinates.CoordinateSystemIdentifiers
+import io.openmobilemaps.mapscore.shared.map.coordinates.RectCoord
 import io.openmobilemaps.mapscore.shared.map.layers.tiled.raster.Tiled2dMapRasterLayerInterface
 
 class SwisstopoMapView @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) :
 	MapView(context, attrs, defStyleAttr) {
 
+	companion object {
+		private val BASE_LAYER_TYPE_DEFAULT = SwisstopoLayerType.PIXELKARTE_FARBE
+		private const val ZOOM_MIN_DEFAULT = 5000000.0
+		private const val ZOOM_MAX_DEFAULT = 250.0
+	}
+
 	private val swisstopoMapConfig: MapConfig = MapConfig(CoordinateSystemFactory.getEpsg2056System())
 
-	lateinit var baseLayer: Tiled2dMapRasterLayerInterface
+	var baseLayer: Tiled2dMapRasterLayerInterface? = null
 		private set
 
 	var textureLoader = TextureLoader(context, context.cacheDir, 50L * 1024L * 1024L, RequestUtils.getDefaultReferer(context))
@@ -36,22 +46,30 @@ class SwisstopoMapView @JvmOverloads constructor(context: Context, attrs: Attrib
 		System.loadLibrary("open_swiss_maps_shared")
 
 		setupMap(swisstopoMapConfig)
-		createBaseLayer()
-		mapInterface.getCamera().setMinZoom(5000000.0)
-		mapInterface.getCamera().setMaxZoom(500.0)
+		createBaseLayer(BASE_LAYER_TYPE_DEFAULT)
+		mapInterface.getCamera().setMinZoom(ZOOM_MIN_DEFAULT)
+		mapInterface.getCamera().setMaxZoom(ZOOM_MAX_DEFAULT)
 	}
 
-	private fun createBaseLayer() {
-		baseLayer =
-			SwisstopoLayerFactory.createSwisstopoTiledRasterLayer(SwisstopoLayerType.PIXELKARTE_FARBE, textureLoader)
-		mapInterface.addLayer(baseLayer.asLayerInterface())
+	private fun createBaseLayer(layerType: SwisstopoLayerType) {
+		val newBaseLayer =
+			SwisstopoLayerFactory.createSwisstopoTiledRasterLayer(layerType, textureLoader)
+		mapInterface.addLayer(newBaseLayer.asLayerInterface())
+		baseLayer = newBaseLayer
 	}
 
-	fun setBaseLayerType(layerType: SwisstopoLayerType) {
-		val newLayer = SwisstopoLayerFactory.createSwisstopoTiledRasterLayer(layerType, textureLoader)
-		mapInterface.removeLayer(baseLayer.asLayerInterface())
-		mapInterface.addLayer(newLayer.asLayerInterface())
-		baseLayer.getCallbackHandler()?.let { newLayer.setCallbackHandler(it) }
-		baseLayer = newLayer
+	fun setBaseLayerType(layerType: SwisstopoLayerType?) {
+		baseLayer?.let { mapInterface.removeLayer(it.asLayerInterface()) }
+		baseLayer = if (layerType != null) {
+			val newLayer = SwisstopoLayerFactory.createSwisstopoTiledRasterLayer(layerType, textureLoader)
+			mapInterface.insertLayerAt(newLayer.asLayerInterface(), 0)
+			baseLayer?.getCallbackHandler()?.let { newLayer.setCallbackHandler(it) }
+			newLayer
+		} else null
+	}
+
+	override fun removeLayer(layer: LayerInterface) {
+		super.removeLayer(layer)
+		if (layer == baseLayer?.asLayerInterface()) baseLayer = null
 	}
 }
