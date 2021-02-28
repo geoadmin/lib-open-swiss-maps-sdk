@@ -6,10 +6,7 @@
   <img width="200" height="45" src="logo.svg" />
   <br />
   <br />
-  Module that provides convenience methods to use <a href="https://github.com/geoadmin/lib-open-swiss-maps-sdk">Open Mobile Maps</a> with Swisstopo layers.
-  <br />
-  <br />
-  <a href="https://openmobilemaps.io/">openmobilemaps.io</a>
+  Android and iOS SDK to display maps and geodata of swisstopo
 </div>
 
 <div align="center">
@@ -35,6 +32,10 @@
     </a>
 </div>
 
+## Free map layers and geo data by swisstopo in your app
+Offer your mobile users the official maps of Switzerland and many other maps and data of swisstopo in your app! Integrate them easily with the "Open Swiss Maps SDK". The data is available for free thanks to Open Government Data (OGD) and can be used freely.
+More Information about OGD: <a href="https://www.swisstopo.ch/ogd">www.swisstopo.ch/ogd</a>
+
 ## Getting started
 
 [Readme Android](./android/)
@@ -45,4 +46,8 @@
 
 - Swisstopo raster tile configuration
 - Predefined Swisstopo layer definitions
+- This module provides convenience methods to use <a href="https://github.com/openmobilemaps/maps-core">Open Mobile Maps</a> with Swisstopo layers.
+
+## License
+This project is licensed under the terms of the MPL 2 license. See the [LICENSE](LICENSE) file.
 
