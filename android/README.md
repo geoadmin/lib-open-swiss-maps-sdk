@@ -32,9 +32,17 @@
 
 # Android
 
-[Installation & Build Instructions](docs/install_readme.md)
 
 <h2>How to use</h2>
+
+### Add dependency
+To add the OpenSwissMaps SDK to your Android project, add the following line to your build.gradle
+```
+dependencies {
+  implementation 'ch.admin.geo.openswissmaps:openswissmaps-android:1.0.0'
+}
+```
+Make sure you have jcenter() listed in your project repositories. 
 
 ### Display a Swisstopo Map
 
@@ -103,6 +111,9 @@ mapView.baseLayer?.setCallbackHandler(object : Tiled2dMapRasterLayerCallbackInte
 ```
 
 Please note that other layer types expose different functionalities in their callback handlers. The polygon layer, for example, returns the polygon hit by the click.
+
+<h2>How to build</h2>
+[Installation & Build Instructions](docs/install_readme.md)
 
 ## License
 
