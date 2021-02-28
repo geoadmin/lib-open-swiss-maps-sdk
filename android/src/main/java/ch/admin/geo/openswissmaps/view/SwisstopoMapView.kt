@@ -49,6 +49,7 @@ class SwisstopoMapView @JvmOverloads constructor(context: Context, attrs: Attrib
 		createBaseLayer(BASE_LAYER_TYPE_DEFAULT)
 		mapInterface.getCamera().setMinZoom(ZOOM_MIN_DEFAULT)
 		mapInterface.getCamera().setMaxZoom(ZOOM_MAX_DEFAULT)
+		mapInterface.getCamera().setZoom(ZOOM_MIN_DEFAULT, false);
 	}
 
 	private fun createBaseLayer(layerType: SwisstopoLayerType) {
