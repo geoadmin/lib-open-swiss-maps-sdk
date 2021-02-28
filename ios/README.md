@@ -1,9 +1,11 @@
-<h1 align="center">OpenSwissMapsSDK</h1>
+<h1 align="center">Open Swiss Maps SDK</h1>
 
 <br />
 
 <div align="center">
-  <img width="200" height="45" src="logo.svg" />
+  <img width="90" height="90" src="../logo.png" />
+<br />
+<br />
 </div>
 
 <div align="center">
@@ -13,8 +15,9 @@
       src="https://img.shields.io/badge/SPM-%E2%9C%93-brightgreen.svg?style=flat">
     </a>
     <!-- License -->
-    <a href="https://github.com/geoadmin/lib-open-swiss-maps-sdk/blob/master/LICENSE">
-      <img alt="TODO" src="TODO">
+    <a href="https://github.com/openmobilemaps/maps-core/blob/master/LICENSE">
+      <img alt="License: MPL 2.0"
+      src="https://img.shields.io/badge/License-MPL%202.0-brightgreen.svg">
     </a>
     <!-- iOS Build -->
     <a href="https://github.com/geoadmin/lib-open-swiss-maps-sdk/actions/workflows/ios.yml">
