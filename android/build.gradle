@@ -5,7 +5,8 @@ buildscript {
 		jcenter()
 	}
 	dependencies {
-		classpath "com.android.tools.build:gradle:4.1.2"
+		classpath 'com.android.tools.build:gradle:4.1.2'
+		classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.5'
 		classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 	}
 }
@@ -13,10 +14,15 @@ buildscript {
 repositories {
 	google()
 	jcenter()
+	maven{
+		url 'https://dl.bintray.com/openmobilemaps/openmobilemaps/'
+	}
 }
 
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
+apply plugin: 'maven-publish'
+apply plugin: 'com.jfrog.bintray'
 
 android {
 	compileSdkVersion 30
@@ -24,13 +30,14 @@ android {
 	defaultConfig {
 		minSdkVersion 23
 		targetSdkVersion 30
-		versionCode 1
-		versionName "1.0.0"
+		versionCode 4
+		versionName "0.4"
 
 		testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 		consumerProguardFiles 'consumer-rules.pro'
 		externalNativeBuild {
 			cmake {
+				arguments "-DANDROID_STL=c++_shared"
 				cppFlags "-std=c++17 -frtti -fexceptions"
 			}
 		}
@@ -59,6 +66,58 @@ android {
 			}
 		}
 	}
+
+	packagingOptions {
+		exclude("**/libmapscore_shared.so")
+	}
+}
+
+task androidSourcesJar(type: Jar) {
+	archiveClassifier = 'sources'
+	from android.sourceSets.main.java.srcDirs
+}
+afterEvaluate {
+	publishing {
+		publications {
+			"sdkRelease"(MavenPublication) {
+				from components.release
+				groupId 'ch.admin.geo.openswissmaps'
+				artifactId 'openswissmaps-android'
+				version android.defaultConfig.versionName + readPropertyWithDefault('bintrayVersionSuffix', '')
+				artifact androidSourcesJar
+			}
+		}
+	}
+}
+
+ext.readProperty = { paramName -> readPropertyWithDefault(paramName, null) }
+ext.readPropertyWithDefault = { paramName, defaultValue ->
+	if (project.hasProperty(paramName)) {
+		return project.getProperties().get(paramName)
+	} else {
+		Properties properties = new Properties()
+		if (project.rootProject.file('local.properties').exists()) {
+			properties.load(project.rootProject.file('local.properties').newDataInputStream())
+		}
+		if (properties.getProperty(paramName) != null) {
+			return properties.getProperty(paramName)
+		} else {
+			return defaultValue
+		}
+	}
+}
+
+bintray {
+	user = readProperty('bintrayUser')
+	key = readProperty('bintrayApikey')
+	publications = ['sdkRelease']
+	publish = true
+	pkg {
+		repo = 'openswissmaps'
+		name = 'openswissmaps'
+		userOrg = 'openswissmaps'
+		licenses = ['MPL-2.0']
+	}
 }
 
 dependencies {
@@ -68,7 +127,7 @@ dependencies {
 	implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.2.0"
 	implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.2"
 
-	api project(':maps-core')
+	implementation 'io.openmobilemaps.mapscore:sdk-android:1.0.0-dev-2'
 
 	testImplementation 'junit:junit:4.13.1'
 	androidTestImplementation 'androidx.test.ext:junit:1.1.2'
