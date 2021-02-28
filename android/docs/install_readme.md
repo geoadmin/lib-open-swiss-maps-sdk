@@ -2,10 +2,10 @@
 
 ## How to build
 
-Make sure you have all submodules (and their respective submodules) initialized and updated. To do this, use
+Make sure you have all submodules initialized and updated. To do this, use
 
 ```
-git submodule update --init --recursive
+git submodule update --init
 ```
 
 ### Updating Djinni bridging files
