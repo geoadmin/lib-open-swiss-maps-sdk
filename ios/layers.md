@@ -1,3 +1,5 @@
+The following Layers can be added with Open Swiss Maps SDK.
+
 Landeskarte Winter | LK10, LK25, LK50, LK100 | PIXELKARTE_FARBE_WINTER 
  --- 
  Die Landeskarte Winter ist eine Ableitung der topografischen Landeskarten der Schweiz mit detaillierter Verkehrs-, Siedlungs-, Gelände-, Gewässer- und Vegetationsdarstellung. Die Schweiz wird mittels einer winterlichen Darstellung flächendeckend in den Massstäben 1:10'000, 1:25'000, 1:50'000 und 1:100'000 abgebildet. Das Landeskartenwerk Winter ist ausschliesslich in digitaler Form (API, WMTS) verfügbar.
