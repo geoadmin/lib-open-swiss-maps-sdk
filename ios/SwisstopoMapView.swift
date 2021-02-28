@@ -30,8 +30,9 @@ public class SwisstopoMapView: MCMapView {
         let coordinateSystem = MCCoordinateSystemFactory.getEpsg2056System()
         super.init(mapConfig: .init(mapCoordinateSystem: coordinateSystem))
 
-        camera.setMinZoom(5_000_000)
+        camera.setMinZoom(10_000_000)
         camera.setMaxZoom(300)
+        camera.setZoom(10_000_000, animated: false)
 
         add(layer: baseLayer.asLayerInterface())
     }
