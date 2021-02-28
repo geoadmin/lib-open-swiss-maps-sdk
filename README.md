@@ -3,7 +3,7 @@
 <br />
 
 <div align="center">
-  <img width="200" height="45" src="logo.svg" />
+  <img width="90" height="90" src="logo.png" />
   <br />
   <br />
   Android and iOS SDK to display maps and geodata of swisstopo
@@ -35,6 +35,10 @@
 ## Free map layers and geo data by swisstopo in your app
 Offer your mobile users the official maps of Switzerland and many other maps and data of swisstopo in your app! Integrate them easily with the "Open Swiss Maps SDK". The data is available for free thanks to Open Government Data (OGD) and can be used freely.
 More Information about OGD: <a href="https://www.swisstopo.ch/ogd">www.swisstopo.ch/ogd</a>
+
+<div align="center">
+  <img width="90" height="90" src="illustration.jpg" />
+</div>
 
 ## Getting started
 
