@@ -1,4 +1,4 @@
-<h1 align="center">OpenSwissMapsSDK</h1>
+<h1 align="center">Open Swiss Maps SDK</h1>
 
 <br />
 
