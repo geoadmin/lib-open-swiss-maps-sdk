@@ -1,0 +1,3 @@
+open_swiss_maps_shared_module = interface +c {
+    static version() : string;
+}
