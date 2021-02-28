@@ -42,8 +42,6 @@ More Information about OGD: <a href="https://www.swisstopo.ch/ogd">www.swisstopo
 
 [Readme iOS](./ios/)
 
-This module provides convenience methods to use <a href="https://github.com/openmobilemaps/maps-core">Open Mobile Maps</a> with Swisstopo layers.
-
 ## License
 This project is licensed under the terms of the MPL 2 license. See the [LICENSE](LICENSE) file.
 
