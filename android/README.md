@@ -35,8 +35,7 @@
 
 # Android
 
-
-<h2>How to use</h2>
+## How to use
 
 ### Add dependency
 To add the OpenSwissMaps SDK to your Android project, add the following line to your build.gradle
@@ -115,7 +114,7 @@ mapView.baseLayer?.setCallbackHandler(object : Tiled2dMapRasterLayerCallbackInte
 
 Please note that other layer types expose different functionalities in their callback handlers. The polygon layer, for example, returns the polygon hit by the click.
 
-<h2>How to build</h2>
+## How to build
 [Installation & Build Instructions](docs/install_readme.md)
 
 ## License
