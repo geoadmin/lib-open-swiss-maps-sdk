@@ -7,6 +7,8 @@
   <br />
   <br />
   Android and iOS SDK to display maps and geodata of swisstopo
+  <br />
+  <br />
 </div>
 
 <div align="center">
@@ -37,7 +39,7 @@ Offer your mobile users the official maps of Switzerland and many other maps and
 More Information about OGD: <a href="https://www.swisstopo.ch/ogd">www.swisstopo.ch/ogd</a>
 
 <div align="center">
-  <img width="90" height="90" src="illustration.jpg" />
+  <img src="illustration.jpg" />
 </div>
 
 ## Getting started
