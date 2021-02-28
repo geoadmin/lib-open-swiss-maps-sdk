@@ -63,6 +63,8 @@ layer.setAlpha(0.5)
 mapView.addLayer(layer.asLayerInterface())
  ```
 
+ See [available layers](../AVAILABLE_LAYERS.md) for a list of all supported layers.
+
 ##### Adjusting the Camera
 
 The camera position can easily be adjusted by manipulating the `Camera2dInterface` received from the map. E.g. to set it to a custom location:

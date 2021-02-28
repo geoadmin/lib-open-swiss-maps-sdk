@@ -69,6 +69,8 @@ let drohnenLayer = mapView.addSwisstopoLayer(type: .DROHNEN)
 drohnenLayer.setAlpha(0.25)
 ```
 
+See [available layers](../AVAILABLE_LAYERS.md) for a list of all supported layers.
+
 ##### Adjusting the camera
 
 The camera position can easily be adjusted by manipulating the Camera2dInterface received from the map. E.g. to set a custom location:
