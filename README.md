@@ -39,7 +39,7 @@ Offer your mobile users the official maps of Switzerland and many other maps and
 More Information about OGD: <a href="https://www.swisstopo.ch/ogd">www.swisstopo.ch/ogd</a>
 
 <div align="center">
-  <img src="illustration.jpg" />
+  <img width="300" src="illustration.jpg" />
 </div>
 
 ## Getting started
