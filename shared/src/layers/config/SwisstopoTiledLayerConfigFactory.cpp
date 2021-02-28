@@ -94,7 +94,7 @@ SwisstopoTiledLayerConfigFactory::createRasterTileLayerConfig(SwisstopoLayerType
         maxZoom = 26;
         break;
     case SwisstopoLayerType::SWISSTLM3D_UEBRIGVERKEHR:
-        identifier = "ch.swisstopo.swisstlm3d-uebrigerverkeh";
+        identifier = "ch.swisstopo.swisstlm3d-uebrigerverkehr";
         maxZoom = 26;
         break;
     case SwisstopoLayerType::SWISSTLM3D_WANDERWEGE:
