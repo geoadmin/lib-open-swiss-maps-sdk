@@ -2,7 +2,7 @@
 
 ## How to build
 
-Make sure you have all submodules initialized and updated. To do this, use
+Make sure you have the necessary submodules for Djinni and [Open Mobile Maps](https://github.com/openmobilemaps/maps-core) initialized and updated. To do this, use
 
 ```
 git submodule update --init
