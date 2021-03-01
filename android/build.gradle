@@ -124,7 +124,7 @@ dependencies {
 	implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.2.0"
 	implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.2"
 
-	implementation 'io.openmobilemaps.mapscore:mapscore-android:1.1.0-dev-4'
+	implementation 'io.openmobilemaps.mapscore:mapscore-android:1.1.0'
 
 	testImplementation 'junit:junit:4.13.1'
 	androidTestImplementation 'androidx.test.ext:junit:1.1.2'

@@ -42,6 +42,7 @@ To add the OpenSwissMaps SDK to your Android project, add the following line to 
 ```
 dependencies {
   implementation 'ch.admin.geo.openswissmaps:openswissmaps-android:1.0.0'
+  implementation 'io.openmobilemaps.mapscore:mapscore-android:1.1.0'
 }
 ```
 Make sure you have jcenter() listed in your project repositories. 
