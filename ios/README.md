@@ -37,7 +37,7 @@
 
 Open Mobile Maps is available through [Swift Package Manager](https://swift.org/package-manager/).
 
-For App integration within XCode, add this package to your App target. To do this, follow the step by step tutorial [Adding Package Dependencies to Your App](https://developer.apple.com/documentation/xcode/adding_package_dependencies_to_your_app) and add the package with the url:
+For App integration within Xcode, add this package to your App target. To do this, follow the step by step tutorial [Adding Package Dependencies to Your App](https://developer.apple.com/documentation/xcode/adding_package_dependencies_to_your_app) and add the package with the url:
 ```
 https://github.com/geoadmin/lib-open-swiss-maps-sdk.git
 ```
