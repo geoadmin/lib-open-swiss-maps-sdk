@@ -1,26 +1,5 @@
 # iOS
 
-## Installation
-
-Open Mobile Maps is available through [Swift Package Manager](https://swift.org/package-manager/).
-
-### Xcode
-
-For App integration within XCode, add this package to your App target. To do this, follow the step by step tutorial [Adding Package Dependencies to Your App](https://developer.apple.com/documentation/xcode/adding_package_dependencies_to_your_app).
-
-### Swift Package
-
-Once you have your Swift package set up, adding Open Mobile Maps as a dependency is as easy as adding it to the dependencies value of your Package.swift.
-
-```swift
-dependencies: [
-    .package(url: "https://github.com/geoadmin/lib-open-swiss-maps-sdk.git", .upToNextMajor(from: "1.0.0"))
-]
-```
-
-### iOS 10
-
-Unfortunately, Swift package is only supported starting with iOS 11. If you need iOS 10 support you have to compile the library as a framework yourself.
 
 ## How to build
 
@@ -42,3 +21,7 @@ in the folder [djinni](../djinni). This generates the Kotlin bindings, the C++ h
 ### Building the iOS Package.
 
 The [Package.swift](../Package.swift) file can be opened in Xcode and build directly from there. 
+
+### iOS 10
+
+Unfortunately, Swift package is only supported starting with iOS 11. If you need iOS 10 support you have to compile the library as a framework yourself.
