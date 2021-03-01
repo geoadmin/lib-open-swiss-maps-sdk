@@ -22,7 +22,9 @@ let package = Package(
         ),
     ],
     dependencies: [
-        .package(name: "MapCore", url: "https://github.com/openmobilemaps/maps-core.git", .branch("develop")),
+        .package(name: "MapCore",
+                 url: "https://github.com/openmobilemaps/maps-core.git",
+                 .upToNextMajor(from: "1.0.0")),
     ],
     targets: [
         .target(
@@ -32,7 +34,7 @@ let package = Package(
                 "SwisstopoMapSDKSharedModule",
             ],
             path: "ios",
-            exclude: ["README.md"]
+            exclude: ["README.md", "docs/install_readme.md"]
         ),
         .target(
             name: "SwisstopoMapSDKSharedModule",
