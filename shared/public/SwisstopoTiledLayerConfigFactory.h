@@ -5,7 +5,7 @@
 
 #include "Tiled2dMapLayerConfig.h"
 #include "Tiled2dMapZoomInfo.h"
-#include "WmtsLayerConfiguration.h"
+#include "WmtsLayerDescription.h"
 #include <cstdint>
 #include <memory>
 
@@ -17,5 +17,5 @@ public:
 
     static std::shared_ptr<::Tiled2dMapLayerConfig> createRasterTileLayerConfig(SwisstopoLayerType layerType);
 
-    static std::shared_ptr<::Tiled2dMapLayerConfig> createRasterTiledLayerConfigFromMetadata(const ::WmtsLayerConfiguration & configuration, int32_t maxZoom, const ::Tiled2dMapZoomInfo & zoomInfo);
+    static std::shared_ptr<::Tiled2dMapLayerConfig> createRasterTiledLayerConfigFromMetadata(const ::WmtsLayerDescription & configuration, int32_t maxZoom, const ::Tiled2dMapZoomInfo & zoomInfo);
 };
