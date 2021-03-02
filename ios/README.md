@@ -87,6 +87,7 @@ mapView.setBaseLayerType(type: .PIXELKARTE_GRAUSTUFEN)
 ```swift
 let drohnenLayer = mapView.addSwisstopoLayer(type: .DROHNEN)
 drohnenLayer.setAlpha(0.25)
+mapView.addLayer(drohnenLayer.asLayerInterface())
 ```
 
 See [available layers](../AVAILABLE_LAYERS.md) for a list of all supported layers.
