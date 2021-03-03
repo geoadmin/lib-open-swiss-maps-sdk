@@ -74,12 +74,12 @@ More Information about OGD: <a href="https://www.swisstopo.ch/ogd">www.swisstopo
    - Wildruhezonen
    - Schneeschuhrouten
    - Skirouten
-
    - Einschränkungen für Drohnen
+- Numerous more layers available through the WMTS service of Swisstopo 
 * Combine multiple layers on top of each other
 * Full mobile map experience with touch & gesture handling
 * Update camera to show or animate to different parts of the map
-* Add your own polygon layers
+* Add your own polygon layers or icon layers
 
 ...and more to come soon!
 
