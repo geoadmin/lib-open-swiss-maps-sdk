@@ -94,3 +94,5 @@ The Open Swiss Maps SDK uses Open Mobile Maps as its core. Open Mobile Maps is a
 ## License
 This project is licensed under the terms of the MPL 2 license. See the [LICENSE](LICENSE) file.
 
+[Terms of use for free geodata and geoservices (OGD) from swisstopo](https://www.swisstopo.admin.ch/de/home/meta/konditionen/geodaten/ogd.html)
+
