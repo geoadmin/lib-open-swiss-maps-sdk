@@ -34,7 +34,10 @@ let package = Package(
                 "SwisstopoMapSDKSharedModule",
             ],
             path: "ios",
-            exclude: ["README.md", "docs/install_readme.md"]
+            exclude: ["README.md", "docs/install_readme.md"],
+            resources: [
+                .copy("resources/wmts/WMTSCapabilities_2056.xml"),
+            ]
         ),
         .target(
             name: "SwisstopoMapSDKSharedModule",
