@@ -76,5 +76,5 @@ target_link_libraries(open_swiss_maps_shared
         ${opengl-lib})
 
 add_library(mapscore_shared SHARED IMPORTED)
-set_property(TARGET mapscore_shared PROPERTY IMPORTED_LOCATION "../../../../../external/maps-core/android/build/intermediates/cmake/release/obj/${CMAKE_ANDROID_ARCH_ABI}/libmapscore_shared.so")
+set_property(TARGET mapscore_shared PROPERTY IMPORTED_LOCATION "../../../../../external/openmobilemaps/libs/android.${CMAKE_ANDROID_ARCH_ABI}/libmapscore_shared.so")
 target_link_libraries(open_swiss_maps_shared mapscore_shared)
