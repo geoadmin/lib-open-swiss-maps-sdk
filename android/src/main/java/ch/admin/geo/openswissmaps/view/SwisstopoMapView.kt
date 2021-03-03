@@ -19,11 +19,9 @@ import io.openmobilemaps.mapscore.map.loader.TextureLoader
 import io.openmobilemaps.mapscore.map.view.MapView
 import io.openmobilemaps.mapscore.shared.map.LayerInterface
 import io.openmobilemaps.mapscore.shared.map.MapConfig
-import io.openmobilemaps.mapscore.shared.map.coordinates.Coord
 import io.openmobilemaps.mapscore.shared.map.coordinates.CoordinateSystemFactory
-import io.openmobilemaps.mapscore.shared.map.coordinates.CoordinateSystemIdentifiers
-import io.openmobilemaps.mapscore.shared.map.coordinates.RectCoord
 import io.openmobilemaps.mapscore.shared.map.layers.tiled.raster.Tiled2dMapRasterLayerInterface
+import io.openmobilemaps.mapscore.shared.map.layers.tiled.raster.wmts.WmtsCapabilitiesResource
 
 class SwisstopoMapView @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) :
 	MapView(context, attrs, defStyleAttr) {
@@ -35,6 +33,11 @@ class SwisstopoMapView @JvmOverloads constructor(context: Context, attrs: Attrib
 	}
 
 	private val swisstopoMapConfig: MapConfig = MapConfig(CoordinateSystemFactory.getEpsg2056System())
+
+	val swisstopoWmtsResource: WmtsCapabilitiesResource by lazy {
+		val str = context.assets.open("wmts/WMTSCapabilities_2056.xml").bufferedReader().use { it.readText() }
+		WmtsCapabilitiesResource.create(str)
+	}
 
 	var baseLayer: Tiled2dMapRasterLayerInterface? = null
 		private set
@@ -69,8 +72,30 @@ class SwisstopoMapView @JvmOverloads constructor(context: Context, attrs: Attrib
 		} else null
 	}
 
+	fun setBaseLayerType(identifier: String) {
+		baseLayer?.let { mapInterface.removeLayer(it.asLayerInterface()) }
+		baseLayer = if (layerType != null) {
+			val newLayer = swisstopoWmtsResource.createLayer(identifier, textureLoader)
+			mapInterface.insertLayerAt(newLayer.asLayerInterface(), 0)
+			baseLayer?.getCallbackHandler()?.let { newLayer.setCallbackHandler(it) }
+			newLayer
+		} else null
+	}
+
 	override fun removeLayer(layer: LayerInterface) {
 		super.removeLayer(layer)
 		if (layer == baseLayer?.asLayerInterface()) baseLayer = null
+	}
+
+	fun addSwisstopoLayer(layerType: SwisstopoLayerType) : Tiled2dMapRasterLayerInterface {
+		val layer = SwisstopoLayerFactory.createSwisstopoTiledRasterLayer(layerType, textureLoader)
+		addLayer(layer.asLayerInterface())
+		return layer
+	}
+
+	fun addSwisstopoLayer(identifier: String) : Tiled2dMapRasterLayerInterface {
+		val layer = swisstopoWmtsResource.createLayer(identifier, textureLoader)
+		addLayer(layer.asLayerInterface())
+		return layer
 	}
 }

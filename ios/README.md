@@ -91,6 +91,16 @@ drohnenLayer.setAlpha(0.25)
 
 See [available layers](../AVAILABLE_LAYERS.md) for a list of all supported layers.
 
+##### Adding layer using WMTS identifier
+
+There are numerous additional layer types available via the Swisstopo wmts service. They can be added similarly to the predefined `SwisstopoLayerTypes`.
+
+```swift
+let neophytenLayer = mapView.addSwisstopoLayer(identifier: "ch.bafu.neophyten-haargurke")
+```
+
+Browse the [Geocatalog](https://map.geo.admin.ch) to find available data.
+
 ##### Adjusting the camera
 
 The camera position can easily be adjusted by manipulating the Camera2dInterface received from the map. E.g. to set a custom location:
@@ -104,8 +114,8 @@ mapView.camera.move(toCenterPosition: .init(systemIdentifier: MCCoordinateSystem
 
 One can also change the default values for the camera's bounds and it's zoom range:
 
-```kotlin
-mapView.camera.setBounds(bounds: MCRectCoord(topLeft: MCCoord(systemIdentifier: MCCoordinateSystemIdentifiers.epsg2056(), x: 2485071.58, y: 1299941.79, z: 0.0), bottomRight: MCCoord(systemIdentifier: MCCoordinateSystemIdentifiers.epsg2056(), x: 2828515.82, y: 1075346.31, z: 0.0)))
+```swift 
+mapView.camera.setBounds(bounds: MCRectCoord(topLeft: MCCoord(systemIdentifier: MCCoordinateSystemIdentifiers.epsg2056(), x: 2485071.58, y: 1299941.79, z: 0.0), bottomRight: MCCoordsystemIdentifier: MCCoordinateSystemIdentifiers.epsg2056(), x: 2828515.82, y: 1075346.31, z: 0.0)))
 mapView.camera.setMinZoom(5000000.0)
 mapView.camera.setMaxZoom(250.0)
 ```

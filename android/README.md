@@ -65,7 +65,11 @@ mapView.setBaseLayerType(SwisstopoLayerType.SWISSIMAGE)
 
 ##### Adding multiple Swisstopo layers
 
-New layers can easily be created with the `SwisstopoLayerFactory` and added to the map. Their transparency value can be adjusted by calling `setAlpha` on the layer object.
+New layers can easily be created on either the `SwisstopoMapView` directly or be added to it after using the `SwisstopoLayerFactory`. Their transparency value can be adjusted by calling `setAlpha` on the layer object.
+
+```Kotlin
+val layer = mapView.addSwisstopoLayer(SwisstopoLayerType.Drohnen)
+```
 
  ```Kotlin
 val layer = SwisstopoLayerFactory.createSwisstopoTiledRasterLayer(SwisstopoLayerType.DROHNEN, mapView.textureLoader)
@@ -74,6 +78,23 @@ mapView.addLayer(layer.asLayerInterface())
  ```
 
  See [available layers](../AVAILABLE_LAYERS.md) for a list of all supported layers.
+
+##### Additional Swisstopo Layer Types
+
+There are numerous additional layer types available via the Swisstopo wmts service. They can be added similarly to the predefined `SwisstopoLayerTypes`.
+
+```Kotlin
+val layer = mapView.addSwisstopoLayer("ch.bafu.neophyten-haargurke")
+```
+
+or via:
+
+```Kotlin
+val layer = mapView.swisstopoWmtsResource.createLayer("ch.bafu.neophyten-haargurke", mapView.textureLoader)
+mapView.addLayer(layer.asLayerInterface())
+```
+
+Browse the [Geocatalog](https://map.geo.admin.ch) to find available data.
 
 ##### Adjusting the Camera
 

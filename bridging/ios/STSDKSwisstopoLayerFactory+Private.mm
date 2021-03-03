@@ -9,7 +9,7 @@
 #import "MCTextureLoaderInterface+Private.h"
 #import "MCTiled2dMapRasterLayerInterface+Private.h"
 #import "MCTiled2dMapZoomInfo+Private.h"
-#import "MCWmtsLayerConfiguration+Private.h"
+#import "MCWmtsLayerDescription+Private.h"
 #import "STSDKSwisstopoLayerType+Private.h"
 #include <exception>
 #include <stdexcept>
@@ -44,12 +44,12 @@ static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for th
     } DJINNI_TRANSLATE_EXCEPTIONS()
 }
 
-+ (nullable MCTiled2dMapRasterLayerInterface *)createSwisstopoTiledRasterLayerFromMetadata:(nonnull MCWmtsLayerConfiguration *)configuration
++ (nullable MCTiled2dMapRasterLayerInterface *)createSwisstopoTiledRasterLayerFromMetadata:(nonnull MCWmtsLayerDescription *)description
                                                                                    maxZoom:(int32_t)maxZoom
                                                                                   zoomInfo:(nonnull MCTiled2dMapZoomInfo *)zoomInfo
                                                                              textureLoader:(nullable id<MCTextureLoaderInterface>)textureLoader {
     try {
-        auto objcpp_result_ = ::SwisstopoLayerFactory::createSwisstopoTiledRasterLayerFromMetadata(::djinni_generated::WmtsLayerConfiguration::toCpp(configuration),
+        auto objcpp_result_ = ::SwisstopoLayerFactory::createSwisstopoTiledRasterLayerFromMetadata(::djinni_generated::WmtsLayerDescription::toCpp(description),
                                                                                                    ::djinni::I32::toCpp(maxZoom),
                                                                                                    ::djinni_generated::Tiled2dMapZoomInfo::toCpp(zoomInfo),
                                                                                                    ::djinni_generated::TextureLoaderInterface::toCpp(textureLoader));
