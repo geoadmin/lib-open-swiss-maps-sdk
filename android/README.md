@@ -81,16 +81,17 @@ mapView.addLayer(layer.asLayerInterface())
 
 ##### Additional Swisstopo Layer Types
 
-There are numerous additional layer types available via the Swisstopo wmts service. They can be added similarly to the predefined types:
+There are numerous additional layer types available via the Swisstopo wmts service. They can be added similarly to the predefined `SwisstopoLayerTypes`.
 
 ```Kotlin
-val layer = mapView.addSwisstopoLayer(SwisstopoLayerType.Drohnen)
+val layer = mapView.addSwisstopoLayer("ch.bafu.neophyten-haargurke")
 ```
 
-or
+or via:
 
 ```Kotlin
 val layer = mapView.swisstopoWmtsResource.createLayer("ch.bafu.neophyten-haargurke", mapView.textureLoader)
+mapView.addLayer(layer.asLayerInterface())
 ```
 
 Browse the [Geocatalog](https://map.geo.admin.ch) to find available data.

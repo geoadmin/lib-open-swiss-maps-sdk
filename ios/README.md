@@ -91,7 +91,9 @@ drohnenLayer.setAlpha(0.25)
 
 See [available layers](../AVAILABLE_LAYERS.md) for a list of all supported layers.
 
-#### Adding layer using WMTS identifier
+##### Adding layer using WMTS identifier
+
+There are numerous additional layer types available via the Swisstopo wmts service. They can be added similarly to the predefined `SwisstopoLayerTypes`.
 
 ```swift
 let neophytenLayer = mapView.addSwisstopoLayer(identifier: "ch.bafu.neophyten-haargurke")
