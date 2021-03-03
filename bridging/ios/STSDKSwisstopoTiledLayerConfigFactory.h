@@ -3,7 +3,7 @@
 
 #import "MCTiled2dMapLayerConfig.h"
 #import "MCTiled2dMapZoomInfo.h"
-#import "MCWmtsLayerConfiguration.h"
+#import "MCWmtsLayerDescription.h"
 #import "STSDKSwisstopoLayerType.h"
 #import <Foundation/Foundation.h>
 
@@ -12,7 +12,7 @@
 
 + (nullable id<MCTiled2dMapLayerConfig>)createRasterTileLayerConfig:(STSDKSwisstopoLayerType)layerType;
 
-+ (nullable id<MCTiled2dMapLayerConfig>)createRasterTiledLayerConfigFromMetadata:(nonnull MCWmtsLayerConfiguration *)configuration
++ (nullable id<MCTiled2dMapLayerConfig>)createRasterTiledLayerConfigFromMetadata:(nonnull MCWmtsLayerDescription *)configuration
                                                                          maxZoom:(int32_t)maxZoom
                                                                         zoomInfo:(nonnull MCTiled2dMapZoomInfo *)zoomInfo;
 
