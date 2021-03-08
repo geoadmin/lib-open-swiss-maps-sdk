@@ -46,7 +46,7 @@ class SwisstopoMapView @JvmOverloads constructor(context: Context, attrs: Attrib
 		private set
 
 	init {
-		System.loadLibrary("open_swiss_maps_shared")
+		System.loadLibrary("openswissmaps")
 
 		setupMap(swisstopoMapConfig)
 		createBaseLayer(BASE_LAYER_TYPE_DEFAULT)

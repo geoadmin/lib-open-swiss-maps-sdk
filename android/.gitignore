@@ -2,5 +2,6 @@
 /.cxx
 /.gradle
 /.idea
+/.cpp_includes
 *.iml
 local.properties
