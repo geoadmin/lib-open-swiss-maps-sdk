@@ -73,7 +73,7 @@ android {
 		openswissmaps{
 			headers ".cpp_includes"
 			name "openswissmaps"
-			version 120
+			version 110
 		}
 	}
 
