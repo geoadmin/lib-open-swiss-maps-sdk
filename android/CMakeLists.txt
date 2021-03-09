@@ -25,7 +25,7 @@ file(GLOB_RECURSE cpp_SRC
         )
 
 add_library( # Sets the name of the library.
-        open_swiss_maps_shared
+        openswissmaps
 
         # Sets the library as a shared library.
         SHARED
@@ -42,8 +42,7 @@ include_directories(../shared/src/layers/config)
 include_directories(../shared/public)
 include_directories(src/main/cpp)
 
-include_directories(../external/openmobilemaps/include)
-
+find_package(mapscore REQUIRED CONFIG)
 
 # Searches for a specified prebuilt library and stores the path as a
 # variable. Because CMake includes system libraries in the search path by
@@ -63,7 +62,7 @@ find_library( # Sets the name of the path variable.
 # build script, prebuilt third-party libraries, or system libraries.
 
 target_link_libraries( # Specifies the target library.
-        open_swiss_maps_shared
+        openswissmaps
 
         # Links the target library to the log library
         # included in the NDK.
@@ -72,9 +71,7 @@ target_link_libraries( # Specifies the target library.
 find_library(opengl-lib
         GLESv2)
 
-target_link_libraries(open_swiss_maps_shared
+target_link_libraries(openswissmaps
         ${opengl-lib})
 
-add_library(mapscore_shared SHARED IMPORTED)
-set_property(TARGET mapscore_shared PROPERTY IMPORTED_LOCATION "../../../../../external/openmobilemaps/libs/android.${CMAKE_ANDROID_ARCH_ABI}/libmapscore_shared.so")
-target_link_libraries(open_swiss_maps_shared mapscore_shared)
+target_link_libraries(openswissmaps mapscore::mapscore)

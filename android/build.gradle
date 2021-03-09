@@ -64,10 +64,29 @@ android {
 		}
 	}
 
+	buildFeatures {
+		prefab true
+		prefabPublishing true
+	}
+
+	prefab{
+		openswissmaps{
+			headers ".cpp_includes"
+			name "openswissmaps"
+			version 110
+		}
+	}
+
 	packagingOptions {
-		exclude("**/libmapscore_shared.so")
+		exclude("**/libmapscore.so")
+		exclude('**/libc++_shared.so')
 	}
 }
+
+task copyHeaders(type: Exec){
+	commandLine './copy_all_header_files_to_include_folder.sh'
+}
+preBuild.dependsOn copyHeaders
 
 task androidSourcesJar(type: Jar) {
 	archiveClassifier = 'sources'
@@ -124,7 +143,7 @@ dependencies {
 	implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.2.0"
 	implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.2"
 
-	api 'io.openmobilemaps.mapscore:mapscore-android:1.2.0'
+	api 'io.openmobilemaps.mapscore:mapscore-android:1.2.0-dev-15'
 
 	testImplementation 'junit:junit:4.13.1'
 	androidTestImplementation 'androidx.test.ext:junit:1.1.2'
