@@ -81,6 +81,18 @@ android {
 		exclude("**/libmapscore.so")
 		exclude('**/libc++_shared.so')
 	}
+
+
+	defaultPublishConfig "mavenRelease"
+
+	flavorDimensions "mapscoresource"
+
+	productFlavors {
+		maven {
+		}
+		module {
+		}
+	}
 }
 
 task copyHeaders(type: Exec){
@@ -96,7 +108,7 @@ afterEvaluate {
 	publishing {
 		publications {
 			"sdkRelease"(MavenPublication) {
-				from components.release
+				from components.mavenRelease
 				groupId 'ch.admin.geo.openswissmaps'
 				artifactId 'openswissmaps-android'
 				version android.defaultConfig.versionName + readPropertyWithDefault('bintrayVersionSuffix', '')
@@ -143,7 +155,8 @@ dependencies {
 	implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.2.0"
 	implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.2"
 
-	api 'io.openmobilemaps.mapscore:mapscore-android:1.2.0-dev-15'
+	mavenApi 'io.openmobilemaps.mapscore:mapscore-android:1.2.0-dev-15'
+	moduleApi project(':mapscore')
 
 	testImplementation 'junit:junit:4.13.1'
 	androidTestImplementation 'androidx.test.ext:junit:1.1.2'
