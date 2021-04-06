@@ -14,16 +14,18 @@
 
 std::shared_ptr<::Tiled2dMapRasterLayerInterface>
 SwisstopoLayerFactory::createSwisstopoTiledRasterLayer(::SwisstopoLayerType layerType,
-                                                       const std::shared_ptr<::TextureLoaderInterface> &textureLoader) {
+                                                       const std::shared_ptr<::TileLoaderInterface> &tileLoader) {
     return Tiled2dMapRasterLayerInterface::create(SwisstopoTiledLayerConfigFactory::createRasterTileLayerConfig(layerType),
-                                                  textureLoader);
+                                                  tileLoader);
 }
 
 
-std::shared_ptr<::Tiled2dMapRasterLayerInterface> SwisstopoLayerFactory::createSwisstopoTiledRasterLayerFromMetadata(const ::WmtsLayerDescription & configuration,
-                                                                                                                            int32_t maxZoom,
-                                                                                                                            const ::Tiled2dMapZoomInfo & zoomInfo,
-                                                                                                                            const std::shared_ptr<::TextureLoaderInterface> & textureLoader) {
-    return Tiled2dMapRasterLayerInterface::create(SwisstopoTiledLayerConfigFactory::createRasterTiledLayerConfigFromMetadata(configuration, maxZoom, zoomInfo),
-                                                  textureLoader);
+std::shared_ptr<::Tiled2dMapRasterLayerInterface>
+SwisstopoLayerFactory::createSwisstopoTiledRasterLayerFromMetadata(const ::WmtsLayerDescription &configuration,
+                                                                   int32_t maxZoom,
+                                                                   const ::Tiled2dMapZoomInfo &zoomInfo,
+                                                                   const std::shared_ptr<::TileLoaderInterface> &tileLoader) {
+    return Tiled2dMapRasterLayerInterface::create(
+            SwisstopoTiledLayerConfigFactory::createRasterTiledLayerConfigFromMetadata(configuration, maxZoom, zoomInfo),
+            tileLoader);
 }
