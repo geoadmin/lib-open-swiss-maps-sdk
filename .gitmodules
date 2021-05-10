@@ -1,6 +1,3 @@
 [submodule "external/djinni"]
 	path = external/djinni
 	url = https://github.com/UbiqueInnovation/djinni.git
-[submodule "external/maps-core"]
-	path = external/maps-core
-	url = https://github.com/openmobilemaps/maps-core.git
