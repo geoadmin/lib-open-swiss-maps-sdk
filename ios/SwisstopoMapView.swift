@@ -8,8 +8,9 @@
  *  SPDX-License-Identifier: MPL-2.0
  */
 
-import MapCore
-import SwisstopoMapSDKSharedModule
+@_exported import MapCore
+@_exported import SwisstopoMapSDKSharedModule
+@_exported import MapCoreSharedModule
 import UIKit
 
 public class SwisstopoMapView: MCMapView {
