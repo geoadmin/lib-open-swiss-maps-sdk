@@ -1,5 +1,7 @@
 /build
+mapscore/.build
 /.cxx
+mapscore/.cxx
 /.gradle
 /.idea
 /.cpp_includes
