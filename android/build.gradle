@@ -131,6 +131,8 @@ dependencies {
 
 	mavenApi "io.openmobilemaps:mapscore-dev:1.3.0.13"
 	moduleApi project(':mapscore')
+	//mavenApi "TODO: include when available"
+	moduleApi project(':gps')
 
 	testImplementation "junit:junit:4.13.1"
 	androidTestImplementation "androidx.test.ext:junit:1.1.2"
