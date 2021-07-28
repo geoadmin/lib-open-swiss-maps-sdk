@@ -9,12 +9,12 @@ abstract class SwisstopoLayerFactory {
 
     companion object {
         @JvmStatic
-        fun createSwisstopoTiledRasterLayer(layerType: ch.admin.geo.openswissmaps.shared.layers.config.SwisstopoLayerType, textureLoader: io.openmobilemaps.mapscore.shared.map.loader.TextureLoaderInterface): io.openmobilemaps.mapscore.shared.map.layers.tiled.raster.Tiled2dMapRasterLayerInterface {
+        fun createSwisstopoTiledRasterLayer(layerType: ch.admin.geo.openswissmaps.shared.layers.config.SwisstopoLayerType, textureLoader: io.openmobilemaps.mapscore.shared.map.loader.TileLoaderInterface): io.openmobilemaps.mapscore.shared.map.layers.tiled.raster.Tiled2dMapRasterLayerInterface {
             return CppProxy.createSwisstopoTiledRasterLayer(layerType, textureLoader)
         }
 
         @JvmStatic
-        fun createSwisstopoTiledRasterLayerFromMetadata(description: io.openmobilemaps.mapscore.shared.map.layers.tiled.raster.wmts.WmtsLayerDescription, maxZoom: Int, zoomInfo: io.openmobilemaps.mapscore.shared.map.layers.tiled.Tiled2dMapZoomInfo, textureLoader: io.openmobilemaps.mapscore.shared.map.loader.TextureLoaderInterface): io.openmobilemaps.mapscore.shared.map.layers.tiled.raster.Tiled2dMapRasterLayerInterface {
+        fun createSwisstopoTiledRasterLayerFromMetadata(description: io.openmobilemaps.mapscore.shared.map.layers.tiled.raster.wmts.WmtsLayerDescription, maxZoom: Int, zoomInfo: io.openmobilemaps.mapscore.shared.map.layers.tiled.Tiled2dMapZoomInfo, textureLoader: io.openmobilemaps.mapscore.shared.map.loader.TileLoaderInterface): io.openmobilemaps.mapscore.shared.map.layers.tiled.raster.Tiled2dMapRasterLayerInterface {
             return CppProxy.createSwisstopoTiledRasterLayerFromMetadata(description, maxZoom, zoomInfo, textureLoader)
         }
     }
@@ -39,10 +39,10 @@ abstract class SwisstopoLayerFactory {
 
         companion object {
             @JvmStatic
-            external fun createSwisstopoTiledRasterLayer(layerType: ch.admin.geo.openswissmaps.shared.layers.config.SwisstopoLayerType, textureLoader: io.openmobilemaps.mapscore.shared.map.loader.TextureLoaderInterface): io.openmobilemaps.mapscore.shared.map.layers.tiled.raster.Tiled2dMapRasterLayerInterface
+            external fun createSwisstopoTiledRasterLayer(layerType: ch.admin.geo.openswissmaps.shared.layers.config.SwisstopoLayerType, textureLoader: io.openmobilemaps.mapscore.shared.map.loader.TileLoaderInterface): io.openmobilemaps.mapscore.shared.map.layers.tiled.raster.Tiled2dMapRasterLayerInterface
 
             @JvmStatic
-            external fun createSwisstopoTiledRasterLayerFromMetadata(description: io.openmobilemaps.mapscore.shared.map.layers.tiled.raster.wmts.WmtsLayerDescription, maxZoom: Int, zoomInfo: io.openmobilemaps.mapscore.shared.map.layers.tiled.Tiled2dMapZoomInfo, textureLoader: io.openmobilemaps.mapscore.shared.map.loader.TextureLoaderInterface): io.openmobilemaps.mapscore.shared.map.layers.tiled.raster.Tiled2dMapRasterLayerInterface
+            external fun createSwisstopoTiledRasterLayerFromMetadata(description: io.openmobilemaps.mapscore.shared.map.layers.tiled.raster.wmts.WmtsLayerDescription, maxZoom: Int, zoomInfo: io.openmobilemaps.mapscore.shared.map.layers.tiled.Tiled2dMapZoomInfo, textureLoader: io.openmobilemaps.mapscore.shared.map.loader.TileLoaderInterface): io.openmobilemaps.mapscore.shared.map.layers.tiled.raster.Tiled2dMapRasterLayerInterface
         }
     }
 }
