@@ -14,14 +14,14 @@
 import UIKit
 
 public class SwisstopoMapView: MCMapView {
-    private let loader: MCTileLoaderInterface
+    private let loader: MCTextureLoaderInterface
 
     open private(set) var baseLayer: MCTiled2dMapRasterLayerInterface
 
     private lazy var capabilitiesResource = SwisstopoCapabilitiesResource.capabilitiesResource
 
     public init(baseLayerType: STSDKSwisstopoLayerType = .PIXELKARTE_FARBE,
-                loader: MCTileLoaderInterface = SwisstopoTextureLoader()) {
+                loader: MCTextureLoaderInterface = SwisstopoTextureLoader()) {
         self.loader = loader
 
         guard let baseLayer = STSDKSwisstopoLayerFactory.createSwisstopoTiledRasterLayer(baseLayerType, textureLoader: loader) else {
@@ -66,7 +66,7 @@ public class SwisstopoMapView: MCMapView {
 
     @discardableResult
     public func addSwisstopoLayer(identifier: String) -> MCTiled2dMapRasterLayerInterface {
-        guard let layer = capabilitiesResource.createLayer(identifier, tileLoader: loader) else {
+        guard let layer = capabilitiesResource.createLayer(identifier, textureLoader: loader) else {
             fatalError("Layer does not exist")
         }
 
