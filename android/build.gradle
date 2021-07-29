@@ -132,7 +132,7 @@ dependencies {
 
 	mavenApi "io.openmobilemaps:mapscore-dev:1.3.0.14"
 	moduleApi project(':mapscore')
-	mavenApi "io.openmobilemaps:gps-layer-dev:0.1.0.4"
+	mavenApi "io.openmobilemaps:layer-gps-dev:0.1.0.4"
 	moduleApi project(':layergps')
 
 	testImplementation "junit:junit:4.13.1"
