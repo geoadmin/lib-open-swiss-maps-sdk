@@ -43,6 +43,7 @@ include_directories(../shared/public)
 include_directories(src/main/cpp)
 
 find_package(mapscore REQUIRED CONFIG)
+find_package(layergps REQUIRED CONFIG)
 
 # Searches for a specified prebuilt library and stores the path as a
 # variable. Because CMake includes system libraries in the search path by
@@ -74,4 +75,5 @@ find_library(opengl-lib
 target_link_libraries(openswissmaps
         ${opengl-lib})
 
+target_link_libraries(openswissmaps layergps::layergps)
 target_link_libraries(openswissmaps mapscore::mapscore)
