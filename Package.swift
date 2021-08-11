@@ -24,7 +24,7 @@ let package = Package(
     dependencies: [
         .package(name: "MapCore",
                  url: "https://github.com/openmobilemaps/maps-core.git",
-                 .upToNextMajor(from: "1.1.0")),
+                 .upToNextMajor(from: "1.3.1")),
         .package(name: "LayerGps",
                  url: "https://github.com/openmobilemaps/layer-gps.git",
                  .upToNextMajor(from: "0.1.0")),
