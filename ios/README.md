@@ -115,7 +115,8 @@ mapView.camera.move(toCenterPosition: .init(systemIdentifier: MCCoordinateSystem
 One can also change the default values for the camera's bounds and it's zoom range:
 
 ```swift 
-mapView.camera.setBounds(bounds: MCRectCoord(topLeft: MCCoord(systemIdentifier: MCCoordinateSystemIdentifiers.epsg2056(), x: 2485071.58, y: 1299941.79, z: 0.0), bottomRight: MCCoordsystemIdentifier: MCCoordinateSystemIdentifiers.epsg2056(), x: 2828515.82, y: 1075346.31, z: 0.0)))
+mapView.camera.setBounds(MCRectCoord(topLeft: MCCoord(systemIdentifier: MCCoordinateSystemIdentifiers.epsg2056(), x: 2485071.58, y: 1299941.79, z: 0.0),
+                                     bottomRight: MCCoord(systemIdentifier: MCCoordinateSystemIdentifiers.epsg2056(), x: 2828515.82, y: 1075346.31, z: 0.0)))
 mapView.camera.setMinZoom(5000000.0)
 mapView.camera.setMaxZoom(250.0)
 ```
