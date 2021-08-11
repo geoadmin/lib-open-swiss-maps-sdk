@@ -10,6 +10,7 @@
 
 
 @_exported import MapCore
+@_exported import LayerGps
 @_exported import SwisstopoMapSDKSharedModule
 @_exported import MapCoreSharedModule
 import UIKit
