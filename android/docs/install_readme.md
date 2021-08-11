@@ -2,10 +2,20 @@
 
 ## How to build
 
-Make sure you have the necessary submodules for Djinni and [Open Mobile Maps](https://github.com/openmobilemaps/maps-core) initialized and updated. To do this, use
+OpenSwissMaps can be built by using either the Maven Central dependencies or local modules of [Open Mobile Maps](https://github.com/openmobilemaps/maps-core) and [layer-gps](https://github.com/openmobilemaps/layer-gps).
+Make sure you have the necessary submodule for Djinni initialized and updated. To do this, use
 
 ```
 git submodule update --init
+```
+
+If you use the module build-variant, update the settings.gradle file to have the `mapscore` and `layergps` modules point to the correct path. E.g. with
+
+```groovy
+include ':mapscore', ':layergps'
+project(':mapscore').projectDir = new File('../../maps-core/android')
+project(':layergps').projectDir = new File('../../layer-gps/android')
+rootProject.name='OpenSwissMaps'
 ```
 
 ### Updating Djinni bridging files
@@ -26,7 +36,7 @@ The Android library can be opened as an Android Studio project in the [android](
 
 and you find the generated .aar library under `build/outputs/aar/`. For development, it is easiest to include this library directly as a module into a wrapping Android application project, that can be run on a device.
 
-<h2>Installation</h2>
+## Installation
 
 Either include the `android` folder as a module in the Android project or move the generated .aar to e.g. the `app/libs` folder of the project and include it in the project via the apps `build.gradle`:
 
@@ -43,5 +53,6 @@ implementation "androidx.activity:activity-ktx:1.1.0"
 implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.2.0"
 implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.2"
 implementation 'com.squareup.okhttp3:okhttp:4.7.2' // used for the default TextureLoader
+implementation 'com.google.android.gms:play-services-location:17.0.0' // used for the GOOGLE_FUSED location provider
 ```
 
