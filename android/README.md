@@ -41,10 +41,10 @@
 To add the OpenSwissMaps SDK to your Android project, add the following line to your build.gradle
 ```
 dependencies {
-  implementation 'ch.admin.geo.openswissmaps:openswissmaps-android:1.1.0'
+  implementation 'ch.admin.geo.openswissmaps:openswissmaps-sdk:1.1.2'
 }
 ```
-Make sure you have jcenter() listed in your project repositories. 
+Make sure you have mavenCentral() listed in your project repositories. 
 
 ### Display a Swisstopo Map
 
@@ -134,6 +134,60 @@ mapView.baseLayer?.setCallbackHandler(object : Tiled2dMapRasterLayerCallbackInte
 ```
 
 Please note that other layer types expose different functionalities in their callback handlers. The polygon layer, for example, returns the polygon hit by the click.
+
+#### Adding a gps layer
+
+A gps layer can conveniently be added to the `SwisstopoMapView` by calling:
+```kotlin
+mapView.addGpsLayer(lifecycle)
+```
+
+##### Style
+
+The layer can be visually customized at creation time by also supplying a `GpsStyleInfo`:
+```kotlin
+val gpsStyleInfo = GpsStyleInfoFactory.createGpsStyle(
+    gpsPointIdicator, // Drawable or Bitmap. Rendered at the currently provided location
+    gpsDirectionIndicator, // Drawable or Bitmap. Rendered below the point indicator, indicating the device orientation
+    Color(1.0f, 0f, 0f, 0.2f) // Color used to render the accuracy range of the currently provided location
+)
+mapView.addGpsLayer(lifecycle, style = gpsStyleInfo)
+```
+
+##### Location providers
+
+The location updates delivered to the gps layer can either be supplied via one of two default location providers or a custom implementation
+of the interface `LocationProviderInterface`. The two available default providers are:
+
+**GPS_ONLY**: A provider that registers to location updates of the devices gps module only.
+
+**GOOGLE_FUSED**: Uses the [FusedLocationProviderClient](https://developers.google.com/android/reference/com/google/android/gms/location/FusedLocationProviderClient.html) of the Google Play Services
+
+When none is supplied to the `GpsLayer` constructor, `GpsProviderType.GPS_ONLY` is used.
+
+```kotlin
+mapView.addGpsLayer(lifecycle, providerType = GpsProviderType.GOOGLE_FUSED) // using the FusedLocationProvicerClient
+mapView.addGpsLayer(lifecycle, locationProvider = CustomLocationProvider(...)) // using a custom LocationProviderInterface implementation
+```
+
+**Be aware that currently you must handle the location permissions of the app yourself!**
+
+##### Modes and Heading
+
+The `GpsLayer` has four different modes to react to location updates:
+
+**DISABLED**: No gps indicator is rendered on the map.
+
+**STANDARD**: The indicator is drawn  at the current location, along with the current heading (if enabled and a texture is provided)
+
+**FOLLOW**: In addition to the same behavior as `STANDARD`, upon a location update, the camera is animated to keep the indicators position centered in the map.
+
+**FOLLOW_AND_TURN**: While following the indicators location updates (as in `FOLLOW`), the camera is rotated to have the map oriented in the direction of the current heading.
+
+Listening to and rendering the devices current orientation can be enabled or disabled by calling:
+```kotlin
+gpsLayer.setHeadingEnabled(enabled)
+```
 
 ## How to build
 [Installation & Build Instructions](docs/install_readme.md)

@@ -9,6 +9,7 @@
  */
 
 import MapCore
+import LayerGps
 import SwisstopoMapSDKSharedModule
 import UIKit
 
@@ -18,6 +19,8 @@ public class SwisstopoMapView: MCMapView {
     open private(set) var baseLayer: MCTiled2dMapRasterLayerInterface
 
     private lazy var capabilitiesResource = SwisstopoCapabilitiesResource.capabilitiesResource
+
+    open private(set) var gpsLayer: MCGpsLayer?
 
     public init(baseLayerType: STSDKSwisstopoLayerType = .PIXELKARTE_FARBE,
                 loader: MCTextureLoaderInterface = SwisstopoTextureLoader()) {
@@ -59,7 +62,13 @@ public class SwisstopoMapView: MCMapView {
         guard let layer = STSDKSwisstopoLayerFactory.createSwisstopoTiledRasterLayer(type, textureLoader: loader) else {
             fatalError("unable to create SwisstopoLayer")
         }
-        add(layer: layer.asLayerInterface())
+
+        if let gpsLayer = gpsLayer {
+            insert(layer: layer.asLayerInterface(), below: gpsLayer.asLayerInterface())
+        } else {
+            add(layer: layer.asLayerInterface())
+        }
+
         return layer
     }
 
@@ -68,8 +77,28 @@ public class SwisstopoMapView: MCMapView {
         guard let layer = capabilitiesResource.createLayer(identifier, textureLoader: loader) else {
             fatalError("Layer does not exist")
         }
+        
+        if let gpsLayer = gpsLayer {
+            insert(layer: layer.asLayerInterface(), below: gpsLayer.asLayerInterface())
+        } else {
+            add(layer: layer.asLayerInterface())
+        }
+
+        return layer
+    }
+
+    @discardableResult
+    public func addGpsLayer(style: MCGpsStyleInfo = .defaultStyle) -> MCGpsLayer {
+        if let gpsLayer = gpsLayer {
+            return gpsLayer
+        }
+
+        let layer = MCGpsLayer(style: style)
+
+        gpsLayer = layer
 
         add(layer: layer.asLayerInterface())
+
         return layer
     }
 }
