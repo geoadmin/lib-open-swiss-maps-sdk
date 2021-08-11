@@ -154,5 +154,50 @@ extension MapViewController: MCTiled2dMapRasterLayerCallbackInterface {
 }
 ```
 
+#### Adding a gps layer
+
+A gps layer can conveniently be added to the `SwisstopoMapView` by calling:
+```swift
+mapView.addGpsLayer()
+```
+
+##### Style
+
+The layer can be visually customized at creation time by also supplying a `MCGpsStyleInfo`:
+```swift
+public extension MCGpsStyleInfo {
+    static var customStyle: MCGpsStyleInfo {
+        guard let pointImage = UIImage(named: "ic_gps_point", in: .module, compatibleWith: nil),
+              let pointCgImage = pointImage.cgImage,
+              let pointTexture = try? TextureHolder(pointCgImage),
+              let headingImage = UIImage(named: "ic_gps_direction", in: .module, compatibleWith: nil),
+              let headingCgImage = headingImage.cgImage,
+              let headingTexture = try? TextureHolder(headingCgImage) else {
+                  fatalError("gps style assets not found")
+              }
+
+        return MCGpsStyleInfo(pointTexture: pointTexture,
+                       headingTexture: headingTexture,
+                              accuracyColor:  UIColor(red: 112/255,
+                                                      green: 173/255,
+                                                      blue: 204/255,
+                                                      alpha: 0.2).mapCoreColor)
+    }
+}
+```
+
+##### Modes and Heading
+
+The `GpsLayer` has four different modes to react to location updates:
+
+**DISABLED**: No gps indicator is rendered on the map.
+
+**STANDARD**: The indicator is drawn  at the current location, along with the current heading (if enabled and a texture is provided)
+
+**FOLLOW**: In addition to the same behavior as `STANDARD`, upon a location update, the camera is animated to keep the indicators position centered in the map.
+
+**FOLLOW_AND_TURN**: While following the indicators location updates (as in `FOLLOW`), the camera is rotated to have the map oriented in the direction of the current heading.
+
+
 ## How to build
 [Build Instructions](docs/install_readme.md)
