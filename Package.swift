@@ -25,11 +25,15 @@ let package = Package(
         .package(name: "MapCore",
                  url: "https://github.com/openmobilemaps/maps-core.git",
                  .upToNextMajor(from: "1.1.0")),
+        .package(name: "LayerGps",
+                 url: "https://github.com/openmobilemaps/layer-gps.git",
+                 .upToNextMajor(from: "0.1.0")),
     ],
     targets: [
         .target(
             name: "SwisstopoMapSDK",
             dependencies: [
+                .product(name: "LayerGps", package: "LayerGps"),
                 .product(name: "MapCore", package: "MapCore"),
                 "SwisstopoMapSDKSharedModule",
             ],
