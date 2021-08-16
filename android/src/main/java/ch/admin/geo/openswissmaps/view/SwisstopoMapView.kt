@@ -56,9 +56,6 @@ class SwisstopoMapView @JvmOverloads constructor(context: Context, attrs: Attrib
         private set
 
     init {
-        System.loadLibrary("openswissmaps")
-        System.loadLibrary("layergps")
-
         setupMap(swisstopoMapConfig)
         createBaseLayer(BASE_LAYER_TYPE_DEFAULT)
         requireMapInterface().getCamera().setMinZoom(ZOOM_MIN_DEFAULT)
