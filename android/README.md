@@ -41,10 +41,17 @@
 To add the OpenSwissMaps SDK to your Android project, add the following line to your build.gradle
 ```
 dependencies {
-  implementation 'ch.admin.geo.openswissmaps:openswissmaps-sdk:1.1.3'
+  implementation 'ch.admin.geo.openswissmaps:openswissmaps-sdk:1.1.4'
 }
 ```
 Make sure you have mavenCentral() listed in your project repositories. 
+
+### Initializing the library
+
+To use the library, it needs to be initialized as early as possible, e.g. in the oOnCreate(), of the hosting Application by calling:
+```kotlin
+OpenSwissMaps.initialize()
+```
 
 ### Display a Swisstopo Map
 
