@@ -14,8 +14,8 @@ import android.content.Context
 import android.util.AttributeSet
 import androidx.lifecycle.Lifecycle
 import ch.admin.geo.openswissmaps.networking.RequestUtils
-import ch.admin.geo.openswissmaps.shared.layers.SwisstopoLayerFactory
 import ch.admin.geo.openswissmaps.shared.layers.config.SwisstopoLayerType
+import ch.admin.geo.openswissmaps.shared.layers.config.SwisstopoTiledLayerConfigFactory
 import io.openmobilemaps.gps.GpsLayer
 import io.openmobilemaps.gps.GpsProviderType
 import io.openmobilemaps.gps.providers.LocationProviderInterface
@@ -56,38 +56,43 @@ class SwisstopoMapView @JvmOverloads constructor(context: Context, attrs: Attrib
         private set
 
     init {
-        System.loadLibrary("openswissmaps")
-        System.loadLibrary("layergps")
-
         setupMap(swisstopoMapConfig)
         createBaseLayer(BASE_LAYER_TYPE_DEFAULT)
-        mapInterface.getCamera().setMinZoom(ZOOM_MIN_DEFAULT)
-        mapInterface.getCamera().setMaxZoom(ZOOM_MAX_DEFAULT)
-        mapInterface.getCamera().setZoom(ZOOM_MIN_DEFAULT, false);
+        requireMapInterface().getCamera().setMinZoom(ZOOM_MIN_DEFAULT)
+        requireMapInterface().getCamera().setMaxZoom(ZOOM_MAX_DEFAULT)
+        requireMapInterface().getCamera().setZoom(ZOOM_MIN_DEFAULT, false)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        baseLayer = null
+        gpsLayer = null
     }
 
     private fun createBaseLayer(layerType: SwisstopoLayerType) {
-        val newBaseLayer =
-            SwisstopoLayerFactory.createSwisstopoTiledRasterLayer(layerType, textureLoader)
-        mapInterface.addLayer(newBaseLayer.asLayerInterface())
+        val newBaseLayer = Tiled2dMapRasterLayerInterface.create(
+            SwisstopoTiledLayerConfigFactory.createRasterTileLayerConfig(layerType),
+            textureLoader
+        )
+        requireMapInterface().addLayer(newBaseLayer.asLayerInterface())
         baseLayer = newBaseLayer
     }
 
     fun setBaseLayerType(layerType: SwisstopoLayerType?) {
-        baseLayer?.let { mapInterface.removeLayer(it.asLayerInterface()) }
+        baseLayer?.let { requireMapInterface().removeLayer(it.asLayerInterface()) }
         baseLayer = if (layerType != null) {
-            val newLayer = SwisstopoLayerFactory.createSwisstopoTiledRasterLayer(layerType, textureLoader)
-            mapInterface.insertLayerAt(newLayer.asLayerInterface(), 0)
+            val newLayer = Tiled2dMapRasterLayerInterface.create(SwisstopoTiledLayerConfigFactory.createRasterTileLayerConfig(layerType), textureLoader)
+            requireMapInterface().insertLayerAt(newLayer.asLayerInterface(), 0)
             baseLayer?.getCallbackHandler()?.let { newLayer.setCallbackHandler(it) }
             newLayer
         } else null
     }
 
     fun setBaseLayerType(identifier: String) {
-        baseLayer?.let { mapInterface.removeLayer(it.asLayerInterface()) }
+        baseLayer?.let { requireMapInterface().removeLayer(it.asLayerInterface()) }
         baseLayer = if (layerType != null) {
             val newLayer = swisstopoWmtsResource.createLayer(identifier, textureLoader)
-            mapInterface.insertLayerAt(newLayer.asLayerInterface(), 0)
+            requireMapInterface().insertLayerAt(newLayer.asLayerInterface(), 0)
             baseLayer?.getCallbackHandler()?.let { newLayer.setCallbackHandler(it) }
             newLayer
         } else null
@@ -99,7 +104,7 @@ class SwisstopoMapView @JvmOverloads constructor(context: Context, attrs: Attrib
     }
 
     fun addSwisstopoLayer(layerType: SwisstopoLayerType): Tiled2dMapRasterLayerInterface {
-        val layer = SwisstopoLayerFactory.createSwisstopoTiledRasterLayer(layerType, textureLoader)
+        val layer = Tiled2dMapRasterLayerInterface.create(SwisstopoTiledLayerConfigFactory.createRasterTileLayerConfig(layerType), textureLoader)
         val gpsLayerInterface = gpsLayer?.asLayerInterface()
         if (gpsLayerInterface != null) {
             insertLayerBelow(layer.asLayerInterface(), gpsLayerInterface)
@@ -121,8 +126,8 @@ class SwisstopoMapView @JvmOverloads constructor(context: Context, attrs: Attrib
     }
 
     fun addGpsLayer(lifecycle: Lifecycle,
-        style: GpsStyleInfo = GpsStyleInfoFactory.createDefaultStyle(context),
-        providerType: GpsProviderType = GpsProviderType.GPS_ONLY
+                    style: GpsStyleInfo = GpsStyleInfoFactory.createDefaultStyle(context),
+                    providerType: GpsProviderType = GpsProviderType.GPS_ONLY
     ): GpsLayer = addGpsLayer(lifecycle, style, providerType.getProvider(context))
 
     fun addGpsLayer(lifecycle: Lifecycle, style: GpsStyleInfo = GpsStyleInfoFactory.createDefaultStyle(context),

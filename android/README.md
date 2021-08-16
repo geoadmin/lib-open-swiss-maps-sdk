@@ -46,6 +46,13 @@ dependencies {
 ```
 Make sure you have mavenCentral() listed in your project repositories. 
 
+### Initializing the library
+
+To use the library, it needs to be initialized as early as possible, e.g. in the oOnCreate(), of the hosting Application by calling:
+```kotlin
+OpenSwissMaps.initialize()
+```
+
 ### Display a Swisstopo Map
 
 The SDK provides the `SwisstopoMapView` for configuring and displaying maps.  To use it, simply include it in a layout and register it to the lifecycle of the activity or fragment that contains the view. This is necessary for the execution of map internal tasks such as tile-loading.
