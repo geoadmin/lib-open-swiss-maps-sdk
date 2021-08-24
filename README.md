@@ -50,7 +50,7 @@ More Information about OGD: <a href="https://www.swisstopo.ch/ogd">www.swisstopo
 
 ## Features
 
-* Displays swisstopo map layers:
+* Display swisstopo map layers:
    - Landeskarten (farbig)
    - Landeskarte 1:1 Million | LK1000
    - Landeskarten (grau)
@@ -79,7 +79,8 @@ More Information about OGD: <a href="https://www.swisstopo.ch/ogd">www.swisstopo
 * Combine multiple layers on top of each other
 * Full mobile map experience with touch & gesture handling
 * Update camera to show or animate to different parts of the map
-* Add your own polygon layers or icon layers
+* Add your own polygon layers, line layers or icon layers
+* Add a customizable gps layer, combined with predefined or custom location providers
 
 ...and more to come soon!
 
