@@ -14,8 +14,8 @@
         "package": "LayerGps",
         "repositoryURL": "https://github.com/openmobilemaps/layer-gps.git",
         "state": {
-          "branch": "feature/tile-masking",
-          "revision": "723b2543c07b54ae804b94bdb512001cee9f9625",
+          "branch": "develop",
+          "revision": "f20c5f559859e71459bcd5b8af4bbc1839b8d269",
           "version": null
         }
       },
@@ -23,8 +23,8 @@
         "package": "MapCore",
         "repositoryURL": "https://github.com/openmobilemaps/maps-core.git",
         "state": {
-          "branch": "feature/tile-masking",
-          "revision": "ea7ae1d3cef54c253e738f84c85bca133fdb58e3",
+          "branch": "develop",
+          "revision": "02bec6684d7659e38def37de9b8302ed7802f5e4",
           "version": null
         }
       }
