@@ -14,18 +14,18 @@
         "package": "LayerGps",
         "repositoryURL": "https://github.com/openmobilemaps/layer-gps.git",
         "state": {
-          "branch": null,
-          "revision": "e08fabca7b2655cc52913b1e100a7f93bf6f6c13",
-          "version": "0.1.0"
+          "branch": "develop",
+          "revision": "f20c5f559859e71459bcd5b8af4bbc1839b8d269",
+          "version": null
         }
       },
       {
         "package": "MapCore",
         "repositoryURL": "https://github.com/openmobilemaps/maps-core.git",
         "state": {
-          "branch": null,
-          "revision": "f6459d0b83b963b2b9cefe1eb2b7285b77392567",
-          "version": "1.3.1"
+          "branch": "develop",
+          "revision": "02bec6684d7659e38def37de9b8302ed7802f5e4",
+          "version": null
         }
       }
     ]

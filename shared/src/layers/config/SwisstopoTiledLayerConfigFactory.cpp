@@ -156,7 +156,7 @@ SwisstopoTiledLayerConfigFactory::createRasterTileLayerConfig(SwisstopoLayerType
                                               "/default/{Time}/2056/{TileMatrix}/{TileCol}/{TileRow}." + extension, "image/"+extension);
 
 
-    auto zoomInfo = Tiled2dMapZoomInfo(1.25, numDrawPreviousLayers);
+    auto zoomInfo = Tiled2dMapZoomInfo(2.25, numDrawPreviousLayers);
 
 
     return createRasterTiledLayerConfigFromMetadata(configuration, maxZoom, zoomInfo);
