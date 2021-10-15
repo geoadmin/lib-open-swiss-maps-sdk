@@ -16,7 +16,7 @@
 import UIKit
 
 public class SwisstopoMapView: MCMapView {
-    private let loader: MCTextureLoaderInterface
+    private let loader: MCTileLoaderInterface
 
     open private(set) var baseLayer: MCTiled2dMapRasterLayerInterface
 
@@ -25,10 +25,10 @@ public class SwisstopoMapView: MCMapView {
     open private(set) var gpsLayer: MCGpsLayer?
 
     public init(baseLayerType: STSDKSwisstopoLayerType = .PIXELKARTE_FARBE,
-                loader: MCTextureLoaderInterface = SwisstopoTextureLoader()) {
+                loader: MCTileLoaderInterface = SwisstopoTextureLoader()) {
         self.loader = loader
 
-        guard let baseLayer = STSDKSwisstopoLayerFactory.createSwisstopoTiledRasterLayer(baseLayerType, textureLoader: loader) else {
+        guard let baseLayer = STSDKSwisstopoLayerFactory.createSwisstopoTiledRasterLayer(baseLayerType, tileLoader: loader) else {
             fatalError("unable to create SwisstopoLayer")
         }
 
@@ -45,7 +45,7 @@ public class SwisstopoMapView: MCMapView {
     }
 
     public func setBaseLayerType(type: STSDKSwisstopoLayerType) {
-        guard let newLayer = STSDKSwisstopoLayerFactory.createSwisstopoTiledRasterLayer(type, textureLoader: loader) else {
+        guard let newLayer = STSDKSwisstopoLayerFactory.createSwisstopoTiledRasterLayer(type, tileLoader: loader) else {
             fatalError("unable to create SwisstopoLayer")
         }
 
@@ -61,7 +61,7 @@ public class SwisstopoMapView: MCMapView {
 
     @discardableResult
     public func addSwisstopoLayer(type: STSDKSwisstopoLayerType) -> MCTiled2dMapRasterLayerInterface {
-        guard let layer = STSDKSwisstopoLayerFactory.createSwisstopoTiledRasterLayer(type, textureLoader: loader) else {
+        guard let layer = STSDKSwisstopoLayerFactory.createSwisstopoTiledRasterLayer(type, tileLoader: loader) else {
             fatalError("unable to create SwisstopoLayer")
         }
 
@@ -76,7 +76,7 @@ public class SwisstopoMapView: MCMapView {
 
     @discardableResult
     public func addSwisstopoLayer(identifier: String) -> MCTiled2dMapRasterLayerInterface {
-        guard let layer = capabilitiesResource.createLayer(identifier, textureLoader: loader) else {
+        guard let layer = capabilitiesResource.createLayer(identifier, tileLoader: loader) else {
             fatalError("Layer does not exist")
         }
         
