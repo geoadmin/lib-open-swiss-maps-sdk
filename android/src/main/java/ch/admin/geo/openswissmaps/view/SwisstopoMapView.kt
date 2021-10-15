@@ -22,7 +22,7 @@ import io.openmobilemaps.gps.providers.LocationProviderInterface
 import io.openmobilemaps.gps.shared.gps.GpsMode
 import io.openmobilemaps.gps.shared.gps.GpsStyleInfo
 import io.openmobilemaps.gps.style.GpsStyleInfoFactory
-import io.openmobilemaps.mapscore.map.loader.TextureLoader
+import io.openmobilemaps.mapscore.map.loader.TileLoader
 import io.openmobilemaps.mapscore.map.view.MapView
 import io.openmobilemaps.mapscore.shared.map.LayerInterface
 import io.openmobilemaps.mapscore.shared.map.MapConfig
@@ -52,7 +52,7 @@ class SwisstopoMapView @JvmOverloads constructor(context: Context, attrs: Attrib
     var gpsLayer: GpsLayer? = null
         private set
 
-    var textureLoader = TextureLoader(context, context.cacheDir, 50L * 1024L * 1024L, RequestUtils.getDefaultReferer(context))
+    var textureLoader = TileLoader(context, context.cacheDir, 50L * 1024L * 1024L, RequestUtils.getDefaultReferer(context))
         private set
 
     init {
