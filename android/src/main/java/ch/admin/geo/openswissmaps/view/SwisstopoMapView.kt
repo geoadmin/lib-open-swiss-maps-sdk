@@ -13,6 +13,7 @@ package ch.admin.geo.openswissmaps.view
 import android.content.Context
 import android.util.AttributeSet
 import androidx.lifecycle.Lifecycle
+import ch.admin.geo.openswissmaps.R
 import ch.admin.geo.openswissmaps.networking.RequestUtils
 import ch.admin.geo.openswissmaps.shared.layers.config.SwisstopoLayerType
 import ch.admin.geo.openswissmaps.shared.layers.config.SwisstopoTiledLayerConfigFactory
@@ -56,7 +57,15 @@ class SwisstopoMapView @JvmOverloads constructor(context: Context, attrs: Attrib
         private set
 
     init {
-        setupMap(swisstopoMapConfig)
+        var useMSAA = false
+        context.theme.obtainStyledAttributes(attrs, R.styleable.SwisstopoMapView, 0, 0).apply {
+            try {
+                useMSAA = getBoolean(R.styleable.SwisstopoMapView_useMSAA, false)
+            } finally {
+                recycle()
+            }
+        }
+        setupMap(swisstopoMapConfig, useMSAA)
         createBaseLayer(BASE_LAYER_TYPE_DEFAULT)
         requireMapInterface().getCamera().setMinZoom(ZOOM_MIN_DEFAULT)
         requireMapInterface().getCamera().setMaxZoom(ZOOM_MAX_DEFAULT)

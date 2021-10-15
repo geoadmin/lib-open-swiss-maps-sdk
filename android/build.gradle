@@ -143,9 +143,9 @@ dependencies {
 	implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.2.0"
 	implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.2"
 
-	mavenApi "io.openmobilemaps:mapscore-dev:1.3.3.30"
+	mavenApi "io.openmobilemaps:mapscore-dev:1.3.3.31"
 	moduleApi project(':mapscore')
-	mavenApi "io.openmobilemaps:layer-gps-dev:0.1.2.21"
+	mavenApi "io.openmobilemaps:layer-gps-dev:0.1.2.22"
 	moduleApi project(':layergps')
 
 	testImplementation "junit:junit:4.13.1"

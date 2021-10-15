@@ -1,0 +1,5 @@
+<resources>
+	<declare-styleable name="SwisstopoMapView">
+		<attr name="useMSAA" format="boolean"/>
+	</declare-styleable>
+</resources>
