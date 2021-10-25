@@ -31,7 +31,7 @@ in the folder [djinni](../djinni). This generates the Kotlin bindings, the C++ h
 The Android library can be opened as an Android Studio project in the [android](.) folder. Alternatively, you can build the library using gradle from the command line using
 
 ```
-./gradlew assembleMaven
+./gradlew assemble
 ```
 
 and you find the generated .aar library under `build/outputs/aar/`. For development, it is easiest to include this library directly as a module into a wrapping Android application project, that can be run on a device.
