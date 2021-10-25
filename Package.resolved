@@ -15,7 +15,7 @@
         "repositoryURL": "https://github.com/openmobilemaps/layer-gps.git",
         "state": {
           "branch": "develop",
-          "revision": "d83c253c040e3429b9e747da0a7f6027137f622a",
+          "revision": "765a05b8d8dc4bb8a6bc456f94a836f5ef0b67c5",
           "version": null
         }
       },
@@ -24,7 +24,7 @@
         "repositoryURL": "https://github.com/openmobilemaps/maps-core.git",
         "state": {
           "branch": "develop",
-          "revision": "bb00fca96877f9670963ce34c26bb7cac4e84ea8",
+          "revision": "2b6fec8d601b9e6e24300635f0c31745b4916480",
           "version": null
         }
       }
