@@ -1,2 +1,1 @@
-include ':mapscore', ':layergps'
-rootProject.name='OpenSwissMaps'
+rootProject.name='openswissmaps'
