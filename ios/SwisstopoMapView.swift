@@ -16,7 +16,7 @@
 import UIKit
 
 public class SwisstopoMapView: MCMapView {
-    private let loader: MCTileLoaderInterface
+    private let loader: MCLoaderInterface
 
     open private(set) var baseLayer: MCTiled2dMapRasterLayerInterface
 
@@ -25,10 +25,10 @@ public class SwisstopoMapView: MCMapView {
     open private(set) var gpsLayer: MCGpsLayer?
 
     public init(baseLayerType: STSDKSwisstopoLayerType = .PIXELKARTE_FARBE,
-                loader: MCTileLoaderInterface = SwisstopoTextureLoader()) {
+                loader: MCLoaderInterface = SwisstopoTextureLoader()) {
         self.loader = loader
 
-        guard let baseLayer = STSDKSwisstopoLayerFactory.createSwisstopoTiledRasterLayer(baseLayerType, tileLoader: loader) else {
+        guard let baseLayer = STSDKSwisstopoLayerFactory.createSwisstopoTiledRasterLayer(baseLayerType, loader: loader) else {
             fatalError("unable to create SwisstopoLayer")
         }
 
@@ -45,7 +45,7 @@ public class SwisstopoMapView: MCMapView {
     }
 
     public func setBaseLayerType(type: STSDKSwisstopoLayerType) {
-        guard let newLayer = STSDKSwisstopoLayerFactory.createSwisstopoTiledRasterLayer(type, tileLoader: loader) else {
+        guard let newLayer = STSDKSwisstopoLayerFactory.createSwisstopoTiledRasterLayer(type, loader: loader) else {
             fatalError("unable to create SwisstopoLayer")
         }
 
@@ -61,7 +61,7 @@ public class SwisstopoMapView: MCMapView {
 
     @discardableResult
     public func addSwisstopoLayer(type: STSDKSwisstopoLayerType) -> MCTiled2dMapRasterLayerInterface {
-        guard let layer = STSDKSwisstopoLayerFactory.createSwisstopoTiledRasterLayer(type, tileLoader: loader) else {
+        guard let layer = STSDKSwisstopoLayerFactory.createSwisstopoTiledRasterLayer(type, loader: loader) else {
             fatalError("unable to create SwisstopoLayer")
         }
 
