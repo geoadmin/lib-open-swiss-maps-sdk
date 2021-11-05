@@ -23,7 +23,7 @@ import io.openmobilemaps.gps.providers.LocationProviderInterface
 import io.openmobilemaps.gps.shared.gps.GpsMode
 import io.openmobilemaps.gps.shared.gps.GpsStyleInfo
 import io.openmobilemaps.gps.style.GpsStyleInfoFactory
-import io.openmobilemaps.mapscore.map.loader.TileLoader
+import io.openmobilemaps.mapscore.map.loader.DataLoader
 import io.openmobilemaps.mapscore.map.view.MapView
 import io.openmobilemaps.mapscore.shared.map.LayerInterface
 import io.openmobilemaps.mapscore.shared.map.MapConfig
@@ -53,7 +53,7 @@ class SwisstopoMapView @JvmOverloads constructor(context: Context, attrs: Attrib
     var gpsLayer: GpsLayer? = null
         private set
 
-    var textureLoader = TileLoader(context, context.cacheDir, 50L * 1024L * 1024L, RequestUtils.getDefaultReferer(context))
+    var loader = DataLoader(context, context.cacheDir, 50L * 1024L * 1024L, RequestUtils.getDefaultReferer(context))
         private set
 
     init {
@@ -81,7 +81,7 @@ class SwisstopoMapView @JvmOverloads constructor(context: Context, attrs: Attrib
     private fun createBaseLayer(layerType: SwisstopoLayerType) {
         val newBaseLayer = Tiled2dMapRasterLayerInterface.create(
             SwisstopoTiledLayerConfigFactory.createRasterTileLayerConfig(layerType),
-            textureLoader
+            loader
         )
         requireMapInterface().addLayer(newBaseLayer.asLayerInterface())
         baseLayer = newBaseLayer
@@ -90,7 +90,7 @@ class SwisstopoMapView @JvmOverloads constructor(context: Context, attrs: Attrib
     fun setBaseLayerType(layerType: SwisstopoLayerType?) {
         baseLayer?.let { requireMapInterface().removeLayer(it.asLayerInterface()) }
         baseLayer = if (layerType != null) {
-            val newLayer = Tiled2dMapRasterLayerInterface.create(SwisstopoTiledLayerConfigFactory.createRasterTileLayerConfig(layerType), textureLoader)
+            val newLayer = Tiled2dMapRasterLayerInterface.create(SwisstopoTiledLayerConfigFactory.createRasterTileLayerConfig(layerType), loader)
             requireMapInterface().insertLayerAt(newLayer.asLayerInterface(), 0)
             baseLayer?.getCallbackHandler()?.let { newLayer.setCallbackHandler(it) }
             newLayer
@@ -100,7 +100,7 @@ class SwisstopoMapView @JvmOverloads constructor(context: Context, attrs: Attrib
     fun setBaseLayerType(identifier: String) {
         baseLayer?.let { requireMapInterface().removeLayer(it.asLayerInterface()) }
         baseLayer = if (layerType != null) {
-            val newLayer = swisstopoWmtsResource.createLayer(identifier, textureLoader)
+            val newLayer = swisstopoWmtsResource.createLayer(identifier, loader)
             requireMapInterface().insertLayerAt(newLayer.asLayerInterface(), 0)
             baseLayer?.getCallbackHandler()?.let { newLayer.setCallbackHandler(it) }
             newLayer
@@ -113,7 +113,7 @@ class SwisstopoMapView @JvmOverloads constructor(context: Context, attrs: Attrib
     }
 
     fun addSwisstopoLayer(layerType: SwisstopoLayerType): Tiled2dMapRasterLayerInterface {
-        val layer = Tiled2dMapRasterLayerInterface.create(SwisstopoTiledLayerConfigFactory.createRasterTileLayerConfig(layerType), textureLoader)
+        val layer = Tiled2dMapRasterLayerInterface.create(SwisstopoTiledLayerConfigFactory.createRasterTileLayerConfig(layerType), loader)
         val gpsLayerInterface = gpsLayer?.asLayerInterface()
         if (gpsLayerInterface != null) {
             insertLayerBelow(layer.asLayerInterface(), gpsLayerInterface)
@@ -124,7 +124,7 @@ class SwisstopoMapView @JvmOverloads constructor(context: Context, attrs: Attrib
     }
 
     fun addSwisstopoLayer(identifier: String): Tiled2dMapRasterLayerInterface {
-        val layer = swisstopoWmtsResource.createLayer(identifier, textureLoader)
+        val layer = swisstopoWmtsResource.createLayer(identifier, loader)
         val gpsLayerInterface = gpsLayer?.asLayerInterface()
         if (gpsLayerInterface != null) {
             insertLayerBelow(layer.asLayerInterface(), gpsLayerInterface)
