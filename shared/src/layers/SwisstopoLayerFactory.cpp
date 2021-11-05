@@ -14,16 +14,16 @@
 
 std::shared_ptr<::Tiled2dMapRasterLayerInterface>
 SwisstopoLayerFactory::createSwisstopoTiledRasterLayer(::SwisstopoLayerType layerType,
-                                                       const std::shared_ptr<::TileLoaderInterface> &tileLoader) {
+                                                       const std::shared_ptr<::LoaderInterface> &loader) {
     return Tiled2dMapRasterLayerInterface::create(SwisstopoTiledLayerConfigFactory::createRasterTileLayerConfig(layerType),
-                                                  tileLoader);
+                                                  loader);
 }
 
 
 std::shared_ptr<::Tiled2dMapRasterLayerInterface> SwisstopoLayerFactory::createSwisstopoTiledRasterLayerFromMetadata(const ::WmtsLayerDescription & configuration,
                                                                                                                             int32_t maxZoom,
                                                                                                                             const ::Tiled2dMapZoomInfo & zoomInfo,
-                                                                                                                            const std::shared_ptr<::TileLoaderInterface> & tileLoader) {
+                                                                                                                            const std::shared_ptr<::LoaderInterface> & loader) {
     return Tiled2dMapRasterLayerInterface::create(SwisstopoTiledLayerConfigFactory::createRasterTiledLayerConfigFromMetadata(configuration, maxZoom, zoomInfo),
-                                                  tileLoader);
+                                                  loader);
 }
