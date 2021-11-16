@@ -169,5 +169,5 @@ std::shared_ptr<::Tiled2dMapLayerConfig> SwisstopoTiledLayerConfigFactory::creat
                                                       zoomLevels.begin() + (std::min(zoomLevels.size(), (size_t)maxZoom))};
     zoomLevels = subvector;
 
-    return WmtsTiled2dMapLayerConfigFactory::create(description, zoomLevels, zoomInfo, SwisstopoTiledLayerConfigHelper::getBounds().topLeft.systemIdentifier);
+    return WmtsTiled2dMapLayerConfigFactory::create(description, zoomLevels, zoomInfo, SwisstopoTiledLayerConfigHelper::getBounds().topLeft.systemIdentifier, "");
 }
