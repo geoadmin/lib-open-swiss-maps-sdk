@@ -140,10 +140,14 @@ class SwisstopoMapView @JvmOverloads constructor(context: Context, attrs: Attrib
     ): GpsLayer = addGpsLayer(lifecycle, style, providerType.getProvider(context))
 
     fun addGpsLayer(lifecycle: Lifecycle, style: GpsStyleInfo = GpsStyleInfoFactory.createDefaultStyle(context),
-                    locationProvider: LocationProviderInterface): GpsLayer {
+                    locationProvider: LocationProviderInterface, layerIndex: Int? = null): GpsLayer {
         gpsLayer?.let { return it }
         val newGpsLayer = GpsLayer(context, style, locationProvider)
-        addLayer(newGpsLayer.asLayerInterface())
+        if (layerIndex != null) {
+            insertLayerAt(newGpsLayer.asLayerInterface(), layerIndex)
+        } else {
+            addLayer(newGpsLayer.asLayerInterface())
+        }
         newGpsLayer.registerLifecycle(lifecycle)
         newGpsLayer.setMode(GpsMode.STANDARD)
         newGpsLayer.setHeadingEnabled(style.headingTexture != null)
