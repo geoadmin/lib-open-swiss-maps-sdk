@@ -98,7 +98,7 @@ public class SwisstopoMapView: MCMapView {
     }
 
     @discardableResult
-    public func addGpsLayer(style: MCGpsStyleInfo = .defaultStyle) -> MCGpsLayer {
+    public func addGpsLayer(style: MCGpsStyleInfo = .defaultStyle, layerIndex: Int? = nil) -> MCGpsLayer {
         if let gpsLayer = gpsLayer {
             return gpsLayer
         }
@@ -107,7 +107,12 @@ public class SwisstopoMapView: MCMapView {
 
         gpsLayer = layer
 
-        add(layer: layer.asLayerInterface())
+        if let layerIndex = layerIndex {
+            insert(layer: layer.asLayerInterface(), at: layerIndex)
+        } else {
+            add(layer: layer.asLayerInterface())
+        }
+
 
         return layer
     }
