@@ -30,6 +30,7 @@ import io.openmobilemaps.mapscore.shared.map.MapConfig
 import io.openmobilemaps.mapscore.shared.map.coordinates.CoordinateSystemFactory
 import io.openmobilemaps.mapscore.shared.map.layers.tiled.raster.Tiled2dMapRasterLayerInterface
 import io.openmobilemaps.mapscore.shared.map.layers.tiled.raster.wmts.WmtsCapabilitiesResource
+import io.openmobilemaps.mapscore.shared.map.loader.LoaderInterface
 
 class SwisstopoMapView @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) :
     MapView(context, attrs, defStyleAttr) {
@@ -53,7 +54,7 @@ class SwisstopoMapView @JvmOverloads constructor(context: Context, attrs: Attrib
     var gpsLayer: GpsLayer? = null
         private set
 
-    var loader = DataLoader(context, context.cacheDir, 50L * 1024L * 1024L, RequestUtils.getDefaultReferer(context))
+    var loader: LoaderInterface = DataLoader(context, context.cacheDir, 50L * 1024L * 1024L, RequestUtils.getDefaultReferer(context))
         private set
 
     init {
@@ -70,6 +71,10 @@ class SwisstopoMapView @JvmOverloads constructor(context: Context, attrs: Attrib
         requireMapInterface().getCamera().setMinZoom(ZOOM_MIN_DEFAULT)
         requireMapInterface().getCamera().setMaxZoom(ZOOM_MAX_DEFAULT)
         requireMapInterface().getCamera().setZoom(ZOOM_MIN_DEFAULT, false)
+    }
+
+    fun setupMap(loader: LoaderInterface? = null) {
+        loader?.let { this.loader = it }
     }
 
     override fun onDestroy() {
