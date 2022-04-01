@@ -16,8 +16,15 @@
 #include "WmtsTiled2dMapLayerConfigFactory.h"
 #include <cmath>
 
+
 std::shared_ptr<::Tiled2dMapLayerConfig>
 SwisstopoTiledLayerConfigFactory::createRasterTileLayerConfig(SwisstopoLayerType layerType) {
+    return createRasterTileLayerConfigWithZoomInfo(layerType, std::nullopt);
+}
+
+std::shared_ptr<::Tiled2dMapLayerConfig>
+SwisstopoTiledLayerConfigFactory::createRasterTileLayerConfigWithZoomInfo(SwisstopoLayerType layerType,
+                                                              const std::optional<Tiled2dMapZoomInfo> &zoomInfo) {
     std::string identifier;
     std::string time = "current";
     std::string extension = "png";
@@ -155,11 +162,9 @@ SwisstopoTiledLayerConfigFactory::createRasterTileLayerConfig(SwisstopoLayerType
     auto configuration = WmtsLayerDescription(identifier, "", "", dimensions, SwisstopoTiledLayerConfigHelper::getBounds(), "2056", "https://wmts.geo.admin.ch/1.0.0/" + identifier +
                                               "/default/{Time}/2056/{TileMatrix}/{TileCol}/{TileRow}." + extension, "image/"+extension);
 
+    auto finalZoomInfo = zoomInfo.has_value() ? *zoomInfo : Tiled2dMapZoomInfo(2.25, numDrawPreviousLayers);
 
-    auto zoomInfo = Tiled2dMapZoomInfo(2.25, numDrawPreviousLayers);
-
-
-    return createRasterTiledLayerConfigFromMetadata(configuration, maxZoom, zoomInfo);
+    return createRasterTiledLayerConfigFromMetadata(configuration, maxZoom, finalZoomInfo);
 }
 
 
