@@ -170,8 +170,8 @@ SwisstopoTiledLayerConfigFactory::createRasterTileLayerConfigWithZoomInfo(Swisst
 
 std::shared_ptr<::Tiled2dMapLayerConfig> SwisstopoTiledLayerConfigFactory::createRasterTiledLayerConfigFromMetadata(const ::WmtsLayerDescription & description, int32_t maxZoom, const ::Tiled2dMapZoomInfo & zoomInfo) {
     auto zoomLevels = SwisstopoTiledLayerConfigHelper::getZoomLevelInfos();
-    std::vector<Tiled2dMapZoomLevelInfo> subvector = {zoomLevels.begin(),
-                                                      zoomLevels.begin() + (std::min(zoomLevels.size(), (size_t)maxZoom))};
+    auto itMax = find_if(zoomLevels.begin(), zoomLevels.end(), [&maxZoom] (const Tiled2dMapZoomLevelInfo& s) { return s.zoomLevelIdentifier > maxZoom; } );
+    std::vector<Tiled2dMapZoomLevelInfo> subvector = {zoomLevels.begin(), itMax };
     zoomLevels = subvector;
 
     return WmtsTiled2dMapLayerConfigFactory::create(description, zoomLevels, zoomInfo, SwisstopoTiledLayerConfigHelper::getBounds().topLeft.systemIdentifier, "");
