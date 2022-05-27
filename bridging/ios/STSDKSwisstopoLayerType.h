@@ -10,6 +10,7 @@ typedef NS_ENUM(NSInteger, STSDKSwisstopoLayerType)
     STSDKSwisstopoLayerTypePIXELKARTE_GRAUSTUFEN,
     STSDKSwisstopoLayerTypePIXELKARTE_FARBE_WINTER,
     STSDKSwisstopoLayerTypeSWISSIMAGE,
+    STSDKSwisstopoLayerTypeSWISSIMAGE_1946,
     STSDKSwisstopoLayerTypeLUFTFAHRTKARTEN_ICAO,
     STSDKSwisstopoLayerTypeSEGELFLUGKARTE,
     STSDKSwisstopoLayerTypeMIL_AIRSPACE_CHART,

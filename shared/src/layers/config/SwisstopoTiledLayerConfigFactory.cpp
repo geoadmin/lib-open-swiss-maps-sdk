@@ -62,6 +62,13 @@ SwisstopoTiledLayerConfigFactory::createRasterTileLayerConfigWithZoomInfo(Swisst
         maxZoom = 28;
         numDrawPreviousLayers = 2;
         break;
+    case SwisstopoLayerType::SWISSIMAGE_1946:
+        identifier = "ch.swisstopo.swissimage-product_1946";
+        time = "1946";
+        extension = "jpeg";
+        maxZoom = 25;
+        numDrawPreviousLayers = 2;
+        break;
     case SwisstopoLayerType::LUFTFAHRTKARTEN_ICAO:
         identifier = "ch.bazl.luftfahrtkarten-icao";
         maxZoom = 19;
@@ -83,12 +90,10 @@ SwisstopoTiledLayerConfigFactory::createRasterTileLayerConfigWithZoomInfo(Swisst
         maxZoom = 19;
         break;
     case SwisstopoLayerType::HIKS_DUFOR:
-        time = "18650101";
         identifier = "ch.swisstopo.hiks-dufour";
         maxZoom = 26;
         break;
     case SwisstopoLayerType::HIKS_SIEGFRIED:
-        time = "19260101";
         identifier = "ch.swisstopo.hiks-siegfried";
         maxZoom = 25;
         break;
@@ -121,12 +126,10 @@ SwisstopoTiledLayerConfigFactory::createRasterTileLayerConfigWithZoomInfo(Swisst
         maxZoom = 26;
         break;
     case SwisstopoLayerType::HANGNEIGUNG_30:
-        time = "20160101";
         identifier = "ch.swisstopo-karto.hangneigung";
         maxZoom = 25;
         break;
     case SwisstopoLayerType::HANGNEIGUNGSKLASSEN_30:
-        time = "20160101";
         identifier = "ch.swisstopo.hangneigung-ueber_30";
         maxZoom = 25;
         break;
@@ -151,7 +154,6 @@ SwisstopoTiledLayerConfigFactory::createRasterTileLayerConfigWithZoomInfo(Swisst
         maxZoom = 26;
         break;
     case SwisstopoLayerType::SCHUTZGEBIETE_LUFTFAHRT:
-        time = "20160614";
         identifier = "ch.bafu.schutzgebiete-luftfahrt";
         maxZoom = 25;
         break;
