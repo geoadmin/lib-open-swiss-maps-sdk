@@ -29,6 +29,7 @@ import io.openmobilemaps.mapscore.map.view.MapView
 import io.openmobilemaps.mapscore.shared.map.LayerInterface
 import io.openmobilemaps.mapscore.shared.map.MapConfig
 import io.openmobilemaps.mapscore.shared.map.coordinates.CoordinateSystemFactory
+import io.openmobilemaps.mapscore.shared.map.layers.tiled.Tiled2dMapZoomInfo
 import io.openmobilemaps.mapscore.shared.map.layers.tiled.raster.Tiled2dMapRasterLayerInterface
 import io.openmobilemaps.mapscore.shared.map.layers.tiled.raster.wmts.WmtsCapabilitiesResource
 import io.openmobilemaps.mapscore.shared.map.loader.LoaderInterface
@@ -129,8 +130,35 @@ class SwisstopoMapView @JvmOverloads constructor(context: Context, attrs: Attrib
         return layer
     }
 
+    override fun addSwisstopoLayer(layerType: SwisstopoLayerType, zoomInfo: Tiled2dMapZoomInfo): Tiled2dMapRasterLayerInterface {
+        val layer = Tiled2dMapRasterLayerInterface.create(
+            SwisstopoTiledLayerConfigFactory.createRasterTileLayerConfigWithZoomInfo(
+                layerType,
+                zoomInfo
+            ), loader
+        )
+        val gpsLayerInterface = gpsLayer?.asLayerInterface()
+        if (gpsLayerInterface != null) {
+            insertLayerBelow(layer.asLayerInterface(), gpsLayerInterface)
+        } else {
+            addLayer(layer.asLayerInterface())
+        }
+        return layer
+    }
+
     override fun addSwisstopoLayer(identifier: String): Tiled2dMapRasterLayerInterface {
         val layer = swisstopoWmtsResource.createLayer(identifier, loader)
+        val gpsLayerInterface = gpsLayer?.asLayerInterface()
+        if (gpsLayerInterface != null) {
+            insertLayerBelow(layer.asLayerInterface(), gpsLayerInterface)
+        } else {
+            addLayer(layer.asLayerInterface())
+        }
+        return layer
+    }
+
+    override fun addSwisstopoLayer(identifier: String, zoomInfo: Tiled2dMapZoomInfo): Tiled2dMapRasterLayerInterface {
+        val layer = swisstopoWmtsResource.createLayerWithZoomInfo(identifier, loader, zoomInfo)
         val gpsLayerInterface = gpsLayer?.asLayerInterface()
         if (gpsLayerInterface != null) {
             insertLayerBelow(layer.asLayerInterface(), gpsLayerInterface)
