@@ -3,8 +3,8 @@
 
 #include "NativeSwisstopoLayerFactory.h"  // my header
 #include "Marshal.hpp"
+#include "NativeLoaderInterface.h"
 #include "NativeSwisstopoLayerType.h"
-#include "NativeTextureLoaderInterface.h"
 #include "NativeTiled2dMapRasterLayerInterface.h"
 #include "NativeTiled2dMapZoomInfo.h"
 #include "NativeWmtsLayerDescription.h"
@@ -24,24 +24,24 @@ CJNIEXPORT void JNICALL Java_ch_admin_geo_openswissmaps_shared_layers_SwisstopoL
     } JNI_TRANSLATE_EXCEPTIONS_RETURN(jniEnv, )
 }
 
-CJNIEXPORT ::djinni_generated::NativeTiled2dMapRasterLayerInterface::JniType JNICALL Java_ch_admin_geo_openswissmaps_shared_layers_SwisstopoLayerFactory_00024CppProxy_createSwisstopoTiledRasterLayer(JNIEnv* jniEnv, jobject /*this*/, ::djinni_generated::NativeSwisstopoLayerType::JniType j_layerType, ::djinni_generated::NativeTextureLoaderInterface::JniType j_textureLoader)
+CJNIEXPORT ::djinni_generated::NativeTiled2dMapRasterLayerInterface::JniType JNICALL Java_ch_admin_geo_openswissmaps_shared_layers_SwisstopoLayerFactory_00024CppProxy_createSwisstopoTiledRasterLayer(JNIEnv* jniEnv, jobject /*this*/, ::djinni_generated::NativeSwisstopoLayerType::JniType j_layerType, ::djinni_generated::NativeLoaderInterface::JniType j_loader)
 {
     try {
         DJINNI_FUNCTION_PROLOGUE0(jniEnv);
         auto r = ::SwisstopoLayerFactory::createSwisstopoTiledRasterLayer(::djinni_generated::NativeSwisstopoLayerType::toCpp(jniEnv, j_layerType),
-                                                                          ::djinni_generated::NativeTextureLoaderInterface::toCpp(jniEnv, j_textureLoader));
+                                                                          ::djinni_generated::NativeLoaderInterface::toCpp(jniEnv, j_loader));
         return ::djinni::release(::djinni_generated::NativeTiled2dMapRasterLayerInterface::fromCpp(jniEnv, r));
     } JNI_TRANSLATE_EXCEPTIONS_RETURN(jniEnv, 0 /* value doesn't matter */)
 }
 
-CJNIEXPORT ::djinni_generated::NativeTiled2dMapRasterLayerInterface::JniType JNICALL Java_ch_admin_geo_openswissmaps_shared_layers_SwisstopoLayerFactory_00024CppProxy_createSwisstopoTiledRasterLayerFromMetadata(JNIEnv* jniEnv, jobject /*this*/, ::djinni_generated::NativeWmtsLayerDescription::JniType j_description, jint j_maxZoom, ::djinni_generated::NativeTiled2dMapZoomInfo::JniType j_zoomInfo, ::djinni_generated::NativeTextureLoaderInterface::JniType j_textureLoader)
+CJNIEXPORT ::djinni_generated::NativeTiled2dMapRasterLayerInterface::JniType JNICALL Java_ch_admin_geo_openswissmaps_shared_layers_SwisstopoLayerFactory_00024CppProxy_createSwisstopoTiledRasterLayerFromMetadata(JNIEnv* jniEnv, jobject /*this*/, ::djinni_generated::NativeWmtsLayerDescription::JniType j_description, jint j_maxZoom, ::djinni_generated::NativeTiled2dMapZoomInfo::JniType j_zoomInfo, ::djinni_generated::NativeLoaderInterface::JniType j_loader)
 {
     try {
         DJINNI_FUNCTION_PROLOGUE0(jniEnv);
         auto r = ::SwisstopoLayerFactory::createSwisstopoTiledRasterLayerFromMetadata(::djinni_generated::NativeWmtsLayerDescription::toCpp(jniEnv, j_description),
                                                                                       ::djinni::I32::toCpp(jniEnv, j_maxZoom),
                                                                                       ::djinni_generated::NativeTiled2dMapZoomInfo::toCpp(jniEnv, j_zoomInfo),
-                                                                                      ::djinni_generated::NativeTextureLoaderInterface::toCpp(jniEnv, j_textureLoader));
+                                                                                      ::djinni_generated::NativeLoaderInterface::toCpp(jniEnv, j_loader));
         return ::djinni::release(::djinni_generated::NativeTiled2dMapRasterLayerInterface::fromCpp(jniEnv, r));
     } JNI_TRANSLATE_EXCEPTIONS_RETURN(jniEnv, 0 /* value doesn't matter */)
 }
