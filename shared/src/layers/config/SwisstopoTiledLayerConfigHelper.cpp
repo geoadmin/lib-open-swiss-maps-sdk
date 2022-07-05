@@ -31,7 +31,7 @@ std::vector<Tiled2dMapZoomLevelInfo> SwisstopoTiledLayerConfigHelper::getZoomLev
         Tiled2dMapZoomLevelInfo(8928.57142857, 640, 750, 500, 22, getBounds()),   Tiled2dMapZoomLevelInfo(7142.85714286, 512, 938, 625, 23, getBounds()),
         Tiled2dMapZoomLevelInfo(5357.14285714, 384, 1250, 834, 24, getBounds()),  Tiled2dMapZoomLevelInfo(3571.42857143, 256, 1875, 1250, 25, getBounds()),
         Tiled2dMapZoomLevelInfo(1785.71428571, 128, 3750, 2500, 26, getBounds()), Tiled2dMapZoomLevelInfo(892.857142857, 64, 7500, 5000, 27, getBounds()),
-        Tiled2dMapZoomLevelInfo(357.142857143, 32, 15000, 10000, 28, getBounds())};
+        Tiled2dMapZoomLevelInfo(357.142857143, 25.6, 18750, 12500, 28, getBounds())};
 }
 
 RectCoord SwisstopoTiledLayerConfigHelper::getBounds() {
