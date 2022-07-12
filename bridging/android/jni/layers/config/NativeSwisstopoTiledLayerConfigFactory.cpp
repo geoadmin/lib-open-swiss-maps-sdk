@@ -42,6 +42,17 @@ CJNIEXPORT ::djinni_generated::NativeTiled2dMapLayerConfig::JniType JNICALL Java
     } JNI_TRANSLATE_EXCEPTIONS_RETURN(jniEnv, 0 /* value doesn't matter */)
 }
 
+CJNIEXPORT ::djinni_generated::NativeTiled2dMapLayerConfig::JniType JNICALL Java_ch_admin_geo_openswissmaps_shared_layers_config_SwisstopoTiledLayerConfigFactory_00024CppProxy_createRasterTileLayerConfigWithBaseUrl(JNIEnv* jniEnv, jobject /*this*/, jobject j_layerType, ::djinni_generated::NativeTiled2dMapZoomInfo::Boxed::JniType j_zoomInfo, jstring j_baseUrl)
+{
+    try {
+        DJINNI_FUNCTION_PROLOGUE0(jniEnv);
+        auto r = ::SwisstopoTiledLayerConfigFactory::createRasterTileLayerConfigWithBaseUrl(::djinni_generated::NativeSwisstopoLayerType::toCpp(jniEnv, j_layerType),
+                                                                                            ::djinni::Optional<std::optional, ::djinni_generated::NativeTiled2dMapZoomInfo>::toCpp(jniEnv, j_zoomInfo),
+                                                                                            ::djinni::Optional<std::optional, ::djinni::String>::toCpp(jniEnv, j_baseUrl));
+        return ::djinni::release(::djinni_generated::NativeTiled2dMapLayerConfig::fromCpp(jniEnv, r));
+    } JNI_TRANSLATE_EXCEPTIONS_RETURN(jniEnv, 0 /* value doesn't matter */)
+}
+
 CJNIEXPORT ::djinni_generated::NativeTiled2dMapLayerConfig::JniType JNICALL Java_ch_admin_geo_openswissmaps_shared_layers_config_SwisstopoTiledLayerConfigFactory_00024CppProxy_createRasterTiledLayerConfigFromMetadata(JNIEnv* jniEnv, jobject /*this*/, ::djinni_generated::NativeWmtsLayerDescription::JniType j_configuration, jint j_maxZoom, ::djinni_generated::NativeTiled2dMapZoomInfo::JniType j_zoomInfo)
 {
     try {

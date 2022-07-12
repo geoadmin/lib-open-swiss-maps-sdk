@@ -39,5 +39,7 @@ swisstopo_tiled_layer_config_factory = interface +c {
 
 	static create_raster_tile_layer_config_with_zoom_info(layer_type: swisstopo_layer_type, zoomInfo: optional<tiled_2d_map_zoom_info>) : tiled_2d_map_layer_config;
 
+	static create_raster_tile_layer_config_with_base_url(layer_type: swisstopo_layer_type, zoomInfo: optional<tiled_2d_map_zoom_info>, base_url: optional<string>) : tiled_2d_map_layer_config;
+
     static create_raster_tiled_layer_config_from_metadata(configuration: wmts_layer_description, maxZoom: i32, zoomInfo: tiled_2d_map_zoom_info) : tiled_2d_map_layer_config;
 }

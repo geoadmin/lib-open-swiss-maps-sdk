@@ -15,6 +15,10 @@
 + (nullable id<MCTiled2dMapLayerConfig>)createRasterTileLayerConfigWithZoomInfo:(STSDKSwisstopoLayerType)layerType
                                                                        zoomInfo:(nullable MCTiled2dMapZoomInfo *)zoomInfo;
 
++ (nullable id<MCTiled2dMapLayerConfig>)createRasterTileLayerConfigWithBaseUrl:(STSDKSwisstopoLayerType)layerType
+                                                                      zoomInfo:(nullable MCTiled2dMapZoomInfo *)zoomInfo
+                                                                       baseUrl:(nullable NSString *)baseUrl;
+
 + (nullable id<MCTiled2dMapLayerConfig>)createRasterTiledLayerConfigFromMetadata:(nonnull MCWmtsLayerDescription *)configuration
                                                                          maxZoom:(int32_t)maxZoom
                                                                         zoomInfo:(nonnull MCTiled2dMapZoomInfo *)zoomInfo;
