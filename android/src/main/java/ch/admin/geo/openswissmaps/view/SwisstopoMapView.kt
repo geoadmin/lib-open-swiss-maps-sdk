@@ -77,8 +77,8 @@ class SwisstopoMapView @JvmOverloads constructor(context: Context, attrs: Attrib
         requireMapInterface().getCamera().setZoom(ZOOM_MIN_DEFAULT, false)
     }
 
-    fun setupMap(loaders: ArrayList<LoaderInterface>? = null) {
-        loaders?.let { this.loaders = it }
+    fun setupMap(loaders: List<LoaderInterface>? = null) {
+        loaders?.let { this.loaders = it.toCollection(ArrayList()) }
     }
 
     override fun onDestroy() {
