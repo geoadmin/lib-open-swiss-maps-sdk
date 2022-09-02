@@ -36,10 +36,10 @@ static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for th
 }
 
 + (nullable MCTiled2dMapRasterLayerInterface *)createSwisstopoTiledRasterLayer:(STSDKSwisstopoLayerType)layerType
-                                                                        loader:(nullable id<MCLoaderInterface>)loader {
+                                                                   tileLoaders:(nonnull NSArray<id<MCLoaderInterface>> *)tileLoaders {
     try {
         auto objcpp_result_ = ::SwisstopoLayerFactory::createSwisstopoTiledRasterLayer(::djinni::Enum<::SwisstopoLayerType, STSDKSwisstopoLayerType>::toCpp(layerType),
-                                                                                       ::djinni_generated::LoaderInterface::toCpp(loader));
+                                                                                       ::djinni::List<::djinni_generated::LoaderInterface>::toCpp(tileLoaders));
         return ::djinni_generated::Tiled2dMapRasterLayerInterface::fromCpp(objcpp_result_);
     } DJINNI_TRANSLATE_EXCEPTIONS()
 }
@@ -47,12 +47,12 @@ static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for th
 + (nullable MCTiled2dMapRasterLayerInterface *)createSwisstopoTiledRasterLayerFromMetadata:(nonnull MCWmtsLayerDescription *)description
                                                                                    maxZoom:(int32_t)maxZoom
                                                                                   zoomInfo:(nonnull MCTiled2dMapZoomInfo *)zoomInfo
-                                                                                    loader:(nullable id<MCLoaderInterface>)loader {
+                                                                               tileLoaders:(nonnull NSArray<id<MCLoaderInterface>> *)tileLoaders {
     try {
         auto objcpp_result_ = ::SwisstopoLayerFactory::createSwisstopoTiledRasterLayerFromMetadata(::djinni_generated::WmtsLayerDescription::toCpp(description),
                                                                                                    ::djinni::I32::toCpp(maxZoom),
                                                                                                    ::djinni_generated::Tiled2dMapZoomInfo::toCpp(zoomInfo),
-                                                                                                   ::djinni_generated::LoaderInterface::toCpp(loader));
+                                                                                                   ::djinni::List<::djinni_generated::LoaderInterface>::toCpp(tileLoaders));
         return ::djinni_generated::Tiled2dMapRasterLayerInterface::fromCpp(objcpp_result_);
     } DJINNI_TRANSLATE_EXCEPTIONS()
 }
