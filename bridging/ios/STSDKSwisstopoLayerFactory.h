@@ -12,11 +12,11 @@
 @interface STSDKSwisstopoLayerFactory : NSObject
 
 + (nullable MCTiled2dMapRasterLayerInterface *)createSwisstopoTiledRasterLayer:(STSDKSwisstopoLayerType)layerType
-                                                                        loader:(nullable id<MCLoaderInterface>)loader;
+                                                                   tileLoaders:(nonnull NSArray<id<MCLoaderInterface>> *)tileLoaders;
 
 + (nullable MCTiled2dMapRasterLayerInterface *)createSwisstopoTiledRasterLayerFromMetadata:(nonnull MCWmtsLayerDescription *)description
                                                                                    maxZoom:(int32_t)maxZoom
                                                                                   zoomInfo:(nonnull MCTiled2dMapZoomInfo *)zoomInfo
-                                                                                    loader:(nullable id<MCLoaderInterface>)loader;
+                                                                               tileLoaders:(nonnull NSArray<id<MCLoaderInterface>> *)tileLoaders;
 
 @end

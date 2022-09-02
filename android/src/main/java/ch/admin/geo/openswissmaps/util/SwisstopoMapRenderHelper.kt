@@ -15,7 +15,7 @@ class SwisstopoMapRenderHelper : MapRenderHelper() {
 		fun renderMap(
 			context: Context,
 			coroutineScope: CoroutineScope,
-			loader: LoaderInterface? = null,
+			loaders: ArrayList<LoaderInterface>? = null,
 			onSetupMap: (SwisstopoMapViewInterface) -> Unit,
 			onStateUpdate: (MapViewRenderState) -> Unit,
 			renderBounds: RectCoord,
@@ -26,7 +26,7 @@ class SwisstopoMapRenderHelper : MapRenderHelper() {
 			onStateUpdate.invoke(MapViewRenderState.Loading)
 
 			val mapRenderer = SwisstopoOffscreenMapRenderer(context, coroutineScope, renderSizePx, renderDensity)
-			mapRenderer.setupMap(loader)
+			mapRenderer.setupMap(loaders)
 			onSetupMap(mapRenderer)
 
 			render(mapRenderer, renderBounds, renderTimeoutSeconds, onStateUpdate)
