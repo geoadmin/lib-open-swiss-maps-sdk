@@ -173,7 +173,7 @@ SwisstopoTiledLayerConfigFactory::createRasterTileLayerConfigWithBaseUrl(Swissto
     auto configuration = WmtsLayerDescription(identifier, "", "", dimensions, SwisstopoTiledLayerConfigHelper::getBounds(), "2056", url + identifier +
                                               "/default/{Time}/2056/{TileMatrix}/{TileCol}/{TileRow}." + extension, "image/"+extension);
 
-    auto finalZoomInfo = zoomInfo.has_value() ? *zoomInfo : Tiled2dMapZoomInfo(0.65, numDrawPreviousLayers, true);
+    auto finalZoomInfo = zoomInfo.has_value() ? *zoomInfo : Tiled2dMapZoomInfo(0.65, numDrawPreviousLayers, true, false);
 
     return createRasterTiledLayerConfigFromMetadata(configuration, maxZoom, finalZoomInfo);
 }
