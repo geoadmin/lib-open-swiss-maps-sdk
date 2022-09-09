@@ -29,7 +29,7 @@ class SwisstopoOffscreenMapRenderer(context: Context, coroutineScope: CoroutineS
 		WmtsCapabilitiesResource.create(str)
 	}
 
-	var baseLayerZoomInfo = Tiled2dMapZoomInfo(1.0f, 0, false)
+	var baseLayerZoomInfo = Tiled2dMapZoomInfo(1.0f, 0, false, false)
 	var baseLayer: Tiled2dMapRasterLayerInterface? = null
 		private set
 
