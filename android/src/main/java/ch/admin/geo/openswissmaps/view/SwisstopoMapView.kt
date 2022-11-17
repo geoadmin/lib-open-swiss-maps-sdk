@@ -70,7 +70,7 @@ class SwisstopoMapView @JvmOverloads constructor(context: Context, attrs: Attrib
                 recycle()
             }
         }
-        setupMap(swisstopoMapConfig, useMSAA)
+        setupMap(swisstopoMapConfig, useMSAA = useMSAA)
         createBaseLayer(BASE_LAYER_TYPE_DEFAULT)
         requireMapInterface().getCamera().setMinZoom(ZOOM_MIN_DEFAULT)
         requireMapInterface().getCamera().setMaxZoom(ZOOM_MAX_DEFAULT)
