@@ -1,23 +1,59 @@
+import com.vanniktech.maven.publish.SonatypeHost
+
 buildscript {
-	ext.kotlin_version = "1.6.21"
+	ext.readProperty = { paramName -> readPropertyWithDefault(paramName, null) }
+	ext.readPropertyWithDefault = { paramName, defaultValue ->
+		if (project.hasProperty(paramName)) {
+			return project.getProperties().get(paramName)
+		} else {
+			Properties properties = new Properties()
+			if (project.rootProject.file('local.properties').exists()) {
+				properties.load(project.rootProject.file('local.properties').newDataInputStream())
+			}
+			if (properties.getProperty(paramName) != null) {
+				return properties.getProperty(paramName)
+			} else {
+				return defaultValue
+			}
+		}
+	}
+
+	ext {
+		kotlin_version = "1.8.0"
+
+		ubiqueUrl = System.getenv('UBIQUE_ARTIFACTORY_URL') ?: readPropertyWithDefault('ubiqueArtifactoryUrl', '')
+		ubiqueUser = System.getenv('UBIQUE_ARTIFACTORY_USER') ?: readPropertyWithDefault('ubiqueArtifactoryUser', '')
+		ubiquePass = System.getenv('UBIQUE_ARTIFACTORY_PASS') ?: readPropertyWithDefault('ubiqueArtifactoryPass', '')
+		ubiqueMaven = {
+			url = ubiqueUrl
+			credentials {
+				username = ubiqueUser
+				password = ubiquePass
+			}
+			authentication {
+				basic(BasicAuthentication)
+				digest(DigestAuthentication)
+			}
+		}
+	}
 	repositories {
 		google()
+		maven ubiqueMaven
 		mavenCentral()
-		jcenter()
 	}
 	dependencies {
-		classpath "com.android.tools.build:gradle:7.1.3"
+		classpath 'com.android.tools.build:gradle:7.4.0'
 		classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 
-		classpath 'com.vanniktech:gradle-maven-publish-plugin:0.18.0'
+		classpath 'com.vanniktech:gradle-maven-publish-plugin:0.24.0'
 		classpath 'org.jetbrains.dokka:dokka-gradle-plugin:1.7.10'
 	}
 }
 
 repositories {
 	google()
+	maven ubiqueMaven
 	mavenCentral()
-	jcenter()
 }
 
 apply plugin: 'com.android.library'
@@ -25,11 +61,11 @@ apply plugin: 'kotlin-android'
 apply plugin: 'com.vanniktech.maven.publish'
 
 android {
-	compileSdkVersion 31
+	compileSdkVersion 33
 
 	defaultConfig {
 		minSdkVersion 23
-		targetSdkVersion 31
+		targetSdkVersion 33
 		versionCode Integer.parseInt(VERSION_CODE)
 		versionName VERSION_NAME
 
@@ -115,40 +151,37 @@ task copyHeaders() {
 }
 preBuild.dependsOn copyHeaders
 
-ext.readProperty = { paramName -> readPropertyWithDefault(paramName, null) }
-ext.readPropertyWithDefault = { paramName, defaultValue ->
-	if (project.hasProperty(paramName)) {
-		return project.getProperties().get(paramName)
-	} else {
-		Properties properties = new Properties()
-		if (project.rootProject.file('local.properties').exists()) {
-			properties.load(project.rootProject.file('local.properties').newDataInputStream())
-		}
-		if (properties.getProperty(paramName) != null) {
-			return properties.getProperty(paramName)
-		} else {
-			return defaultValue
+publishing {
+	repositories {
+		maven {
+			name = "UbiqueMaven"
+			url = ubiqueUrl
+			credentials {
+				username = ubiqueUser
+				password = ubiquePass
+			}
 		}
 	}
 }
 
-mavenPublish {
-	androidVariantToPublish = PUBLISH_VARIANT
+mavenPublishing {
+	publishToMavenCentral(SonatypeHost.S01, true)
+	signAllPublications()
 }
 
 dependencies {
 	implementation fileTree(dir: 'libs', include: ['*.jar'])
 	implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
-	implementation "androidx.annotation:annotation:1.4.0"
+	implementation "androidx.annotation:annotation:1.5.0"
 	implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.5.1"
-	implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.1"
+	implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4"
 
-	api "io.openmobilemaps:mapscore-dev:1.4.1.219"
-	api "io.openmobilemaps:layer-gps-dev:1.0.0.101"
+	api "io.openmobilemaps:mapscore-dev:1.4.1.228"
+	api "io.openmobilemaps:layer-gps-dev:1.0.0.106"
 
 	testImplementation "junit:junit:4.13.2"
 	testImplementation 'androidx.test:core:1.5.0'
-	androidTestImplementation "androidx.test.ext:junit:1.1.4"
+	androidTestImplementation "androidx.test.ext:junit:1.1.5"
 }
 
 clean.doLast {
