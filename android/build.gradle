@@ -176,8 +176,8 @@ dependencies {
 	implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.5.1"
 	implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4"
 
-	api "io.openmobilemaps:mapscore-dev:1.4.1.228"
-	api "io.openmobilemaps:layer-gps-dev:1.0.0.106"
+	api "io.openmobilemaps:mapscore-dev:1.4.1.231"
+	api "io.openmobilemaps:layer-gps-dev:1.0.0.109"
 
 	testImplementation "junit:junit:4.13.2"
 	testImplementation 'androidx.test:core:1.5.0'
