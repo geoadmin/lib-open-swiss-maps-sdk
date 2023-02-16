@@ -23,8 +23,8 @@
         "package": "MapCore",
         "repositoryURL": "https://github.com/openmobilemaps/maps-core.git",
         "state": {
-          "branch": "hotfix/rega-app",
-          "revision": "74ffd9fec1e8ce375b4a2b6a7fc76a569511743a",
+          "branch": "hotfix/rega",
+          "revision": "781ca17e83dba6b0a03ac5a5cfe58480f4274033",
           "version": null
         }
       }
