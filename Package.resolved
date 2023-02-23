@@ -24,7 +24,7 @@
         "repositoryURL": "https://github.com/openmobilemaps/maps-core.git",
         "state": {
           "branch": "develop",
-          "revision": "de861338b6eab8ca3f532a6e99289bb4a7a023fb",
+          "revision": "2bbdeda12b181666f2e28d1760a998b2d9a2bff8",
           "version": null
         }
       },
@@ -33,8 +33,8 @@
         "repositoryURL": "https://github.com/UbiqueInnovation/ubkit-ios",
         "state": {
           "branch": null,
-          "revision": "dd32ca845cb177a1dd59783c6a43a00db3584667",
-          "version": "1.5.0"
+          "revision": "31f82e9cec073bb9c23d86a015a9f7f6bef773db",
+          "version": "1.7.0"
         }
       }
     ]
