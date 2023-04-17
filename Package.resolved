@@ -14,18 +14,18 @@
         "package": "LayerGps",
         "repositoryURL": "https://github.com/openmobilemaps/layer-gps.git",
         "state": {
-          "branch": "develop",
-          "revision": "99d28d9b8f1021393af04ea39185eb8dc11ecfef",
-          "version": null
+          "branch": null,
+          "revision": "62b05675dac6cf05d235b20554a2170e4af1b8a7",
+          "version": "1.5.1"
         }
       },
       {
         "package": "MapCore",
         "repositoryURL": "https://github.com/openmobilemaps/maps-core.git",
         "state": {
-          "branch": "develop",
-          "revision": "5238545ffe12fd1dbc2599392e720cfcf49cbbae",
-          "version": null
+          "branch": null,
+          "revision": "747131429bf6816e6e982ac0257b0528b547bc0a",
+          "version": "1.5.1"
         }
       },
       {
@@ -33,8 +33,8 @@
         "repositoryURL": "https://github.com/UbiqueInnovation/ubkit-ios",
         "state": {
           "branch": null,
-          "revision": "31f82e9cec073bb9c23d86a015a9f7f6bef773db",
-          "version": "1.7.0"
+          "revision": "24357ead412bfd322c60664e471711749ffdc26b",
+          "version": "1.7.4"
         }
       }
     ]

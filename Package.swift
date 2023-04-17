@@ -25,10 +25,10 @@ let package = Package(
     dependencies: [
         .package(name: "MapCore",
                  url: "https://github.com/openmobilemaps/maps-core.git",
-                 .branch("develop")),
+                 .upToNextMajor(from: "1.5.1")),
         .package(name: "LayerGps",
                  url: "https://github.com/openmobilemaps/layer-gps.git",
-                 .branch("develop")),
+                 .upToNextMajor(from: "1.5.1")),
     ],
     targets: [
         .target(

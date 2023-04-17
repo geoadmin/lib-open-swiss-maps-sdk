@@ -1,5 +1,9 @@
 # Open Swiss Maps SDK
 
+## Version 1.5.1 (17.04.2022)
+- update [mapscore to 1.5.1](https://github.com/openmobilemaps/maps-core/releases/tag/1.5.1)
+- update [gps-layer to 1.5.1](https://github.com/openmobilemaps/layer-gps/releases/tag/1.5.1)
+
 ## Version 1.1.4 (16.08.2021)
 - Fixed a memory leak for Android
 - update [mapscore to 1.3.3](https://github.com/openmobilemaps/maps-core/releases/tag/1.3.3)
