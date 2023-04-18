@@ -5,7 +5,7 @@
 @extern "../../../maps-core/djinni/yaml/tiled_2d_map_zoom_info.yaml"
 
 swisstopo_layer_factory = interface +c {
-	static create_swisstopo_tiled_raster_layer(layer_type: swisstopo_layer_type, loader: loader_interface) : tiled_2d_map_raster_layer_interface;
+	static create_swisstopo_tiled_raster_layer(layer_type: swisstopo_layer_type, tile_loaders: list<loader_interface>) : tiled_2d_map_raster_layer_interface;
 
-    static create_swisstopo_tiled_raster_layer_from_metadata(description: wmts_layer_description, maxZoom: i32, zoomInfo: tiled_2d_map_zoom_info, loader: loader_interface) : tiled_2d_map_raster_layer_interface;
+    static create_swisstopo_tiled_raster_layer_from_metadata(description: wmts_layer_description, maxZoom: i32, zoomInfo: tiled_2d_map_zoom_info, tile_loaders: list<loader_interface>) : tiled_2d_map_raster_layer_interface;
 }

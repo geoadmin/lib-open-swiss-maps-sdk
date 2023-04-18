@@ -1,4 +1,4 @@
-// swift-tools-version:5.3
+// swift-tools-version:5.5
 
 import PackageDescription
 
@@ -6,6 +6,7 @@ let package = Package(
     name: "SwisstopoMapSDK",
     platforms: [
         .iOS(.v11),
+        .macOS(.v12)
     ],
     products: [
         .library(
@@ -24,10 +25,10 @@ let package = Package(
     dependencies: [
         .package(name: "MapCore",
                  url: "https://github.com/openmobilemaps/maps-core.git",
-                  .upToNextMajor(from: "1.4.0")),
+                 .upToNextMajor(from: "1.5.1")),
         .package(name: "LayerGps",
                  url: "https://github.com/openmobilemaps/layer-gps.git",
-                  .upToNextMajor(from: "1.0.0")),
+                 .upToNextMajor(from: "1.5.1")),
     ],
     targets: [
         .target(
@@ -69,5 +70,5 @@ let package = Package(
             ]
         ),
     ],
-    cxxLanguageStandard: .cxx1z
+    cxxLanguageStandard: .cxx17
 )

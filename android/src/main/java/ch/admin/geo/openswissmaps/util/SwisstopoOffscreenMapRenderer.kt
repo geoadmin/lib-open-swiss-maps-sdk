@@ -29,11 +29,13 @@ class SwisstopoOffscreenMapRenderer(context: Context, coroutineScope: CoroutineS
 		WmtsCapabilitiesResource.create(str)
 	}
 
-	var baseLayerZoomInfo = Tiled2dMapZoomInfo(1.0f, 0, false)
+	var baseLayerZoomInfo = Tiled2dMapZoomInfo(1.0f, 0, false, false, true, true)
 	var baseLayer: Tiled2dMapRasterLayerInterface? = null
 		private set
 
-	var loader: LoaderInterface = DataLoader(context, context.cacheDir, 50L * 1024L * 1024L, RequestUtils.getDefaultReferer(context))
+	var loaders = arrayListOf(
+		DataLoader(context, context.cacheDir, 50L * 1024L * 1024L, RequestUtils.getDefaultReferer(context)) as LoaderInterface
+	)
 		private set
 
 	init {
@@ -41,14 +43,14 @@ class SwisstopoOffscreenMapRenderer(context: Context, coroutineScope: CoroutineS
 		createBaseLayer(BASE_LAYER_TYPE_DEFAULT)
 	}
 
-	fun setupMap(loader: LoaderInterface? = null) {
-		loader?.let { this.loader = it }
+	fun setupMap(loaders: ArrayList<LoaderInterface>? = null) {
+		loaders?.let { this.loaders = it }
 	}
 
 	private fun createBaseLayer(layerType: SwisstopoLayerType) {
 		val newBaseLayer = Tiled2dMapRasterLayerInterface.create(
 			SwisstopoTiledLayerConfigFactory.createRasterTileLayerConfigWithZoomInfo(layerType, baseLayerZoomInfo),
-			loader
+			loaders
 		)
 		requireMapInterface().addLayer(newBaseLayer.asLayerInterface())
 		baseLayer = newBaseLayer
@@ -61,7 +63,7 @@ class SwisstopoOffscreenMapRenderer(context: Context, coroutineScope: CoroutineS
 				SwisstopoTiledLayerConfigFactory.createRasterTileLayerConfigWithZoomInfo(
 					layerType,
 					baseLayerZoomInfo
-				), loader
+				), loaders
 			)
 			requireMapInterface().insertLayerAt(newLayer.asLayerInterface(), 0)
 			baseLayer?.getCallbackHandler()?.let { newLayer.setCallbackHandler(it) }
@@ -72,7 +74,7 @@ class SwisstopoOffscreenMapRenderer(context: Context, coroutineScope: CoroutineS
 	override fun setBaseLayerType(identifier: String) {
 		baseLayer?.let { requireMapInterface().removeLayer(it.asLayerInterface()) }
 		baseLayer = if (identifier.isNotEmpty()) {
-			val newLayer = swisstopoWmtsResource.createLayer(identifier, loader)
+			val newLayer = swisstopoWmtsResource.createLayer(identifier, loaders)
 			requireMapInterface().insertLayerAt(newLayer.asLayerInterface(), 0)
 			baseLayer?.getCallbackHandler()?.let { newLayer.setCallbackHandler(it) }
 			newLayer
@@ -85,25 +87,25 @@ class SwisstopoOffscreenMapRenderer(context: Context, coroutineScope: CoroutineS
 	}
 
 	override fun addSwisstopoLayer(layerType: SwisstopoLayerType): Tiled2dMapRasterLayerInterface {
-		val layer = Tiled2dMapRasterLayerInterface.create(SwisstopoTiledLayerConfigFactory.createRasterTileLayerConfig(layerType), loader)
+		val layer = Tiled2dMapRasterLayerInterface.create(SwisstopoTiledLayerConfigFactory.createRasterTileLayerConfig(layerType), loaders)
 		addLayer(layer.asLayerInterface())
 		return layer
 	}
 
 	override fun addSwisstopoLayer(layerType: SwisstopoLayerType, zoomInfo: Tiled2dMapZoomInfo): Tiled2dMapRasterLayerInterface {
-		val layer = Tiled2dMapRasterLayerInterface.create(SwisstopoTiledLayerConfigFactory.createRasterTileLayerConfigWithZoomInfo(layerType, zoomInfo), loader)
+		val layer = Tiled2dMapRasterLayerInterface.create(SwisstopoTiledLayerConfigFactory.createRasterTileLayerConfigWithZoomInfo(layerType, zoomInfo), loaders)
 		addLayer(layer.asLayerInterface())
 		return layer
 	}
 
 	override fun addSwisstopoLayer(identifier: String): Tiled2dMapRasterLayerInterface {
-		val layer = swisstopoWmtsResource.createLayer(identifier, loader)
+		val layer = swisstopoWmtsResource.createLayer(identifier, loaders)
 		addLayer(layer.asLayerInterface())
 		return layer
 	}
 
 	override fun addSwisstopoLayer(identifier: String, zoomInfo: Tiled2dMapZoomInfo): Tiled2dMapRasterLayerInterface {
-		val layer = swisstopoWmtsResource.createLayerWithZoomInfo(identifier, loader, zoomInfo)
+		val layer = swisstopoWmtsResource.createLayerWithZoomInfo(identifier, loaders, zoomInfo)
 		addLayer(layer.asLayerInterface())
 		return layer
 	}

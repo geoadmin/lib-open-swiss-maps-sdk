@@ -1,23 +1,59 @@
+import com.vanniktech.maven.publish.SonatypeHost
+
 buildscript {
-	ext.kotlin_version = "1.5.30"
+	ext.readProperty = { paramName -> readPropertyWithDefault(paramName, null) }
+	ext.readPropertyWithDefault = { paramName, defaultValue ->
+		if (project.hasProperty(paramName)) {
+			return project.getProperties().get(paramName)
+		} else {
+			Properties properties = new Properties()
+			if (project.rootProject.file('local.properties').exists()) {
+				properties.load(project.rootProject.file('local.properties').newDataInputStream())
+			}
+			if (properties.getProperty(paramName) != null) {
+				return properties.getProperty(paramName)
+			} else {
+				return defaultValue
+			}
+		}
+	}
+
+	ext {
+		kotlin_version = "1.8.0"
+
+		ubiqueUrl = System.getenv('UBIQUE_ARTIFACTORY_URL') ?: readPropertyWithDefault('ubiqueArtifactoryUrl', '')
+		ubiqueUser = System.getenv('UBIQUE_ARTIFACTORY_USER') ?: readPropertyWithDefault('ubiqueArtifactoryUser', '')
+		ubiquePass = System.getenv('UBIQUE_ARTIFACTORY_PASS') ?: readPropertyWithDefault('ubiqueArtifactoryPass', '')
+		ubiqueMaven = {
+			url = ubiqueUrl
+			credentials {
+				username = ubiqueUser
+				password = ubiquePass
+			}
+			authentication {
+				basic(BasicAuthentication)
+				digest(DigestAuthentication)
+			}
+		}
+	}
 	repositories {
 		google()
+		maven ubiqueMaven
 		mavenCentral()
-		jcenter()
 	}
 	dependencies {
-		classpath "com.android.tools.build:gradle:7.0.2"
+		classpath 'com.android.tools.build:gradle:7.4.0'
 		classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 
-		classpath 'com.vanniktech:gradle-maven-publish-plugin:0.18.0'
-		classpath 'org.jetbrains.dokka:dokka-gradle-plugin:1.4.10.2'
+		classpath 'com.vanniktech:gradle-maven-publish-plugin:0.24.0'
+		classpath 'org.jetbrains.dokka:dokka-gradle-plugin:1.7.10'
 	}
 }
 
 repositories {
 	google()
+	maven ubiqueMaven
 	mavenCentral()
-	jcenter()
 }
 
 apply plugin: 'com.android.library'
@@ -25,11 +61,11 @@ apply plugin: 'kotlin-android'
 apply plugin: 'com.vanniktech.maven.publish'
 
 android {
-	compileSdkVersion 30
+	compileSdkVersion 33
 
 	defaultConfig {
 		minSdkVersion 23
-		targetSdkVersion 30
+		targetSdkVersion 33
 		versionCode Integer.parseInt(VERSION_CODE)
 		versionName VERSION_NAME
 
@@ -115,40 +151,37 @@ task copyHeaders() {
 }
 preBuild.dependsOn copyHeaders
 
-ext.readProperty = { paramName -> readPropertyWithDefault(paramName, null) }
-ext.readPropertyWithDefault = { paramName, defaultValue ->
-	if (project.hasProperty(paramName)) {
-		return project.getProperties().get(paramName)
-	} else {
-		Properties properties = new Properties()
-		if (project.rootProject.file('local.properties').exists()) {
-			properties.load(project.rootProject.file('local.properties').newDataInputStream())
-		}
-		if (properties.getProperty(paramName) != null) {
-			return properties.getProperty(paramName)
-		} else {
-			return defaultValue
+publishing {
+	repositories {
+		maven {
+			name = "UbiqueMaven"
+			url = ubiqueUrl
+			credentials {
+				username = ubiqueUser
+				password = ubiquePass
+			}
 		}
 	}
 }
 
-mavenPublish {
-	androidVariantToPublish = PUBLISH_VARIANT
+mavenPublishing {
+	publishToMavenCentral(SonatypeHost.S01, true)
+	signAllPublications()
 }
 
 dependencies {
 	implementation fileTree(dir: 'libs', include: ['*.jar'])
 	implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
-	implementation "androidx.annotation:annotation:1.1.0"
-	implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.2.0"
-	implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.2"
+	implementation "androidx.annotation:annotation:1.5.0"
+	implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.5.1"
+	implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4"
 
-	api "io.openmobilemaps:mapscore:1.4.0"
-	api "io.openmobilemaps:layer-gps:1.0.0"
+	api "io.openmobilemaps:mapscore:1.5.1"
+	api "io.openmobilemaps:layer-gps:1.5.1"
 
-	testImplementation "junit:junit:4.13.1"
-	androidTestImplementation "androidx.test.ext:junit:1.1.2"
-	androidTestImplementation "androidx.test.espresso:espresso-core:3.3.0"
+	testImplementation "junit:junit:4.13.2"
+	testImplementation 'androidx.test:core:1.5.0'
+	androidTestImplementation "androidx.test.ext:junit:1.1.5"
 }
 
 clean.doLast {

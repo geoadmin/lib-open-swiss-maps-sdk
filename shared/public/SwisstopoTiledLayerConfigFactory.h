@@ -9,6 +9,7 @@
 #include <cstdint>
 #include <memory>
 #include <optional>
+#include <string>
 
 enum class SwisstopoLayerType;
 
@@ -19,6 +20,8 @@ public:
     static std::shared_ptr<::Tiled2dMapLayerConfig> createRasterTileLayerConfig(SwisstopoLayerType layerType);
 
     static std::shared_ptr<::Tiled2dMapLayerConfig> createRasterTileLayerConfigWithZoomInfo(SwisstopoLayerType layerType, const std::optional<::Tiled2dMapZoomInfo> & zoomInfo);
+
+    static std::shared_ptr<::Tiled2dMapLayerConfig> createRasterTileLayerConfigWithBaseUrl(SwisstopoLayerType layerType, const std::optional<::Tiled2dMapZoomInfo> & zoomInfo, const std::optional<std::string> & baseUrl);
 
     static std::shared_ptr<::Tiled2dMapLayerConfig> createRasterTiledLayerConfigFromMetadata(const ::WmtsLayerDescription & configuration, int32_t maxZoom, const ::Tiled2dMapZoomInfo & zoomInfo);
 };
