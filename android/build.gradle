@@ -64,7 +64,7 @@ android {
 	compileSdkVersion 33
 
 	defaultConfig {
-		minSdkVersion 23
+		minSdkVersion 26
 		targetSdkVersion 33
 		versionCode Integer.parseInt(VERSION_CODE)
 		versionName VERSION_NAME
@@ -99,6 +99,7 @@ android {
 			java {
 				srcDir 'src/main/java'
 				srcDir '../bridging/android/java'
+				srcDir '../external/djinni/support-lib/java'
 			}
 		}
 	}
@@ -176,8 +177,8 @@ dependencies {
 	implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.5.1"
 	implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4"
 
-	api "io.openmobilemaps:mapscore:1.5.2"
-	api "io.openmobilemaps:layer-gps:1.5.2"
+	api "io.openmobilemaps:mapscore-dev:1.5.1.252"
+	api "io.openmobilemaps:layer-gps-dev:1.5.1.117"
 
 	testImplementation 'junit:junit:4.13.2'
 	androidTestImplementation 'androidx.test.ext:junit:1.1.5'
