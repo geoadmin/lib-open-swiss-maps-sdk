@@ -12,7 +12,7 @@
 #include "CoordinateSystemIdentifiers.h"
 #include "SwisstopoLayerType.h"
 #include "SwisstopoTiledLayerConfigHelper.h"
-#include "WmtsLayerConfiguration.h"
+#include "WmtsLayerDescription.h"
 #include "WmtsTiled2dMapLayerConfigFactory.h"
 #include <cmath>
 

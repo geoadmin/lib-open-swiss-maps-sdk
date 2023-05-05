@@ -47,6 +47,7 @@ jobs:
           sed -i "/^POM_ARTIFACT_ID=/s/.*/POM_ARTIFACT_ID=${{ steps.vars.outputs.artifactId }}/" android/gradle.properties
 
           cd android
+          chmod 0777 gradlew
           ./gradlew publishAllPublicationsToUbiqueMavenRepository -Psigning.secretKeyRingFile=$GITHUB_WORKSPACE/signingkey.gpg -Psigning.password=$SIGNING_KEY_PASSWORD -Psigning.keyId=$SIGNING_KEY_ID
           echo "### Maven Dependency" >> $GITHUB_STEP_SUMMARY
           echo "| Git Commit | Artifact ID | Maven Version |" >> $GITHUB_STEP_SUMMARY
