@@ -1,7 +1,1 @@
 rootProject.name='openswissmaps'
-includeBuild('../../layer-gps/android') {
-	setName("layergps")
-	dependencySubstitution {
-		substitute module('io.openmobilemaps:layer-gps-dev') with project(':')
-	}
-}
