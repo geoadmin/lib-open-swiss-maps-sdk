@@ -99,7 +99,6 @@ android {
 			java {
 				srcDir 'src/main/java'
 				srcDir '../bridging/android/java'
-				srcDir '../external/djinni/support-lib/java'
 			}
 		}
 	}
@@ -177,8 +176,10 @@ dependencies {
 	implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.5.1"
 	implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4"
 
-	api "io.openmobilemaps:mapscore-dev:1.5.3.261"
-	api "io.openmobilemaps:layer-gps-dev:1.5.3.121"
+	api "io.openmobilemaps:mapscore-dev:1.5.3.263"
+	api "io.openmobilemaps:layer-gps-dev:1.5.3.122"
+
+	implementation "ch.ubique.android:djinni-support-lib:0.1.0"
 
 	testImplementation 'junit:junit:4.13.2'
 	androidTestImplementation 'androidx.test.ext:junit:1.1.5'
