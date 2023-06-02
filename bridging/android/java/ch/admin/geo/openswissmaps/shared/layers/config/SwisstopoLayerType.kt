@@ -32,4 +32,5 @@ enum class SwisstopoLayerType {
     SKI_TOUR_ROUTEN,
     DROHNEN,
     SCHUTZGEBIETE_LUFTFAHRT,
+    EISZEIT,
 }

@@ -34,6 +34,7 @@ enum class SwisstopoLayerType : int {
     SKI_TOUR_ROUTEN = 25,
     DROHNEN = 26,
     SCHUTZGEBIETE_LUFTFAHRT = 27,
+    EISZEIT = 28,
 };
 
 constexpr const char* toString(SwisstopoLayerType e) noexcept {
@@ -66,6 +67,7 @@ constexpr const char* toString(SwisstopoLayerType e) noexcept {
         "SKI_TOUR_ROUTEN",
         "DROHNEN",
         "SCHUTZGEBIETE_LUFTFAHRT",
+        "EISZEIT",
     };
     return names[static_cast<int>(e)];
 }

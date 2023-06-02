@@ -165,6 +165,10 @@ SwisstopoTiledLayerConfigFactory::createRasterTileLayerConfigWithBaseUrl(Swissto
         identifier = "ch.bafu.schutzgebiete-luftfahrt";
         maxZoom = 25;
         break;
+    case SwisstopoLayerType::EISZEIT:
+        identifier = "ch.swisstopo.geologie-eiszeit-lgm-raster";
+        maxZoom = 20;
+        break;
     }
 
 
