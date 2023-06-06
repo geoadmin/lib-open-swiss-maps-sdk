@@ -33,4 +33,5 @@ typedef NS_ENUM(NSInteger, STSDKSwisstopoLayerType)
     STSDKSwisstopoLayerTypeSKI_TOUR_ROUTEN = 25,
     STSDKSwisstopoLayerTypeDROHNEN = 26,
     STSDKSwisstopoLayerTypeSCHUTZGEBIETE_LUFTFAHRT = 27,
+    STSDKSwisstopoLayerTypeEISZEIT = 28,
 };

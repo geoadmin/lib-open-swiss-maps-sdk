@@ -32,6 +32,7 @@ swisstopo_layer_type = enum
     SKI_TOUR_ROUTEN;
     DROHNEN;
     SCHUTZGEBIETE_LUFTFAHRT;
+    EISZEIT;
 }
 
 swisstopo_tiled_layer_config_factory = interface +c {
