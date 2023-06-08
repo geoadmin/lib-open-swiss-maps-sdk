@@ -19,7 +19,7 @@ buildscript {
 	}
 
 	ext {
-		kotlin_version = "1.8.0"
+		kotlin_version = "1.8.21"
 
 		ubiqueUrl = System.getenv('UBIQUE_ARTIFACTORY_URL') ?: readPropertyWithDefault('ubiqueArtifactoryUrl', '')
 		ubiqueUser = System.getenv('UBIQUE_ARTIFACTORY_USER') ?: readPropertyWithDefault('ubiqueArtifactoryUser', '')
@@ -42,7 +42,7 @@ buildscript {
 		mavenCentral()
 	}
 	dependencies {
-		classpath 'com.android.tools.build:gradle:7.4.0'
+		classpath 'com.android.tools.build:gradle:8.0.2'
 		classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 
 		classpath 'com.vanniktech:gradle-maven-publish-plugin:0.24.0'
@@ -61,6 +61,8 @@ apply plugin: 'kotlin-android'
 apply plugin: 'com.vanniktech.maven.publish'
 
 android {
+	namespace "ch.admin.geo.openswissmaps"
+
 	compileSdkVersion 33
 
 	defaultConfig {
@@ -101,6 +103,15 @@ android {
 				srcDir '../bridging/android/java'
 			}
 		}
+	}
+
+	compileOptions {
+		sourceCompatibility JavaVersion.VERSION_17
+		targetCompatibility JavaVersion.VERSION_17
+	}
+
+	kotlinOptions {
+		jvmTarget = '17'
 	}
 
 	buildFeatures {
@@ -172,12 +183,12 @@ mavenPublishing {
 dependencies {
 	implementation fileTree(dir: 'libs', include: ['*.jar'])
 	implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
-	implementation "androidx.annotation:annotation:1.5.0"
-	implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.5.1"
-	implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4"
+	implementation "androidx.annotation:annotation:1.6.0"
+	implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.6.1"
+	implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.0"
 
-	api "io.openmobilemaps:mapscore-dev:1.5.3.277"
-	api "io.openmobilemaps:layer-gps-dev:1.5.3.125"
+	api "io.openmobilemaps:mapscore-dev:1.5.3.279"
+	api "io.openmobilemaps:layer-gps-dev:1.5.3.126"
 
 	implementation "ch.ubique.android:djinni-support-lib:1.0.0"
 
