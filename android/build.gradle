@@ -45,7 +45,7 @@ buildscript {
 		classpath 'com.android.tools.build:gradle:8.0.2'
 		classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 
-		classpath 'com.vanniktech:gradle-maven-publish-plugin:0.24.0'
+		classpath 'com.vanniktech:gradle-maven-publish-plugin:0.25.2'
 		classpath 'org.jetbrains.dokka:dokka-gradle-plugin:1.7.10'
 	}
 }
@@ -187,8 +187,8 @@ dependencies {
 	implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.6.1"
 	implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.0"
 
-	api "io.openmobilemaps:mapscore-dev:1.5.3.279"
-	api "io.openmobilemaps:layer-gps-dev:1.5.3.126"
+	api "io.openmobilemaps:mapscore-dev:1.5.3.281"
+	api "io.openmobilemaps:layer-gps-dev:1.5.3.127"
 
 	implementation "ch.ubique.android:djinni-support-lib:1.0.0"
 
