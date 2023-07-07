@@ -75,7 +75,7 @@ mapView.setBaseLayerType(SwisstopoLayerType.SWISSIMAGE)
 New layers can easily be created on either the `SwisstopoMapView` directly or be added to it after using the `SwisstopoLayerFactory`. Their transparency value can be adjusted by calling `setAlpha` on the layer object.
 
 ```Kotlin
-val layer = mapView.addSwisstopoLayer(SwisstopoLayerType.Drohnen)
+val layer = mapView.addSwisstopoLayer(SwisstopoLayerType.DROHNEN)
 ```
 
  ```Kotlin
