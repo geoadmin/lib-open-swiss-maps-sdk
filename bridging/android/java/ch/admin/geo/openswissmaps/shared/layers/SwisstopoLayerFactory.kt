@@ -26,6 +26,9 @@ abstract class SwisstopoLayerFactory {
             NativeObjectManager.register(this, nativeRef)
         }
 
-        external fun nativeDestroy(nativeRef: Long)
+        companion object {
+            @JvmStatic
+            external fun nativeDestroy(nativeRef: Long)
+        }
     }
 }
