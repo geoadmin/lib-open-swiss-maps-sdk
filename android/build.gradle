@@ -76,7 +76,7 @@ android {
 		externalNativeBuild {
 			cmake {
 				arguments "-DANDROID_STL=c++_shared"
-				cppFlags "-std=c++17 -frtti -fexceptions"
+				cppFlags "-std=c++17 -frtti -fexceptions -O0 "
 			}
 		}
 	}
@@ -188,8 +188,8 @@ dependencies {
 	implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.6.1"
 	implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.0"
 
-	api "io.openmobilemaps:mapscore-dev:1.5.3.357"
-	api "io.openmobilemaps:layer-gps-dev:1.5.3.144"
+	api "io.openmobilemaps:mapscore-dev:1.5.3.376"
+	api "io.openmobilemaps:layer-gps-dev:1.5.3.146"
 
 	implementation "ch.ubique.android:djinni-support-lib:1.0.2"
 
