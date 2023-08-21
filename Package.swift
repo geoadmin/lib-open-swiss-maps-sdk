@@ -28,7 +28,7 @@ let package = Package(
                  .branch("develop")),
         .package(name: "LayerGps",
                  url: "https://github.com/openmobilemaps/layer-gps.git",
-                 .branch("develop")),
+                 .branch("feature/course-direction")),
     ],
     targets: [
         .target(
