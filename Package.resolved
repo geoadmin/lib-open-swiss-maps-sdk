@@ -14,8 +14,8 @@
         "package": "LayerGps",
         "repositoryURL": "https://github.com/openmobilemaps/layer-gps.git",
         "state": {
-          "branch": "develop",
-          "revision": "b6100d307c11714e079b6473412c42c65bb14fb0",
+          "branch": "bugfix/raster-source",
+          "revision": "4a131c777c6fd31df610568b2b5bbf63da129789",
           "version": null
         }
       },

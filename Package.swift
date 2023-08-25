@@ -28,7 +28,7 @@ let package = Package(
                  .branch("bugfix/raster-source")),
         .package(name: "LayerGps",
                  url: "https://github.com/openmobilemaps/layer-gps.git",
-                 .branch("develop")),
+                 .branch("bugfix/raster-source")),
     ],
     targets: [
         .target(
