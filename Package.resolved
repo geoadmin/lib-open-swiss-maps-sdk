@@ -5,27 +5,27 @@
         "package": "DjinniSupport",
         "repositoryURL": "https://github.com/UbiqueInnovation/djinni.git",
         "state": {
-          "branch": null,
-          "revision": "fa5599869ee330886f053db31bb724cd95a01500",
-          "version": "1.0.1"
+          "branch": "master",
+          "revision": "3a9027d2012950b5575368f56bcf13043abafe4a",
+          "version": null
         }
       },
       {
         "package": "LayerGps",
         "repositoryURL": "https://github.com/openmobilemaps/layer-gps.git",
         "state": {
-          "branch": null,
+          "branch": "develop",
           "revision": "b6100d307c11714e079b6473412c42c65bb14fb0",
-          "version": "1.5.1"
+          "version": null
         }
       },
       {
         "package": "MapCore",
         "repositoryURL": "https://github.com/openmobilemaps/maps-core.git",
         "state": {
-          "branch": null,
-          "revision": "8a8a45fa7b0c48aeb76b802692e666360c994d67",
-          "version": "1.5.1"
+          "branch": "bugfix/raster-source",
+          "revision": "dabda42f7c5189c822b08e7347a0c428ccad96d6",
+          "version": null
         }
       },
       {
