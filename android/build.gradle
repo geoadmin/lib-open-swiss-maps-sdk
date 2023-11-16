@@ -188,10 +188,10 @@ dependencies {
 	implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.6.1"
 	implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.0"
 
-	api "io.openmobilemaps:mapscore-dev:1.5.3.478"
-	api "io.openmobilemaps:layer-gps-dev:1.5.3.159"
+	api "io.openmobilemaps:mapscore-dev:1.5.3.488"
+	api "io.openmobilemaps:layer-gps-dev:1.5.3.161"
 
-	implementation "ch.ubique.android:djinni-support-lib:1.0.2"
+	implementation "ch.ubique.android:djinni-support-lib:1.0.4"
 
 	testImplementation 'junit:junit:4.13.2'
 	androidTestImplementation 'androidx.test.ext:junit:1.1.5'
