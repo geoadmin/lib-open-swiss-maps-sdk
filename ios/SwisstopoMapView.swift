@@ -98,7 +98,7 @@ public class SwisstopoMapView: MCMapView {
     }
 
     @discardableResult
-    public func addGpsLayer(style: MCGpsStyleInfo = .defaultStyle, layerIndex: Int? = nil) -> MCGpsLayer {
+    public func addGpsLayer(style: MCGpsStyleInfoInterface = .defaultStyle, layerIndex: Int? = nil) -> MCGpsLayer {
         if let gpsLayer = gpsLayer {
             return gpsLayer
         }
