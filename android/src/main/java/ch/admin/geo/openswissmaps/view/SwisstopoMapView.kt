@@ -22,7 +22,7 @@ import io.openmobilemaps.gps.GpsLayer
 import io.openmobilemaps.gps.GpsProviderType
 import io.openmobilemaps.gps.providers.LocationProviderInterface
 import io.openmobilemaps.gps.shared.gps.GpsMode
-import io.openmobilemaps.gps.shared.gps.GpsStyleInfo
+import io.openmobilemaps.gps.shared.gps.GpsStyleInfoInterface
 import io.openmobilemaps.gps.style.GpsStyleInfoFactory
 import io.openmobilemaps.mapscore.map.loader.DataLoader
 import io.openmobilemaps.mapscore.map.view.MapView
@@ -173,11 +173,11 @@ class SwisstopoMapView @JvmOverloads constructor(context: Context, attrs: Attrib
     }
 
     fun addGpsLayer(lifecycle: Lifecycle,
-                    style: GpsStyleInfo = GpsStyleInfoFactory.createDefaultStyle(context),
+                    style: GpsStyleInfoInterface = GpsStyleInfoFactory.createDefaultStyle(context),
                     providerType: GpsProviderType = GpsProviderType.GPS_ONLY
     ): GpsLayer = addGpsLayer(lifecycle, style, providerType.getProvider(context))
 
-    fun addGpsLayer(lifecycle: Lifecycle, style: GpsStyleInfo = GpsStyleInfoFactory.createDefaultStyle(context),
+    fun addGpsLayer(lifecycle: Lifecycle, style: GpsStyleInfoInterface = GpsStyleInfoFactory.createDefaultStyle(context),
                     locationProvider: LocationProviderInterface, layerIndex: Int? = null): GpsLayer {
         gpsLayer?.let { return it }
         val newGpsLayer = GpsLayer(context, style, locationProvider)
@@ -188,7 +188,7 @@ class SwisstopoMapView @JvmOverloads constructor(context: Context, attrs: Attrib
         }
         newGpsLayer.registerLifecycle(lifecycle)
         newGpsLayer.setMode(GpsMode.STANDARD)
-        newGpsLayer.setHeadingEnabled(style.headingTexture != null)
+        newGpsLayer.setHeadingEnabled(style.getHeadingTexture() != null)
         gpsLayer = newGpsLayer
         return newGpsLayer
     }
