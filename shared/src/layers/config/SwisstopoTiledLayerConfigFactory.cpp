@@ -12,7 +12,7 @@
 #include "CoordinateSystemIdentifiers.h"
 #include "SwisstopoLayerType.h"
 #include "SwisstopoTiledLayerConfigHelper.h"
-#include "WmtsLayerConfiguration.h"
+#include "WmtsLayerDescription.h"
 #include "WmtsTiled2dMapLayerConfigFactory.h"
 #include <cmath>
 
@@ -164,6 +164,10 @@ SwisstopoTiledLayerConfigFactory::createRasterTileLayerConfigWithBaseUrl(Swissto
     case SwisstopoLayerType::SCHUTZGEBIETE_LUFTFAHRT:
         identifier = "ch.bafu.schutzgebiete-luftfahrt";
         maxZoom = 25;
+        break;
+    case SwisstopoLayerType::EISZEIT:
+        identifier = "ch.swisstopo.geologie-eiszeit-lgm-raster";
+        maxZoom = 20;
         break;
     }
 

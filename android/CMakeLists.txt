@@ -25,9 +25,12 @@ file(GLOB_RECURSE cpp_SRC
         "../shared/src/*.hpp"
         "src/main/cpp/*.h"
         "src/main/cpp/*.cpp"
-        "../external/djinni/support-lib/*.h"
-        "../external/djinni/support-lib/*.hpp"
-        "../external/djinni/support-lib/*.cpp"
+        "../external/djinni/support-lib/cpp/*.h"
+        "../external/djinni/support-lib/cpp/*.hpp"
+        "../external/djinni/support-lib/cpp/*.cpp"
+        "../external/djinni/support-lib/jni/*.h"
+        "../external/djinni/support-lib/jni/*.hpp"
+        "../external/djinni/support-lib/jni/*.cpp"
         )
 
 add_library( # Sets the name of the library.
@@ -38,7 +41,8 @@ add_library( # Sets the name of the library.
 
         ${cpp_SRC})
 
-include_directories(../external/djinni/support-lib)
+include_directories(../external/djinni/support-lib/)
+include_directories(../external/djinni/support-lib/cpp)
 include_directories(../external/djinni/support-lib/jni)
 include_directories(../bridging/android/jni/layers)
 include_directories(../bridging/android/jni/layers/config)

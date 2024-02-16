@@ -10,6 +10,6 @@ interface SwisstopoMapViewInterface : MapViewInterface {
 	fun setBaseLayerType(identifier: String)
 	fun addSwisstopoLayer(layerType: SwisstopoLayerType): Tiled2dMapRasterLayerInterface
 	fun addSwisstopoLayer(layerType: SwisstopoLayerType, zoomInfo: Tiled2dMapZoomInfo): Tiled2dMapRasterLayerInterface
-	fun addSwisstopoLayer(identifier: String): Tiled2dMapRasterLayerInterface
-	fun addSwisstopoLayer(identifier: String, zoomInfo: Tiled2dMapZoomInfo): Tiled2dMapRasterLayerInterface
+	fun addSwisstopoLayer(identifier: String): Tiled2dMapRasterLayerInterface?
+	fun addSwisstopoLayer(identifier: String, zoomInfo: Tiled2dMapZoomInfo): Tiled2dMapRasterLayerInterface?
 }

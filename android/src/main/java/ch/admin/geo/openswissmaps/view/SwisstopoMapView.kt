@@ -22,7 +22,7 @@ import io.openmobilemaps.gps.GpsLayer
 import io.openmobilemaps.gps.GpsProviderType
 import io.openmobilemaps.gps.providers.LocationProviderInterface
 import io.openmobilemaps.gps.shared.gps.GpsMode
-import io.openmobilemaps.gps.shared.gps.GpsStyleInfo
+import io.openmobilemaps.gps.shared.gps.GpsStyleInfoInterface
 import io.openmobilemaps.gps.style.GpsStyleInfoFactory
 import io.openmobilemaps.mapscore.map.loader.DataLoader
 import io.openmobilemaps.mapscore.map.view.MapView
@@ -110,9 +110,11 @@ class SwisstopoMapView @JvmOverloads constructor(context: Context, attrs: Attrib
         baseLayer?.let { requireMapInterface().removeLayer(it.asLayerInterface()) }
         baseLayer = if (identifier.isNotEmpty()) {
             val newLayer = swisstopoWmtsResource.createLayer(identifier, loaders)
-            requireMapInterface().insertLayerAt(newLayer.asLayerInterface(), 0)
-            baseLayer?.getCallbackHandler()?.let { newLayer.setCallbackHandler(it) }
-            newLayer
+            if (newLayer != null) {
+                requireMapInterface().insertLayerAt(newLayer.asLayerInterface(), 0)
+                baseLayer?.getCallbackHandler()?.let { newLayer.setCallbackHandler(it) }
+                newLayer
+            } else null
         } else null
     }
 
@@ -148,8 +150,8 @@ class SwisstopoMapView @JvmOverloads constructor(context: Context, attrs: Attrib
         return layer
     }
 
-    override fun addSwisstopoLayer(identifier: String): Tiled2dMapRasterLayerInterface {
-        val layer = swisstopoWmtsResource.createLayer(identifier, loaders)
+    override fun addSwisstopoLayer(identifier: String): Tiled2dMapRasterLayerInterface? {
+        val layer = swisstopoWmtsResource.createLayer(identifier, loaders) ?: return null
         val gpsLayerInterface = gpsLayer?.asLayerInterface()
         if (gpsLayerInterface != null) {
             insertLayerBelow(layer.asLayerInterface(), gpsLayerInterface)
@@ -159,8 +161,8 @@ class SwisstopoMapView @JvmOverloads constructor(context: Context, attrs: Attrib
         return layer
     }
 
-    override fun addSwisstopoLayer(identifier: String, zoomInfo: Tiled2dMapZoomInfo): Tiled2dMapRasterLayerInterface {
-        val layer = swisstopoWmtsResource.createLayerWithZoomInfo(identifier, loaders, zoomInfo)
+    override fun addSwisstopoLayer(identifier: String, zoomInfo: Tiled2dMapZoomInfo): Tiled2dMapRasterLayerInterface? {
+        val layer = swisstopoWmtsResource.createLayerWithZoomInfo(identifier, loaders, zoomInfo) ?: return null
         val gpsLayerInterface = gpsLayer?.asLayerInterface()
         if (gpsLayerInterface != null) {
             insertLayerBelow(layer.asLayerInterface(), gpsLayerInterface)
@@ -171,11 +173,11 @@ class SwisstopoMapView @JvmOverloads constructor(context: Context, attrs: Attrib
     }
 
     fun addGpsLayer(lifecycle: Lifecycle,
-                    style: GpsStyleInfo = GpsStyleInfoFactory.createDefaultStyle(context),
+                    style: GpsStyleInfoInterface = GpsStyleInfoFactory.createDefaultStyle(context),
                     providerType: GpsProviderType = GpsProviderType.GPS_ONLY
     ): GpsLayer = addGpsLayer(lifecycle, style, providerType.getProvider(context))
 
-    fun addGpsLayer(lifecycle: Lifecycle, style: GpsStyleInfo = GpsStyleInfoFactory.createDefaultStyle(context),
+    fun addGpsLayer(lifecycle: Lifecycle, style: GpsStyleInfoInterface = GpsStyleInfoFactory.createDefaultStyle(context),
                     locationProvider: LocationProviderInterface, layerIndex: Int? = null): GpsLayer {
         gpsLayer?.let { return it }
         val newGpsLayer = GpsLayer(context, style, locationProvider)
@@ -186,7 +188,7 @@ class SwisstopoMapView @JvmOverloads constructor(context: Context, attrs: Attrib
         }
         newGpsLayer.registerLifecycle(lifecycle)
         newGpsLayer.setMode(GpsMode.STANDARD)
-        newGpsLayer.setHeadingEnabled(style.headingTexture != null)
+        newGpsLayer.setHeadingEnabled(style.getHeadingTexture() != null)
         gpsLayer = newGpsLayer
         return newGpsLayer
     }

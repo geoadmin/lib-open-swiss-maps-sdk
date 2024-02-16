@@ -19,7 +19,7 @@ buildscript {
 	}
 
 	ext {
-		kotlin_version = "1.8.0"
+		kotlin_version = "1.9.20"
 
 		ubiqueUrl = System.getenv('UBIQUE_ARTIFACTORY_URL') ?: readPropertyWithDefault('ubiqueArtifactoryUrl', '')
 		ubiqueUser = System.getenv('UBIQUE_ARTIFACTORY_USER') ?: readPropertyWithDefault('ubiqueArtifactoryUser', '')
@@ -42,11 +42,11 @@ buildscript {
 		mavenCentral()
 	}
 	dependencies {
-		classpath 'com.android.tools.build:gradle:7.4.0'
+		classpath 'com.android.tools.build:gradle:8.1.2'
 		classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 
-		classpath 'com.vanniktech:gradle-maven-publish-plugin:0.24.0'
-		classpath 'org.jetbrains.dokka:dokka-gradle-plugin:1.7.10'
+		classpath 'com.vanniktech:gradle-maven-publish-plugin:0.25.3'
+		classpath 'org.jetbrains.dokka:dokka-gradle-plugin:1.9.10'
 	}
 }
 
@@ -61,10 +61,12 @@ apply plugin: 'kotlin-android'
 apply plugin: 'com.vanniktech.maven.publish'
 
 android {
+	namespace "ch.admin.geo.openswissmaps"
+
 	compileSdkVersion 33
 
 	defaultConfig {
-		minSdkVersion 23
+		minSdkVersion 26
 		targetSdkVersion 33
 		versionCode Integer.parseInt(VERSION_CODE)
 		versionName VERSION_NAME
@@ -74,7 +76,7 @@ android {
 		externalNativeBuild {
 			cmake {
 				arguments "-DANDROID_STL=c++_shared"
-				cppFlags "-std=c++17 -frtti -fexceptions"
+				cppFlags "-std=c++17 -frtti -fexceptions -O0 "
 			}
 		}
 	}
@@ -101,6 +103,11 @@ android {
 				srcDir '../bridging/android/java'
 			}
 		}
+	}
+
+	compileOptions {
+		sourceCompatibility JavaVersion.VERSION_11
+		targetCompatibility JavaVersion.VERSION_11
 	}
 
 	buildFeatures {
@@ -131,6 +138,11 @@ android {
 		}
 	}
 
+}
+
+project.tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
+	compilerOptions.jvmTarget = org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_11 // Kotlin 1.8+
+	kotlinOptions.jvmTarget = "11" // deprecated since Kotlin 1.8
 }
 
 task copyHeaders() {
@@ -172,12 +184,14 @@ mavenPublishing {
 dependencies {
 	implementation fileTree(dir: 'libs', include: ['*.jar'])
 	implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
-	implementation "androidx.annotation:annotation:1.5.0"
-	implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.5.1"
-	implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4"
+	implementation "androidx.annotation:annotation:1.7.0"
+	implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.6.2"
+	implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3"
 
-	api "io.openmobilemaps:mapscore:1.5.3"
-	api "io.openmobilemaps:layer-gps:1.5.3"
+	api "io.openmobilemaps:mapscore:2.0.0"
+	api "io.openmobilemaps:layer-gps:2.0.0"
+
+	implementation "ch.ubique.android:djinni-support-lib:1.0.6"
 
 	testImplementation 'junit:junit:4.13.2'
 	androidTestImplementation 'androidx.test.ext:junit:1.1.5'
