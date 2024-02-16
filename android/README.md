@@ -41,7 +41,7 @@
 To add the OpenSwissMaps SDK to your Android project, add the following line to your build.gradle
 ```
 dependencies {
-  implementation 'ch.admin.geo.openswissmaps:openswissmaps-sdk:1.5.3'
+  implementation 'ch.admin.geo.openswissmaps:openswissmaps-sdk:2.0.0'
 }
 ```
 Make sure you have mavenCentral() listed in your project repositories. 
@@ -97,7 +97,7 @@ val layer = mapView.addSwisstopoLayer("ch.bafu.neophyten-haargurke")
 or via:
 
 ```Kotlin
-val layer = mapView.swisstopoWmtsResource.createLayer("ch.bafu.neophyten-haargurke", mapView.textureLoader)
+val layer = mapView.swisstopoWmtsResource.createLayer("ch.bafu.neophyten-haargurke", mapView.loaders)
 mapView.addLayer(layer.asLayerInterface())
 ```
 
@@ -113,6 +113,8 @@ mapView.getCamera()
 	3000.0,
 	true)
 ```
+
+Please note, that the MapView must be ready and running to be able to properly compute the requested view bounds. To this end, it provides the `mapViewState` StateFlow that communicates its current `MapViewState`.
 
 One can also change the default values for the camera's bounds and it's zoom range:
 
