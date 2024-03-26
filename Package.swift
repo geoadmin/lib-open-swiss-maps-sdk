@@ -23,19 +23,15 @@ let package = Package(
         ),
     ],
     dependencies: [
-        .package(name: "MapCore",
-                 url: "https://github.com/openmobilemaps/maps-core.git",
-                 .upToNextMinor(from: "2.1.0")),
-        .package(name: "LayerGps",
-                 url: "https://github.com/openmobilemaps/layer-gps.git",
-                 .upToNextMinor(from: "2.1.0")),
+        .package(url: "https://github.com/openmobilemaps/maps-core.git", from: "2.1.0"),
+        .package(url: "https://github.com/openmobilemaps/layer-gps.git", from: "2.1.0")
     ],
     targets: [
         .target(
             name: "SwisstopoMapSDK",
             dependencies: [
-                .product(name: "LayerGps", package: "LayerGps"),
-                .product(name: "MapCore", package: "MapCore"),
+                .product(name: "LayerGps", package: "layer-gps"),
+                .product(name: "MapCore", package: "maps-core"),
                 "SwisstopoMapSDKSharedModule",
             ],
             path: "ios",
@@ -48,7 +44,7 @@ let package = Package(
             name: "SwisstopoMapSDKSharedModule",
             dependencies: [
                 "SwisstopoMapSDKSharedModuleCpp",
-                .product(name: "MapCoreSharedModule", package: "MapCore"),
+                .product(name: "MapCoreSharedModule", package: "maps-core"),
             ],
             path: "bridging/ios",
             publicHeadersPath: ""
@@ -56,7 +52,7 @@ let package = Package(
         .target(
             name: "SwisstopoMapSDKSharedModuleCpp",
             dependencies: [
-                .product(name: "MapCoreSharedModuleCpp", package: "MapCore"),
+                .product(name: "MapCoreSharedModuleCpp", package: "maps-core"),
             ],
             path: "shared",
             sources: ["src"],
