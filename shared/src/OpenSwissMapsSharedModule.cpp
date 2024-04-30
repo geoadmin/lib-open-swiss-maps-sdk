@@ -11,5 +11,5 @@
  #include "OpenSwissMapsSharedModule.h"
 
 std::string OpenSwissMapsSharedModule::version() {
-    return "2.0.0";
+    return "2.0.7";
 }
