@@ -21,9 +21,9 @@ buildscript {
 	ext {
 		kotlin_version = "1.9.20"
 
-		ubiqueUrl = System.getenv('UBIQUE_ARTIFACTORY_URL') ?: readPropertyWithDefault('ubiqueArtifactoryUrl', '')
-		ubiqueUser = System.getenv('UBIQUE_ARTIFACTORY_USER') ?: readPropertyWithDefault('ubiqueArtifactoryUser', '')
-		ubiquePass = System.getenv('UBIQUE_ARTIFACTORY_PASS') ?: readPropertyWithDefault('ubiqueArtifactoryPass', '')
+		ubiqueUrl = System.getenv('UB_ARTIFACTORY_URL_ANDROID') ?: readPropertyWithDefault('ubiqueMavenUrl', '')
+		ubiqueUser = System.getenv('UB_ARTIFACTORY_USERNAME') ?: readPropertyWithDefault('ubiqueMavenUser', '')
+		ubiquePass = System.getenv('UB_ARTIFACTORY_PASSWORD') ?: readPropertyWithDefault('ubiqueMavenPass', '')
 		ubiqueMaven = {
 			url = ubiqueUrl
 			credentials {
