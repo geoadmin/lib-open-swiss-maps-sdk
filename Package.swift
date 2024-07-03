@@ -5,7 +5,7 @@ import PackageDescription
 let package = Package(
     name: "SwisstopoMapSDK",
     platforms: [
-        .iOS(.v11),
+        .iOS(.v13),
         .macOS(.v12)
     ],
     products: [
@@ -24,7 +24,7 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/openmobilemaps/maps-core.git", from: "2.2.0"),
-        .package(url: "https://github.com/openmobilemaps/layer-gps.git", from: "2.2.0")
+        .package(url: "https://github.com/openmobilemaps/layer-gps.git", branch: "feature/swift-6")
     ],
     targets: [
         .target(
