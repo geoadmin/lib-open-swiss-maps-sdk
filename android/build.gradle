@@ -19,7 +19,7 @@ buildscript {
 	}
 
 	ext {
-		kotlin_version = "1.9.20"
+		kotlin_version = "1.9.21"
 
 		ubiqueUrl = System.getenv('UB_ARTIFACTORY_URL_ANDROID') ?: readPropertyWithDefault('ubiqueMavenUrl', '')
 		ubiqueUser = System.getenv('UB_ARTIFACTORY_USERNAME') ?: readPropertyWithDefault('ubiqueMavenUser', '')
@@ -42,7 +42,7 @@ buildscript {
 		mavenCentral()
 	}
 	dependencies {
-		classpath 'com.android.tools.build:gradle:8.1.4'
+		classpath 'com.android.tools.build:gradle:8.2.2'
 		classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 
 		classpath 'com.vanniktech:gradle-maven-publish-plugin:0.25.3'
