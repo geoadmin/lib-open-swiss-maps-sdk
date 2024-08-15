@@ -23,8 +23,8 @@ let package = Package(
         ),
     ],
     dependencies: [
-        .package(url: "https://github.com/openmobilemaps/maps-core.git", from: "2.3.0"),
-        .package(url: "https://github.com/openmobilemaps/layer-gps.git", from: "2.3.0")
+        .package(url: "https://github.com/openmobilemaps/maps-core.git", from: "2.4.0"),
+        .package(url: "https://github.com/openmobilemaps/layer-gps.git", from: "2.4.0")
     ],
     targets: [
         .target(
@@ -55,10 +55,9 @@ let package = Package(
                 .product(name: "MapCoreSharedModuleCpp", package: "maps-core"),
             ],
             path: "shared",
-            sources: ["src"],
+            sources: ["src", "public"],
             publicHeadersPath: "public",
             cxxSettings: [
-                .headerSearchPath("**"),
                 .headerSearchPath("public"),
                 .headerSearchPath("src/config/layers"),
                 .headerSearchPath("src/config"),
