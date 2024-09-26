@@ -6,7 +6,13 @@ import io.openmobilemaps.mapscore.map.util.MapViewRenderState
 import io.openmobilemaps.mapscore.shared.graphics.common.Vec2I
 import io.openmobilemaps.mapscore.shared.map.coordinates.RectCoord
 import io.openmobilemaps.mapscore.shared.map.loader.LoaderInterface
+import io.openmobilemaps.mapscore.shared.map.scheduling.ExecutionEnvironment
+import io.openmobilemaps.mapscore.shared.map.scheduling.TaskConfig
+import io.openmobilemaps.mapscore.shared.map.scheduling.TaskInterface
+import io.openmobilemaps.mapscore.shared.map.scheduling.TaskPriority
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class SwisstopoMapRenderHelper : MapRenderHelper() {
 
@@ -29,7 +35,15 @@ class SwisstopoMapRenderHelper : MapRenderHelper() {
 			mapRenderer.setupMap(loaders)
 			onSetupMap(mapRenderer)
 
-			render(mapRenderer, renderBounds, renderTimeoutSeconds, onStateUpdate)
+			mapRenderer.requireMapInterface().getScheduler().addTask(object : TaskInterface() {
+				override fun getConfig() = TaskConfig("render_task_start", 0, TaskPriority.NORMAL, ExecutionEnvironment.GRAPHICS)
+
+				override fun run() {
+					coroutineScope.launch(Dispatchers.Default) {
+						render(mapRenderer, renderBounds, renderTimeoutSeconds, onStateUpdate, true)
+					}
+				}
+			})
 		}
 	}
 
