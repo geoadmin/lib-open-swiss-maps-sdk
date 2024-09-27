@@ -5,8 +5,7 @@ import PackageDescription
 let package = Package(
     name: "SwisstopoMapSDK",
     platforms: [
-        .iOS(.v11),
-        .macOS(.v12)
+        .iOS(.v14)
     ],
     products: [
         .library(
