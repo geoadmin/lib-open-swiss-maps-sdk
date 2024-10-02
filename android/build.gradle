@@ -19,7 +19,8 @@ buildscript {
 	}
 
 	ext {
-		kotlin_version = "1.9.21"
+		agp_version = "8.6.1"
+		kotlin_version = "2.0.20"
 
 		ubiqueUrl = System.getenv('UB_ARTIFACTORY_URL_ANDROID') ?: readPropertyWithDefault('ubiqueMavenUrl', '')
 		ubiqueUser = System.getenv('UB_ARTIFACTORY_USERNAME') ?: readPropertyWithDefault('ubiqueMavenUser', '')
@@ -42,7 +43,7 @@ buildscript {
 		mavenCentral()
 	}
 	dependencies {
-		classpath 'com.android.tools.build:gradle:8.2.2'
+		classpath "com.android.tools.build:gradle:$agp_version"
 		classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 
 		classpath 'com.vanniktech:gradle-maven-publish-plugin:0.25.3'
@@ -188,8 +189,8 @@ dependencies {
 	implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.6.2"
 	implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3"
 
-	api "io.openmobilemaps:mapscore:2.6.0"
-	api "io.openmobilemaps:layer-gps:2.6.0"
+	api "io.openmobilemaps:mapscore:2.6.1"
+	api "io.openmobilemaps:layer-gps:2.6.1"
 	implementation "ch.ubique.android:djinni-support-lib:1.0.7"
 
 	testImplementation 'junit:junit:4.13.2'
