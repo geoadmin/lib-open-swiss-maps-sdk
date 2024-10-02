@@ -1,5 +1,10 @@
 # Open Swiss Maps SDK
 
+## Version 2.6.1
+- Update [mapscore to 2.6.1](https://github.com/openmobilemaps/maps-core/releases/tag/2.6.1)
+- Update [gps-layer to 2.6.1](https://github.com/openmobilemaps/layer-gps/releases/tag/2.6.1)
+- Update to AGP 8.6.1 and Kotlin 2.0.20
+
 ## Version 2.6.0
 - Update [mapscore to 2.6.0](https://github.com/openmobilemaps/maps-core/releases/tag/2.6.0)
 - Update [gps-layer to 2.6.0](https://github.com/openmobilemaps/layer-gps/releases/tag/2.6.0)
