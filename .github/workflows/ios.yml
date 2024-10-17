@@ -17,4 +17,4 @@ jobs:
     - name: Switch to Xcode ${{ env.XCODE_VERSION }}
       run: sudo xcode-select --switch /Applications/${{ env.XCODE_VERSION }}.app
     - name: Build
-      run: xcodebuild -scheme LayerGps -destination 'platform=iOS Simulator,OS=18.0,name=iPhone 16 Pro'
+      run: xcodebuild -scheme SwisstopoMapSDK -destination 'platform=iOS Simulator,OS=18.0,name=iPhone 16 Pro'
