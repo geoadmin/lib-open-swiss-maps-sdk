@@ -6,8 +6,8 @@
         "repositoryURL": "https://github.com/UbiqueInnovation/djinni.git",
         "state": {
           "branch": null,
-          "revision": "01dd31c42ef00a63c839b6fd20cd4895903e0215",
-          "version": "1.0.7"
+          "revision": "f5591eee5bba0aa4aabf1d26de1baa1f61821edb",
+          "version": "1.0.8"
         }
       },
       {
@@ -15,8 +15,8 @@
         "repositoryURL": "https://github.com/openmobilemaps/layer-gps.git",
         "state": {
           "branch": null,
-          "revision": "05bff4bbb103bd1762e3dd4f72b979e151eea2d9",
-          "version": "2.6.1"
+          "revision": "2330be4efb128d0cf2e72ef9f3c16c2d2ae79703",
+          "version": "2.6.2"
         }
       },
       {
@@ -24,8 +24,8 @@
         "repositoryURL": "https://github.com/openmobilemaps/maps-core.git",
         "state": {
           "branch": null,
-          "revision": "929effeff6c122c0e7fa58bf5be5f6b31f5610bf",
-          "version": "2.6.1"
+          "revision": "32258f1c173fe9f60d80863e51a0400967e40149",
+          "version": "2.6.2"
         }
       },
       {
@@ -33,8 +33,8 @@
         "repositoryURL": "https://github.com/UbiqueInnovation/ubkit-ios",
         "state": {
           "branch": null,
-          "revision": "f88275599ee706ca795bf72177c803470438cc28",
-          "version": "1.9.4"
+          "revision": "0afb74223a3c6abcedd7d2542fdef0549104726a",
+          "version": "1.12.5"
         }
       }
     ]
