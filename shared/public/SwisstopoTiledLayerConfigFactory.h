@@ -5,11 +5,13 @@
 
 #include "Tiled2dMapLayerConfig.h"
 #include "Tiled2dMapZoomInfo.h"
+#include "Tiled2dMapZoomLevelInfo.h"
 #include "WmtsLayerDescription.h"
 #include <cstdint>
 #include <memory>
 #include <optional>
 #include <string>
+#include <vector>
 
 enum class SwisstopoLayerType;
 
@@ -24,4 +26,6 @@ public:
     static /*not-null*/ std::shared_ptr<::Tiled2dMapLayerConfig> createRasterTileLayerConfigWithBaseUrl(SwisstopoLayerType layerType, const std::optional<::Tiled2dMapZoomInfo> & zoomInfo, const std::optional<std::string> & baseUrl);
 
     static /*not-null*/ std::shared_ptr<::Tiled2dMapLayerConfig> createRasterTiledLayerConfigFromMetadata(const ::WmtsLayerDescription & configuration, int32_t maxZoom, const ::Tiled2dMapZoomInfo & zoomInfo);
+
+    static std::vector<::Tiled2dMapZoomLevelInfo> createZoomLevelInfos();
 };

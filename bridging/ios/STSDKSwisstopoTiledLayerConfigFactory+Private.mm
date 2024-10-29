@@ -8,6 +8,7 @@
 #import "DJIMarshal+Private.h"
 #import "MCTiled2dMapLayerConfig+Private.h"
 #import "MCTiled2dMapZoomInfo+Private.h"
+#import "MCTiled2dMapZoomLevelInfo+Private.h"
 #import "MCWmtsLayerDescription+Private.h"
 #import "STSDKSwisstopoLayerType+Private.h"
 #include <exception>
@@ -69,6 +70,13 @@ static_assert(__has_feature(objc_arc), "Djinni requires ARC to be enabled for th
                                                                                                            ::djinni::I32::toCpp(maxZoom),
                                                                                                            ::djinni_generated::Tiled2dMapZoomInfo::toCpp(zoomInfo));
         return ::djinni_generated::Tiled2dMapLayerConfig::fromCpp(objcpp_result_);
+    } DJINNI_TRANSLATE_EXCEPTIONS()
+}
+
++ (nonnull NSArray<MCTiled2dMapZoomLevelInfo *> *)createZoomLevelInfos {
+    try {
+        auto objcpp_result_ = ::SwisstopoTiledLayerConfigFactory::createZoomLevelInfos();
+        return ::djinni::List<::djinni_generated::Tiled2dMapZoomLevelInfo>::fromCpp(objcpp_result_);
     } DJINNI_TRANSLATE_EXCEPTIONS()
 }
 

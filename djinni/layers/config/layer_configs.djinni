@@ -1,6 +1,7 @@
 @extern "../../../../maps-core/djinni/yaml/tiled_2d_map_layer_config.yaml"
 @extern "../../../../maps-core/djinni/yaml/wmts_layer_description.yaml"
 @extern "../../../../maps-core/djinni/yaml/tiled_2d_map_zoom_info.yaml"
+@extern "../../../../maps-core/djinni/yaml/tiled_2d_map_zoom_level_info.yaml"
 
 swisstopo_layer_type = enum
 {
@@ -43,4 +44,6 @@ swisstopo_tiled_layer_config_factory = interface +c {
 	static create_raster_tile_layer_config_with_base_url(layer_type: swisstopo_layer_type, zoomInfo: optional<tiled_2d_map_zoom_info>, base_url: optional<string>) : tiled_2d_map_layer_config;
 
     static create_raster_tiled_layer_config_from_metadata(configuration: wmts_layer_description, maxZoom: i32, zoomInfo: tiled_2d_map_zoom_info) : tiled_2d_map_layer_config;
+
+    static create_zoom_level_infos(): list<tiled_2d_map_zoom_level_info>;
 }

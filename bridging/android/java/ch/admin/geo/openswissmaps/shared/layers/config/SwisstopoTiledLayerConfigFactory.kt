@@ -20,6 +20,9 @@ abstract class SwisstopoTiledLayerConfigFactory {
 
         @JvmStatic
         external fun createRasterTiledLayerConfigFromMetadata(configuration: io.openmobilemaps.mapscore.shared.map.layers.tiled.raster.wmts.WmtsLayerDescription, maxZoom: Int, zoomInfo: io.openmobilemaps.mapscore.shared.map.layers.tiled.Tiled2dMapZoomInfo): io.openmobilemaps.mapscore.shared.map.layers.tiled.Tiled2dMapLayerConfig
+
+        @JvmStatic
+        external fun createZoomLevelInfos(): ArrayList<io.openmobilemaps.mapscore.shared.map.layers.tiled.Tiled2dMapZoomLevelInfo>
     }
 
     private class CppProxy : SwisstopoTiledLayerConfigFactory {
