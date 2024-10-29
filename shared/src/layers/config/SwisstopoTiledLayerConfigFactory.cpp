@@ -174,7 +174,7 @@ SwisstopoTiledLayerConfigFactory::createRasterTileLayerConfigWithBaseUrl(Swissto
 
     std::string url = baseUrl.has_value() ? *baseUrl : "https://wmts.geo.admin.ch/1.0.0/";
     auto dimensions = { WmtsLayerDimension("Time", time, {}) };
-    auto configuration = WmtsLayerDescription(identifier, "", "", dimensions, SwisstopoTiledLayerConfigHelper::getBounds(), "2056", url + identifier +
+    auto configuration = WmtsLayerDescription(identifier, "", "", dimensions, SwisstopoTiledLayerConfigHelper::bounds, "2056", url + identifier +
                                               "/default/{Time}/2056/{TileMatrix}/{TileCol}/{TileRow}." + extension, "image/"+extension);
 
     auto finalZoomInfo = zoomInfo.has_value() ? *zoomInfo : Tiled2dMapZoomInfo(0.65, numDrawPreviousLayers, 0, true, false, true, true);
@@ -189,5 +189,9 @@ std::shared_ptr<::Tiled2dMapLayerConfig> SwisstopoTiledLayerConfigFactory::creat
     std::vector<Tiled2dMapZoomLevelInfo> subvector = {zoomLevels.begin(), itMax };
     zoomLevels = subvector;
 
-    return WmtsTiled2dMapLayerConfigFactory::create(description, zoomLevels, zoomInfo, SwisstopoTiledLayerConfigHelper::getBounds().topLeft.systemIdentifier, "");
+    return WmtsTiled2dMapLayerConfigFactory::create(description, zoomLevels, zoomInfo, SwisstopoTiledLayerConfigHelper::bounds.topLeft.systemIdentifier, "");
+}
+
+std::vector<::Tiled2dMapZoomLevelInfo> SwisstopoTiledLayerConfigFactory::createZoomLevelInfos() {
+    return SwisstopoTiledLayerConfigHelper::getZoomLevelInfos();
 }

@@ -19,5 +19,12 @@ class SwisstopoTiledLayerConfigHelper {
   public:
     static std::vector<Tiled2dMapZoomLevelInfo> getZoomLevelInfos();
 
-    static RectCoord getBounds();
+    static const RectCoord bounds;
+
+    static Tiled2dMapZoomLevelInfo getZoomLevelInfo(double zoom_,
+                                                    float tileWidthLayerSystemUnits_,
+                                                    int32_t numTilesX_,
+                                                    int32_t numTilesY_,
+                                                    int32_t numTilesT_,
+                                                    int32_t zoomLevelIdentifier_);
 };

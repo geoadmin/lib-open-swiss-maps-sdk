@@ -48,7 +48,7 @@ Once you have your Swift package set up, adding Open Mobile Maps as a dependency
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/geoadmin/lib-open-swiss-maps-sdk.git", .upToNextMajor(from: "2.6.2"))
+    .package(url: "https://github.com/geoadmin/lib-open-swiss-maps-sdk.git", .upToNextMajor(from: "3.0.0-rc.2"))
 ]
 ```
 

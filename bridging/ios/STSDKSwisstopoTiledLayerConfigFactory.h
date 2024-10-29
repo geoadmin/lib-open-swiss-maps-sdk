@@ -3,6 +3,7 @@
 
 #import "MCTiled2dMapLayerConfig.h"
 #import "MCTiled2dMapZoomInfo.h"
+#import "MCTiled2dMapZoomLevelInfo.h"
 #import "MCWmtsLayerDescription.h"
 #import "STSDKSwisstopoLayerType.h"
 #import <Foundation/Foundation.h>
@@ -22,5 +23,7 @@
 + (nullable id<MCTiled2dMapLayerConfig>)createRasterTiledLayerConfigFromMetadata:(nonnull MCWmtsLayerDescription *)configuration
                                                                          maxZoom:(int32_t)maxZoom
                                                                         zoomInfo:(nonnull MCTiled2dMapZoomInfo *)zoomInfo;
+
++ (nonnull NSArray<MCTiled2dMapZoomLevelInfo *> *)createZoomLevelInfos;
 
 @end

@@ -6,6 +6,7 @@
 #include "NativeSwisstopoLayerType.h"
 #include "NativeTiled2dMapLayerConfig.h"
 #include "NativeTiled2dMapZoomInfo.h"
+#include "NativeTiled2dMapZoomLevelInfo.h"
 #include "NativeWmtsLayerDescription.h"
 
 namespace djinni_generated {
@@ -56,6 +57,14 @@ CJNIEXPORT ::djinni_generated::NativeTiled2dMapLayerConfig::JniType JNICALL Java
                                                                                               ::djinni::I32::toCpp(jniEnv, j_maxZoom),
                                                                                               ::djinni_generated::NativeTiled2dMapZoomInfo::toCpp(jniEnv, j_zoomInfo));
         return ::djinni::release(::djinni_generated::NativeTiled2dMapLayerConfig::fromCpp(jniEnv, r));
+    } JNI_TRANSLATE_EXCEPTIONS_RETURN(jniEnv, 0 /* value doesn't matter */)
+}
+
+CJNIEXPORT jobject JNICALL Java_ch_admin_geo_openswissmaps_shared_layers_config_SwisstopoTiledLayerConfigFactory_createZoomLevelInfos(JNIEnv* jniEnv, jobject /*this*/)
+{
+    try {
+        auto r = ::SwisstopoTiledLayerConfigFactory::createZoomLevelInfos();
+        return ::djinni::release(::djinni::List<::djinni_generated::NativeTiled2dMapZoomLevelInfo>::fromCpp(jniEnv, r));
     } JNI_TRANSLATE_EXCEPTIONS_RETURN(jniEnv, 0 /* value doesn't matter */)
 }
 
