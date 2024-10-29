@@ -1,5 +1,9 @@
 # Open Swiss Maps SDK
 
+## Version 3.0.0
+- Update [mapscore to 3.0.0-rc.2](https://github.com/openmobilemaps/maps-core/releases/tag/3.0.0-rc.2)
+- Update [gps-layer to 3.0.0-rc.2](https://github.com/openmobilemaps/layer-gps/releases/tag/3.0.0-rc.2)
+
 ## Version 2.6.2
 - Update [mapscore to 2.6.2](https://github.com/openmobilemaps/maps-core/releases/tag/2.6.2)
 - Update [gps-layer to 2.6.2](https://github.com/openmobilemaps/layer-gps/releases/tag/2.6.2)
