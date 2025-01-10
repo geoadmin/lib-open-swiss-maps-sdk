@@ -22,8 +22,8 @@ let package = Package(
         ),
     ],
     dependencies: [
-        .package(url: "https://github.com/openmobilemaps/maps-core", from: .init(stringLiteral: "3.0.0-rc.3")),
-        .package(url: "https://github.com/openmobilemaps/layer-gps.git", from: .init(stringLiteral: "3.0.0-rc.3"))
+        .package(url: "https://github.com/openmobilemaps/maps-core", from: .init(stringLiteral: "3.0.0-rc.4")),
+        .package(url: "https://github.com/openmobilemaps/layer-gps.git", from: .init(stringLiteral: "3.0.0-rc.4"))
     ],
     targets: [
         .target(
