@@ -8,11 +8,10 @@
  *  SPDX-License-Identifier: MPL-2.0
  */
 
-
-@_exported import MapCore
 @_exported import LayerGps
-@_exported import SwisstopoMapSDKSharedModule
+@_exported import MapCore
 @_exported import MapCoreSharedModule
+@_exported import SwisstopoMapSDKSharedModule
 import UIKit
 
 public class SwisstopoMapView: MCMapView {
@@ -26,8 +25,10 @@ public class SwisstopoMapView: MCMapView {
 
     open private(set) var gpsLayer: MCGpsLayer?
 
-    public init(baseLayerType: STSDKSwisstopoLayerType = .PIXELKARTE_FARBE,
-                loaders: [MCLoaderInterface] = [SwisstopoTextureLoader()]) {
+    public init(
+        baseLayerType: STSDKSwisstopoLayerType = .PIXELKARTE_FARBE,
+        loaders: [MCLoaderInterface] = [SwisstopoTextureLoader()]
+    ) {
         self.loaders = loaders
         self.currentBaseLayer = baseLayerType
 
@@ -87,7 +88,7 @@ public class SwisstopoMapView: MCMapView {
         guard let layer = capabilitiesResource.createLayer(identifier, tileLoaders: loaders) else {
             fatalError("Layer does not exist")
         }
-        
+
         if let gpsLayer = gpsLayer {
             insert(layer: layer.asLayerInterface(), below: gpsLayer.asLayerInterface())
         } else {
@@ -112,7 +113,6 @@ public class SwisstopoMapView: MCMapView {
         } else {
             add(layer: layer.asLayerInterface())
         }
-
 
         return layer
     }

@@ -22,7 +22,7 @@ public class SwisstopoTextureLoader: MCTextureLoader {
         referer = "\(bundleIdentifier);\(appVersion);openswissmaps;\(mapsCoreVersion)"
         super.init(urlSession: urlSession)
     }
-    
+
     public override func modifyUrlRequest(request: inout URLRequest) {
         request.setValue(referer, forHTTPHeaderField: "referer")
     }

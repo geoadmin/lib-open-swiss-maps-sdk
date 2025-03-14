@@ -9,8 +9,8 @@
  */
 
 import Foundation
-import MapCoreSharedModule
 import MapCore
+import MapCoreSharedModule
 
 public class SwisstopoCapabilitiesResource {
 
