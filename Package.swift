@@ -23,7 +23,7 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/openmobilemaps/maps-core", from: .init(stringLiteral: "3.0.0-rc.4")),
-        .package(url: "https://github.com/openmobilemaps/layer-gps.git", from: .init(stringLiteral: "3.0.0-rc.4"))
+        .package(url: "https://github.com/openmobilemaps/layer-gps.git", from: .init(stringLiteral: "3.0.0-rc.4")),
     ],
     targets: [
         .target(
@@ -36,7 +36,7 @@ let package = Package(
             path: "ios",
             exclude: ["README.md", "docs/install_readme.md"],
             resources: [
-                .copy("resources/wmts/WMTSCapabilities_2056.xml"),
+                .copy("resources/wmts/WMTSCapabilities_2056.xml")
             ]
         ),
         .target(
@@ -51,7 +51,7 @@ let package = Package(
         .target(
             name: "SwisstopoMapSDKSharedModuleCpp",
             dependencies: [
-                .product(name: "MapCoreSharedModuleCpp", package: "maps-core"),
+                .product(name: "MapCoreSharedModuleCpp", package: "maps-core")
             ],
             path: "shared",
             sources: ["src", "public"],
