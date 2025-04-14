@@ -22,8 +22,8 @@ let package = Package(
         ),
     ],
     dependencies: [
-        .package(url: "https://github.com/openmobilemaps/maps-core", from: .init(stringLiteral: "3.0.0")),
-        .package(url: "https://github.com/openmobilemaps/layer-gps.git", from: .init(stringLiteral: "3.0.0"))
+        .package(url: "https://github.com/openmobilemaps/maps-core", from: "3.0.0"),
+        .package(url: "https://github.com/openmobilemaps/layer-gps.git", from: "3.0.0")
     ],
     targets: [
         .target(
@@ -50,14 +50,15 @@ let package = Package(
         .target(
             name: "SwisstopoMapSDKSharedModuleCpp",
             dependencies: [
+                .product(name: "MapCoreSharedModuleCpp", package: "maps-core")
             ],
             path: "shared",
             sources: ["src", "public"],
             publicHeadersPath: "public",
             cxxSettings: [
                 .headerSearchPath("public"),
-                .headerSearchPath("src/config/layers"),
-                .headerSearchPath("src/config"),
+                .headerSearchPath("src/layers/config"),
+                .headerSearchPath("src/layers"),
                 .headerSearchPath("src"),
             ]
         ),
