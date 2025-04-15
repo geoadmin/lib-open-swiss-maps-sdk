@@ -22,8 +22,8 @@ let package = Package(
         ),
     ],
     dependencies: [
-        .package(url: "https://github.com/openmobilemaps/maps-core", from: .init(stringLiteral: "3.0.0-rc.4")),
-        .package(url: "https://github.com/openmobilemaps/layer-gps.git", from: .init(stringLiteral: "3.0.0-rc.4")),
+        .package(url: "https://github.com/openmobilemaps/maps-core", from: "3.0.0"),
+        .package(url: "https://github.com/openmobilemaps/layer-gps.git", from: "3.0.0")
     ],
     targets: [
         .target(
@@ -36,7 +36,6 @@ let package = Package(
             path: "ios",
             exclude: ["README.md", "docs/install_readme.md"],
             resources: [
-                .copy("resources/wmts/WMTSCapabilities_2056.xml")
             ]
         ),
         .target(
@@ -58,8 +57,8 @@ let package = Package(
             publicHeadersPath: "public",
             cxxSettings: [
                 .headerSearchPath("public"),
-                .headerSearchPath("src/config/layers"),
-                .headerSearchPath("src/config"),
+                .headerSearchPath("src/layers/config"),
+                .headerSearchPath("src/layers"),
                 .headerSearchPath("src"),
             ]
         ),
