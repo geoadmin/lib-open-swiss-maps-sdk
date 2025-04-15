@@ -1,5 +1,10 @@
 # Open Swiss Maps SDK
 
+## Version 3.1.0
+- Update [mapscore to 3.1.0](https://github.com/openmobilemaps/maps-core/releases/tag/3.1.0)
+- Update [gps-layer to 3.1.0](https://github.com/openmobilemaps/layer-gps/releases/tag/3.1.0)
+- Update to AGP 8.8.1 and Kotlin 2.1.10
+
 ## Version 3.0.0
 - Update [mapscore to 3.0.0](https://github.com/openmobilemaps/maps-core/releases/tag/3.0.0)
 - Update [gps-layer to 3.0.0](https://github.com/openmobilemaps/layer-gps/releases/tag/3.0.0)
