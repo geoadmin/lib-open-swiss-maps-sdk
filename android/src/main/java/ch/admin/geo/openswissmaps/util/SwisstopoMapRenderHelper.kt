@@ -25,6 +25,7 @@ class SwisstopoMapRenderHelper : MapRenderHelper() {
 			onSetupMap: (SwisstopoMapViewInterface) -> Unit,
 			onStateUpdate: (MapViewRenderState) -> Unit,
 			renderBounds: RectCoord,
+			boundsPaddingPc: Float = 0.0f,
 			renderSizePx: Vec2I,
 			renderDensity: Float = 72f,
 			renderTimeoutSeconds: Float = 20f
@@ -40,7 +41,7 @@ class SwisstopoMapRenderHelper : MapRenderHelper() {
 
 				override fun run() {
 					coroutineScope.launch(Dispatchers.Default) {
-						render(mapRenderer, renderBounds, renderTimeoutSeconds, onStateUpdate, true)
+						render(mapRenderer, renderBounds, renderTimeoutSeconds, onStateUpdate, true, boundsPaddingPc)
 					}
 				}
 			})

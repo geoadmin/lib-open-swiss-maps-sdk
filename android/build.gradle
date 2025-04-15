@@ -19,8 +19,8 @@ buildscript {
 	}
 
 	ext {
-		agp_version = "8.7.2"
-		kotlin_version = "2.0.21"
+		agp_version = "8.8.1"
+		kotlin_version = "2.1.10"
 
 		ubiqueUrl = System.getenv('UB_ARTIFACTORY_URL_ANDROID') ?: readPropertyWithDefault('ubiqueMavenUrl', '')
 		ubiqueUser = System.getenv('UB_ARTIFACTORY_USER') ?: readPropertyWithDefault('ubiqueMavenUser', '')
@@ -189,8 +189,8 @@ dependencies {
 	implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.8.7"
 	implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.9.0"
 
-	api "io.openmobilemaps:mapscore:3.0.0"
-	api "io.openmobilemaps:layer-gps:3.0.0"
+	api "io.openmobilemaps:mapscore:3.1.0"
+	api "io.openmobilemaps:layer-gps:3.1.0"
 	implementation "ch.ubique.android:djinni-support-lib:1.0.9"
 
 	testImplementation 'junit:junit:4.13.2'
