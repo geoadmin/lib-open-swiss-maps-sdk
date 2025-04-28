@@ -1,5 +1,8 @@
 # Open Swiss Maps SDK
 
+## Version 3.1.2
+- Update [mapscore to 3.1.2](https://github.com/openmobilemaps/maps-core/releases/tag/3.1.2)
+
 ## Version 3.1.1
 - Update [mapscore to 3.1.1](https://github.com/openmobilemaps/maps-core/releases/tag/3.1.1)
 
