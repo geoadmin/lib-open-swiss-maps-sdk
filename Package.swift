@@ -36,6 +36,7 @@ let package = Package(
             path: "ios",
             exclude: ["README.md", "docs/install_readme.md"],
             resources: [
+                .process("resources/wmts/WMTSCapabilities_2056.xml")
             ]
         ),
         .target(
