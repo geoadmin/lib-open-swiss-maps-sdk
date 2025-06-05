@@ -10,7 +10,7 @@
 
 import Foundation
 import MapCore
-import MapCoreSharedModule
+@preconcurrency import MapCoreSharedModule
 
 public class SwisstopoCapabilitiesResource {
 

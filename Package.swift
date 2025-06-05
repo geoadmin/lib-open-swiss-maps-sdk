@@ -1,4 +1,4 @@
-// swift-tools-version:5.5
+// swift-tools-version:6.1
 
 import PackageDescription
 
@@ -22,8 +22,8 @@ let package = Package(
         ),
     ],
     dependencies: [
-        .package(url: "https://github.com/openmobilemaps/maps-core", from: "3.1.3"),
-        .package(url: "https://github.com/openmobilemaps/layer-gps.git", from: "3.1.0")
+        .package(url: "https://github.com/openmobilemaps/maps-core", from: "3.2.0"),
+        .package(url: "https://github.com/openmobilemaps/layer-gps.git", from: "3.2.0")
     ],
     targets: [
         .target(
