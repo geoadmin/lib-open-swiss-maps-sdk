@@ -1,5 +1,10 @@
 # Open Swiss Maps SDK
 
+## Version 3.5.0
+- Update [mapscore to 3.5.0](https://github.com/openmobilemaps/maps-core/releases/tag/3.5.0)
+- Update [gps-layer to 3.5.0](https://github.com/openmobilemaps/layer-gps/releases/tag/3.5.0)
+- Support for 16KB page size on Android (including the upgrade to target sdk 36 of the containing project)
+
 ## Version 3.4.1
 - Update [mapscore to 3.4.1](https://github.com/openmobilemaps/maps-core/releases/tag/3.4.1)
 
