@@ -1,5 +1,11 @@
 # Open Swiss Maps SDK
 
+## Version 2.6.0-16kB
+- Update [mapscore to 2.6.0-16kB](https://github.com/openmobilemaps/maps-core/releases/tag/2.6.0-16kB)
+- Update [gps-layer to 2.6.0-16kB](https://github.com/openmobilemaps/layer-gps/releases/tag/2.6.0-16kB)
+- Update to AGP 8.6.1
+- Support for 16KB page sizes on Android
+
 ## Version 2.6.0
 - Update [mapscore to 2.6.0](https://github.com/openmobilemaps/maps-core/releases/tag/2.6.0)
 - Update [gps-layer to 2.6.0](https://github.com/openmobilemaps/layer-gps/releases/tag/2.6.0)

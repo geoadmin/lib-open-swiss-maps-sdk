@@ -1,5 +1,3 @@
-import com.vanniktech.maven.publish.SonatypeHost
-
 buildscript {
 	ext.readProperty = { paramName -> readPropertyWithDefault(paramName, null) }
 	ext.readPropertyWithDefault = { paramName, defaultValue ->
@@ -42,10 +40,10 @@ buildscript {
 		mavenCentral()
 	}
 	dependencies {
-		classpath 'com.android.tools.build:gradle:8.2.2'
+		classpath 'com.android.tools.build:gradle:8.6.1'
 		classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 
-		classpath 'com.vanniktech:gradle-maven-publish-plugin:0.25.3'
+		classpath 'com.vanniktech:gradle-maven-publish-plugin:0.33.0'
 		classpath 'org.jetbrains.dokka:dokka-gradle-plugin:1.9.10'
 	}
 }
@@ -75,8 +73,8 @@ android {
 		consumerProguardFiles 'consumer-rules.pro'
 		externalNativeBuild {
 			cmake {
-				arguments "-DANDROID_STL=c++_shared"
-				cppFlags "-std=c++17 -frtti -fexceptions -O0 "
+				arguments "-DANDROID_STL=c++_shared", "-DANDROID_SUPPORT_FLEXIBLE_PAGE_SIZES=ON"
+				cppFlags "-std=c++17 -frtti -fexceptions -O2"
 			}
 		}
 	}
@@ -138,6 +136,8 @@ android {
 		}
 	}
 
+	// Latest LTS version (as of July 2025)
+	ndkVersion "27.2.12479018"
 }
 
 project.tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
@@ -177,7 +177,7 @@ publishing {
 }
 
 mavenPublishing {
-	publishToMavenCentral(SonatypeHost.S01, true)
+	publishToMavenCentral(true)
 	signAllPublications()
 }
 
@@ -188,8 +188,8 @@ dependencies {
 	implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.6.2"
 	implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3"
 
-	api "io.openmobilemaps:mapscore:2.6.0"
-	api "io.openmobilemaps:layer-gps:2.6.0"
+	api "io.openmobilemaps:mapscore:2.6.0-16kb"
+	api "io.openmobilemaps:layer-gps:2.6.0-16kb"
 	implementation "ch.ubique.android:djinni-support-lib:1.0.7"
 
 	testImplementation 'junit:junit:4.13.2'
