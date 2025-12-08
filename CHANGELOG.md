@@ -1,5 +1,10 @@
 # Open Swiss Maps SDK
 
+## Version 3.7.0
+- Update [mapscore to 3.7.0](https://github.com/openmobilemaps/maps-core/releases/tag/3.7.0)
+- Update [gps-layer to 3.7.0](https://github.com/openmobilemaps/layer-gps/releases/tag/3.7.0)
+- Update to AGP 8.13.1
+
 ## Version 3.6.1
 - Update [mapscore to 3.6.1](https://github.com/openmobilemaps/maps-core/releases/tag/3.6.1)
 
