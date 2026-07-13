@@ -8,7 +8,11 @@ cpp:
   typename: '::SwisstopoLayerFactory'
   header: '"SwisstopoLayerFactory.h"'
   byValue: false
+kmp:
+  package: 'io.openmobilemaps.openswissmaps.kmp'
+  bridgePrefix: 'KM'
 objc:
+  module: 'swiftPMImport.io.openmobilemaps.openswissmaps.kmp'
   typename: 'STSDKSwisstopoLayerFactory'
   pointer: true
   hash: '%s.hash'

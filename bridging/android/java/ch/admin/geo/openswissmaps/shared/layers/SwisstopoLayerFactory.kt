@@ -16,7 +16,7 @@ abstract class SwisstopoLayerFactory {
         external fun createSwisstopoTiledRasterLayerFromMetadata(description: io.openmobilemaps.mapscore.shared.map.layers.tiled.raster.wmts.WmtsLayerDescription, maxZoom: Int, zoomInfo: io.openmobilemaps.mapscore.shared.map.layers.tiled.Tiled2dMapZoomInfo, tileLoaders: ArrayList<io.openmobilemaps.mapscore.shared.map.loader.LoaderInterface>): io.openmobilemaps.mapscore.shared.map.layers.tiled.raster.Tiled2dMapRasterLayerInterface
     }
 
-    private class CppProxy : SwisstopoLayerFactory {
+    public class CppProxy : SwisstopoLayerFactory {
         private val nativeRef: Long
         private val destroyed: AtomicBoolean = AtomicBoolean(false)
 

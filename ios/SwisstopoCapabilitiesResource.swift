@@ -19,7 +19,7 @@ public class SwisstopoCapabilitiesResource {
     public static let capabilitiesResource: MCWmtsCapabilitiesResource = {
         let url = Bundle.module.url(forResource: "WMTSCapabilities_2056", withExtension: "xml")
         let xml = try! String(contentsOf: url!)
-        let resource = MCWmtsCapabilitiesResource.create(xml)!
+        let resource = try! MCWmtsCapabilitiesResource.from(xmlString: xml)
         return resource
     }()
 }
