@@ -25,7 +25,7 @@ abstract class SwisstopoTiledLayerConfigFactory {
         external fun createZoomLevelInfos(): ArrayList<io.openmobilemaps.mapscore.shared.map.layers.tiled.Tiled2dMapZoomLevelInfo>
     }
 
-    private class CppProxy : SwisstopoTiledLayerConfigFactory {
+    public class CppProxy : SwisstopoTiledLayerConfigFactory {
         private val nativeRef: Long
         private val destroyed: AtomicBoolean = AtomicBoolean(false)
 

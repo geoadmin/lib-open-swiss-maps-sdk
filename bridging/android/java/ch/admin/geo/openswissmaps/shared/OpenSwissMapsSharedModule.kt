@@ -13,7 +13,7 @@ abstract class OpenSwissMapsSharedModule {
         external fun version(): String
     }
 
-    private class CppProxy : OpenSwissMapsSharedModule {
+    public class CppProxy : OpenSwissMapsSharedModule {
         private val nativeRef: Long
         private val destroyed: AtomicBoolean = AtomicBoolean(false)
 

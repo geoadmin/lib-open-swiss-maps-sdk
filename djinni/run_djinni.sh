@@ -27,6 +27,13 @@ OBJCPP_OUT="$DJINNI_OUT_DIR/ios"
 KOTLIN_OUT="$DJINNI_OUT_DIR/android/java/ch/admin/geo/openswissmaps/shared"
 JNI_OUT="$DJINNI_OUT_DIR/android/jni"
 
+KMP_COMMON_OUT="$base_dir/../bridging/kmp/commonMain/kotlin/io/openmobilemaps/openswissmaps/kmp"
+KMP_ANDROID_OUT="$base_dir/../bridging/kmp/androidMain/kotlin/io/openmobilemaps/openswissmaps/kmp"
+KMP_IOS_OUT="$base_dir/../bridging/kmp/iosMain/kotlin/io/openmobilemaps/openswissmaps/kmp"
+KMP_PACKAGE="io.openmobilemaps.openswissmaps.kmp"
+KMP_IOS_MODULE="swiftPMImport.io.openmobilemaps.openswissmaps.kmp"
+KMP_BRIDGE_PREFIX="KM"
+
 CPP_OUT="../shared/public"
 HPP_EXT="h"
 
@@ -69,11 +76,19 @@ for file in $(find . -name "*.djinni" -type f -print); do
         SUBPOINT=""
     fi
     
-    "$base_dir/../external/djinni/src/run" \
+    "$base_dir/../external/djinni/src/run-assume-built" \
         --kotlin-out "$KOTLIN_OUT/$SUB" \
         --java-package "$JAVA_PACKAGE$SUBPOINT" \
         --ident-java-field "$IDENT_JAVA" \
         --ident-java-enum "$IDENT_CPP_ENUM" \
+        \
+        --kotlin-kmp-common-out "$KMP_COMMON_OUT" \
+        --kotlin-kmp-android-out "$KMP_ANDROID_OUT" \
+        --kotlin-kmp-ios-out "$KMP_IOS_OUT" \
+        --kotlin-kmp-package "$KMP_PACKAGE" \
+        --kotlin-kmp-ios-module "$KMP_IOS_MODULE" \
+        --kotlin-kmp-bridge-prefix "$KMP_BRIDGE_PREFIX" \
+        --kotlin-kmp-objc-name-prefix "$KMP_BRIDGE_PREFIX" \
         \
         --cpp-out "$CPP_OUT" \
         --hpp-ext "$HPP_EXT" \

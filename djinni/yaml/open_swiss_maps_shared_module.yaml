@@ -8,7 +8,11 @@ cpp:
   typename: '::OpenSwissMapsSharedModule'
   header: '"OpenSwissMapsSharedModule.h"'
   byValue: false
+kmp:
+  package: 'io.openmobilemaps.openswissmaps.kmp'
+  bridgePrefix: 'KM'
 objc:
+  module: 'swiftPMImport.io.openmobilemaps.openswissmaps.kmp'
   typename: 'STSDKOpenSwissMapsSharedModule'
   pointer: true
   hash: '%s.hash'
